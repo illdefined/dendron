@@ -4,7 +4,7 @@
 
 require googlecode [ suffix=tgz ]
 
-SUMMARY="Encryted file system for FUSE"
+SUMMARY="Encrypted file system for FUSE"
 HOMEPAGE="http://www.arg0.net/${PN}"
 
 REMOTE_IDS="freshmeat:${PN}"
