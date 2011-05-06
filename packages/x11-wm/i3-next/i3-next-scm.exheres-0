@@ -1,0 +1,14 @@
+# Copyright MMXI
+#     Mikael Voss <mikael+exherbo@illdefined.org>
+# Distributed under the terms of the GNU General Public License v2
+
+require i3 [ branch="next" ]
+
+SUMMARY+=" (unstable next branch)"
+
+PLATFORMS="~amd64 ~x86"
+
+DEPENDENCIES="
+	build+run:
+		!x11-wm/i3
+		!x11-wm/i3-tree"

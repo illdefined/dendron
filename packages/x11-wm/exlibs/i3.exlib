@@ -1,0 +1,45 @@
+# Copyright MMXI
+#     Mikael Voss <mikael+exherbo@illdefined.org>
+# Distributed under the terms of the GNU General Public License v2
+
+myexparam branch
+
+SCM_REPOSITORY="git://code.stapelberg.de/${PN}"
+SCM_BRANCH="$(exparam branch)"
+
+require scm-git
+
+SUMMARY="An improved tiling window manager"
+DESCRIPTION="i3 is a tiling X window manager written from scratch, that heavily relies on XCB. It is UTF‐8 clean and has a strong focus on multi‐monitor support."
+HOMEPAGE="http://${PN}.zekjur.net/"
+
+LICENCES="BSD-3"
+SLOT="0"
+
+DEPENDENCIES="
+	build:
+		app-doc/asciidoc
+		app-text/docbook-xml-dtd
+		app-text/xmlto
+		sys-devel/bison
+		sys-devel/flex
+		x11-proto/xcb-proto
+
+	build+run:
+		dev-libs/libev
+		dev-libs/yajl
+		x11-libs/libX11
+		x11-libs/libxcb
+		x11-utils/xcb-util"
+
+i3_src_compile() {
+	emake
+	emake -C man
+}
+
+i3_src_install() {
+	default
+	doman man/*.[1-8]
+}
+
+export_exlib_phases src_compile src_install
