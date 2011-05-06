@@ -1,0 +1,14 @@
+# Copyright MMIX–MMXI
+#     Mikael Voss <mikael+exherbo@illdefined.org>
+# Distributed under the terms of the GNU General Public License v2
+
+require googlecode [ suffix=tar.gz ]
+
+SUMMARY="C++ logging library"
+HOMEPAGE="http://www.arg0.net/${PN}"
+
+REMOTE_IDS="freshmeat:${PN}"
+
+LICENCES="LGPL-2.1"
+SLOT="0"
+PLATFORMS="~amd64 ~x86"
