@@ -1,0 +1,37 @@
+# Copyright MMIX–MMXI
+#     Mikael Voss <mikael+exherbo@illdefined.org>
+# Distributed under the terms of the GNU General Public License v2
+
+SCM_REPOSITORY="git://code.stapelberg.de/${PN}"
+
+require scm-git pam
+
+SUMMARY="A minimalistic X screen locker"
+HOMEPAGE="http://i3wm.org/${PN}/"
+
+LICENCES="BSD-3"
+SLOT="0"
+PLATFORMS="~amd64 ~x86"
+
+DEPENDENCIES="
+	build:
+		dev-util/pkg-config
+
+	build+run:
+		sys-libs/pam
+		x11-libs/cairo[X]
+		x11-libs/libxcb
+		x11-utils/xcb-util"
+
+DEFAULT_SRC_INSTALL_EXTRA_DOCS=(
+	"LICENSE" )
+
+src_install() {
+	default
+
+	# Install man page
+	doman "i3lock.1"
+
+	# Clean PAM module
+	cleanpamd "${PN}"
+}
