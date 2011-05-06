@@ -1,0 +1,17 @@
+# Copyright MMXI
+#     Mikael Voss <mikael+exherbo@illdefined.org>
+# Distributed under the terms of the GNU General Public License v2
+
+SUMMARY=""
+HOMEPAGE=""
+DOWNLOADS=""
+
+REMOTE_IDS="freshmeat:${PN}"
+
+LICENCES=""
+SLOT="0"
+PLATFORMS="~amd64 ~x86"
+
+MYOPTIONS=""
+
+DEPENDENCIES=""
