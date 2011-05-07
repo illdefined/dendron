@@ -1,0 +1,27 @@
+# Copyright MMXI
+#     Mikael Voss <mikael+exherbo@illdefined.org>
+# Distributed under the terms of the GNU General Public License v2
+
+SUMMARY="Portable executable packer"
+HOMEPAGE="http://${PN}.sourceforge.net/"
+DOWNLOADS="${HOMEPAGE}download/${PNV}-src.tar.bz2
+	mirror://sourceforge/sevenzip/lzma920.tar.bz2"
+
+REMOTE_IDS="freshmeat:${PN}"
+
+LICENCES="GPL-2"
+SLOT="0"
+PLATFORMS="~amd64 ~x86"
+
+DEPENDENCIES="
+	build+run:
+		dev-libs/ucl"
+
+WORK="${WORKBASE}/${PNV}-src"
+
+DEFAULT_SRC_COMPILE_PARAMS=( UPX_LZMADIR="${WORK}" all )
+
+src_install() {
+	newbin src/upx.out upx
+	doman doc/upx.1
+}
