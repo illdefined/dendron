@@ -1,0 +1,34 @@
+# Copyright MMXI
+#     Mikael Voss <mikael+exherbo@illdefined.org>
+# Distributed under the terms of the GNU General Public License v2
+
+purify_sed() {
+	edo sed --regexp-extended --file=- --in-place -- "$@"
+}
+
+purify_escape() {
+	echo "$1" | sed --regexp-extended --expression='s/([$&()*+./?\\^{|}]|\[|\])/\\&/g'
+}
+
+purify_script() {
+	for token in "$@"
+	do
+		local macro="${token%%=*}"
+		if [ "${token}" == "${macro}" ]
+		then
+			printf '/^%s[[:blank:]]*:?=/D\n' "$(purify_escape ${macro})"
+		else
+			local value="${token#*=}"
+			printf 's/^(%s[[:blank:]]*:?=[[:blank:]]*).*$/\\1%s/\n' \
+				"$(purify_escape ${macro})" \
+				"$(purify_escape ${value})"
+		fi
+	done
+}
+
+purify() {
+	local file="$1"
+	shift 1
+
+	purify_script "$@" | purify_sed "${file}"
+}
