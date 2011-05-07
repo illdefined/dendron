@@ -1,0 +1,28 @@
+# Copyright MMX–MMXI
+#     Mikael Voss <mikael+exherbo@illdefined.org>
+# Distributed under the terms of the GNU General Public License v2
+
+MY_PN="${PN%-outline}"
+MY_PV="${PV/0_pre/TESTFLIGHT-}"
+MY_PNV="${MY_PN}-${MY_PV}"
+
+FONT="${PN}"
+
+require sourceforge-jp [ project="${MY_PN}-fonts" suffix="tar.gz" ] xfont
+
+SUMMARY="M+ outline founts"
+
+LICENCES="as-is"
+SLOT="0"
+
+WORK="${WORKBASE}/${MY_PNV}"
+
+DEFAULT_SRC_INSTALL_EXTRA_DOCS=( "README_E" "README_J" )
+
+mplus-outline_src_install() {
+	insinto "/usr/share/fonts/X11/${FONT}"
+	doins *.ttf
+	default
+}
+
+export_exlib_phases src_install
