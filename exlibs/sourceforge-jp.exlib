@@ -1,0 +1,20 @@
+# Copyright MMXI
+#     Mikael Voss <mikael+exherbo@illdefined.org>
+# Distributed under the terms of the GNU General Public License v2
+#
+# Based in part upon “sourceforge.exlib”, which is
+#     Copyright MMIX Yury G. Kudryashov
+
+myexparam pn="${MY_PN:-${PN}}"
+myexparam pv="${MY_PV:-${PV}}"
+myexparam pnv="${MY_PNV:-$(exparam pn)-$(exparam pv)}"
+
+myexparam project="$(exparam pn)"
+myexparam suffix="tar.bz2"
+
+HOMEPAGE="http://$(exparam project).sourceforge.jp"
+
+if ! ever is_scm
+then
+	DOWNLOADS="mirror://sourceforge.jp/$(exparam project)/$(exparam pnv).$(exparam suffix)"
+fi
