@@ -1,0 +1,15 @@
+# Copyright MMXI
+#     Mikael Voss <mikael+exherbo@illdefined.org>
+# Distributed under the terms of the GNU General Public License v2
+
+SUMMARY="UCL data compression library"
+HOMEPAGE="http://www.oberhumer.com/opensource/${PN}/"
+DOWNLOADS="${HOMEPAGE}download/${PNV}.tar.gz"
+
+REMOTE_IDS="freshmeat:the_ucl_compression_library"
+
+LICENCES="GPL-2"
+SLOT="0"
+PLATFORMS="~amd64 ~x86"
+
+DEFAULT_SRC_CONFIGURE_PARAMS=( "--hates=docdir" )
