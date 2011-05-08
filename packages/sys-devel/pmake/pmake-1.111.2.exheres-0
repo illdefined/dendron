@@ -1,0 +1,46 @@
+# Copyright MMXI
+#     Mikael Voss <mikael+exherbo@illdefined.org>
+# Distributed under the terms of the GNU General Public License v2
+
+MY_PV="$(ever range 1-2 ${PV})"
+MY_PNV="${PN}_${MY_PV}"
+
+SUMMARY="NetBSD make"
+HOMEPAGE="http://packages.debian.org/${PN}"
+DOWNLOADS="$(echo mirror://debian/pool/main/${PN:0:1}/${PN}/${MY_PNV}{.orig.tar.gz,-2.debian.tar.gz})"
+
+LICENCES="BSD-3"
+SLOT="0"
+PLATFORMS="~amd64 ~x86"
+
+WORK="${WORKBASE}/${PN}"
+
+DEFAULT_SRC_PREPARE_PATCHES=( "${WORKBASE}/debian/patches/" )
+
+src_compile() {
+	local machine="$(uname -m)"
+	for macro in "TARGET_MACHINE" "TARGET_MACHINE_ARCH" "MAKE_MACHINE"
+	do
+		flags+=" -D${macro}=\\\"${machine}\\\""
+	done
+
+	for feature in strerror strdup setenv vsnprintf strftime
+	do
+		flags+=" -DHAVE_${feature^^}"
+	done
+
+	emake -f Makefile.boot \
+		CC="${CC}" \
+		CFLAGS="${CPPFLAGS} ${flags} ${CFLAGS}"
+}
+
+src_install() {
+	newbin bmake pmake
+	dobin mkdep
+
+	insinto "/usr/share/mk/"
+	doins mk/*
+
+	newman make.1 pmake.1
+	doman mkdep.1
+}
