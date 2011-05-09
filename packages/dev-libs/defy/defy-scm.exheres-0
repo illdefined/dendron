@@ -1,0 +1,13 @@
+# Copyright MMXI
+#     Mikael Voss <mikael+exherbo@illdefined.org>
+# Distributed under the terms of the GNU General Public License v2
+
+SUMMARY="Aggregation of useless C macros"
+HOMEPAGE="https://github.com/illdefined/${PN}/"
+SCM_REPOSITORY="git://github.com/illdefined/${PN}.git"
+
+require scm-git
+
+LICENCES="public-domain"
+SLOT="0"
+PLATFORMS="~amd64 ~x86"
