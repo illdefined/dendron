@@ -31,6 +31,20 @@ src_prepare() {
 src_install() {
 	default
 
+	# Install pkg‐config file
+	insinto "/usr/share/pkgconfig/"
+	hereins "${PN}.pc" <<EOF
+prefix=/usr
+libdir=\${prefix}/${LIBDIR:-lib}
+includedir=\${prefix}/include/${PN}
+
+Name: ${PN}
+Description: A collection of lightweight utility functions
+Version: $(head -n 1 CHANGES | grep -E -o '[0-9.]+')
+Cflags: -I\${includedir}
+Libs: -L\${libdir} -lowfat
+EOF
+
 	# Avoid collision with OpenSSL man page
 	mv "${IMAGE}"/usr/share/man3/{,owfat-}buffer.h
 }
