@@ -1,0 +1,18 @@
+# Copyright MMXI
+#     Mikael Voss <mikael+exherbo@illdefined.org>
+# Distributed under the terms of the GNU General Public License v2
+
+SUMMARY="Frank Wen’s Fluid soundfont"
+HOMEPAGE="http://musescore.org/en/handbook/soundfont"
+DOWNLOADS="http://prereleases.musescore.org/soundfont/${PN}_${PV}.tar.gz"
+
+LICENCES="MIT"
+SLOT="0"
+PLATFORMS="~amd64 ~x86"
+
+src_install() {
+	default
+
+	insinto /usr/share/sounds/sf2/
+	doins *.sf2
+}
