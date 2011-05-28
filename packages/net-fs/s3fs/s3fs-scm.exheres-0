@@ -12,6 +12,9 @@ LICENCES="GPL-2"
 SLOT="0"
 PLATFORMS="~amd64 ~x86"
 
+# The test suite does not work with userpriv and sandboxing
+RESTRICT="test"
+
 DEPENDENCIES="
 	build:
 		dev-util/pkg-config
