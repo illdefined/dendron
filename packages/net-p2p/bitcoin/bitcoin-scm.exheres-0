@@ -1,0 +1,41 @@
+# Copyright MMXI
+#     Mikael Voss <mikael+exherbo@illdefined.org>
+# Distributed under the terms of the GNU General Public License v2
+
+SUMMARY="Bitcoin peer-to-peer currency daemon"
+HOMEPAGE="http://${PN}.org/"
+SCM_REPOSITORY="git://github.com/${PN}/${PN}.git"
+
+require scm-git purify systemd-service
+
+REMOTE_IDS="freshmeat:${PN}"
+
+LICENCES="MIT"
+SLOT="0"
+PLATFORMS="~amd64 ~x86"
+
+DEPENDENCIES="
+	dev-libs/boost
+	dev-libs/crypto++
+	dev-libs/glib
+	dev-libs/openssl
+	sys-libs/db"
+
+WORK="${WORKBASE}/${PNV}/src"
+
+src_prepare() {
+	# Clean up flags
+	purify makefile.unix CXX USE_UPNP
+	edo sed -r \
+		-e "s/-Wl,-Bstatic//g" \
+		-e "s/(-l boost_[a-z_]+)/\1-mt/g" \
+		-i makefile.unix
+}
+
+src_compile() {
+	emake -f makefile.unix bitcoind
+}
+
+src_install() {
+	dosbin bitcoind
+}
