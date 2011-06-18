@@ -15,6 +15,7 @@ SLOT="0"
 PLATFORMS="~amd64 ~x86"
 
 DEPENDENCIES="
+	user/${PN}
 	dev-libs/boost
 	dev-libs/crypto++
 	dev-libs/glib
@@ -38,4 +39,10 @@ src_compile() {
 
 src_install() {
 	dosbin bitcoind
+
+	# Create data directory
+	local dir="/var/lib/${PN}"
+	keepdir "${dir}"
+	edo chown "${PN}:${PN}" "${IMAGE}/${dir}"
+	edo chmod 700 "${IMAGE}/${dir}"
 }
