@@ -45,4 +45,6 @@ src_install() {
 	keepdir "${dir}"
 	edo chown "${PN}:${PN}" "${IMAGE}/${dir}"
 	edo chmod 700 "${IMAGE}/${dir}"
+
+	install_systemd_files
 }

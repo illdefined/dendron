@@ -1,0 +1,11 @@
+[Unit]
+Description=Bitcoin daemon
+After=network.target
+
+[Service]
+User=bitcoin
+CPUSchedulingPolicy=idle
+ExecStart=/usr/sbin/bitcoind -conf=/etc/bitcoin/bitcoin.conf -datadir=/var/lib/bitcoin/
+
+[Install]
+WantedBy=multi-user.target
