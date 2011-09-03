@@ -1,0 +1,38 @@
+# Copyright MMXI
+#     Mikael Voss <mikael+exherbo@illdefined.org>
+# Distributed under the terms of the GNU General Public License v2
+
+SUMMARY="Caching web proxy"
+HOMEPAGE="http://www.pps.jussieu.fr/~jch/software/${PN}/"
+SCM_REPOSITORY="git://git.wifi.pps.jussieu.fr/${PN}"
+
+require scm-git systemd-service
+
+REMOTE_IDS="freshmeat:${PN}"
+
+LICENCES="MIT"
+SLOT="0"
+PLATFORMS="~amd64 ~x86"
+
+DEPENDENCIES="
+	build+run:
+		group/polipo
+		user/polipo
+"
+
+DEFAULT_SRC_COMPILE_PARAMS=(
+	CDEBUGFLAGS="${CFLAGS}"
+)
+
+DEFAULT_SRC_INSTALL_PARAMS=(
+	PREFIX="/usr"
+	MANDIR="/usr/share/man"
+	INFODIR="/usr/share/info"
+	TARGET="${IMAGE}"
+)
+
+src_install() {
+	default
+
+	install_systemd_files
+}

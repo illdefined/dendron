@@ -1,0 +1,10 @@
+[Unit]
+Description=Polipo proxy
+After=network.target
+
+[Service]
+User=polipo
+ExecStart=/usr/bin/polipo daemonise=false
+
+[Install]
+WantedBy=multi-user.target
