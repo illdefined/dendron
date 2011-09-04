@@ -1,0 +1,10 @@
+[Unit]
+Description=Tor router
+After=network.target
+
+[Service]
+User=tor
+ExecStart=/usr/bin/tor RunAsDaemon 0
+
+[Install]
+WantedBy=multi-user.target
