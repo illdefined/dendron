@@ -1,0 +1,19 @@
+# Copyright MMXI
+#     Mikael Voss <mikael+exherbo@illdefined.org>
+# Distributed under the terms of the GNU General Public License v2
+
+SUMMARY="Telepathy connection manager for MSN"
+HOMEPAGE="http://telepathy.freedesktop.org/wiki/"
+SCM_REPOSITORY="git://anongit.freedesktop.org/telepathy/${PN}"
+
+require scm-git autotools [ supported_autoconf=[ 2.5 ] supported_automake=[ 1.11 ] ]
+
+LICENCES="GPL-2"
+SLOT="0"
+PLATFORMS="~amd64 ~x86"
+
+DEPENDENCIES="
+	run:
+		dev-python/papyon
+		net-im/telepathy-python
+"
