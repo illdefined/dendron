@@ -25,3 +25,5 @@ DEPENDENCIES="
 "
 
 DEFAULT_SRC_CONFIGURE_PARAMS=( "--enable-media" )
+
+AT_M4DIR="${WORK}/m4"
