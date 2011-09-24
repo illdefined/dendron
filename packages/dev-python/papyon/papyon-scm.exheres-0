@@ -1,0 +1,22 @@
+# Copyright MMXI
+#     Mikael Voss <mikael+exherbo@illdefined.org>
+# Distributed under the terms of the GNU General Public License v2
+
+SUMMARY="MSN client library"
+HOMEPAGE="http://www.freedesktop.org/wiki/Software/${PN}"
+SCM_REPOSITORY="git://anongit.freedesktop.org/${PN}"
+
+require scm-git distutils [ python_dep=2.5 ]
+
+LICENCES="GPL-2"
+SLOT="0"
+PLATFORMS="~amd64 ~x86"
+
+DEPENDENCIES="
+	build+run:
+		dev-python/gst-python
+		dev-python/pycrypto
+		dev-python/pyopenssl
+		gnome-bindings/pygobject:2
+		net-im/farsight2[python]
+"
