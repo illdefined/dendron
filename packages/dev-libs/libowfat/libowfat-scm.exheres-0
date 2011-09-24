@@ -25,7 +25,7 @@ src_prepare() {
 		"prefix=${IMAGE}/usr" \
 		"LIBDIR=${IMAGE}/usr/${LIBDIR:-lib}" \
 		"INCLUDEDIR=${IMAGE}/usr/include/${PN}" \
-		"MAN3DIR=${IMAGE}/usr/share/man3"
+		"MAN3DIR=${IMAGE}/usr/share/man/man3"
 }
 
 src_install() {
