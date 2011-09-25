@@ -1,0 +1,17 @@
+# Copyright MMXI
+#     Mikael Voss <mikael+exherbo@illdefined.org>
+# Distributed under the terms of the GNU General Public License v2
+
+SUMMARY="GCC wrapper to generate position-independent executables"
+HOMEPAGE="https://github.com/illdefined/${PN}/"
+SCM_REPOSITORY="git://github.com/illdefined/${PN}.git"
+
+require scm-git
+
+LICENCES="public-domain"
+SLOT="0"
+PLATFORMS="~amd64 ~x86"
+
+src_install() {
+	newbin galette{.sh,}
+}
