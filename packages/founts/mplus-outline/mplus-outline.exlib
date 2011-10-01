@@ -8,7 +8,7 @@ MY_PNV="${MY_PN}-${MY_PV}"
 
 FONT="${PN}"
 
-require sourceforge-jp [ project="${MY_PN}-fonts" package="6650" suffix="tar.gz" ] xfont
+require sourceforge-jp [ project="${MY_PN}-fonts" package="6650" suffix="tar.xz" ] xfont
 
 SUMMARY="M+ outline founts"
 
