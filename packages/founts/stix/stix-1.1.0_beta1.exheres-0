@@ -1,0 +1,24 @@
+# Copyright MMXI
+#     Mikael Voss <mikael+exherbo@illdefined.org>
+# Distributed under the terms of the GNU General Public License v2
+
+MY_PN="${PN^^}"
+MY_PV="${PV/_/-}"
+MY_PNV="${MY_PN}v${MY_PV}"
+
+SUMMARY="Scientific and Technical Information Exchange fount set"
+FONT="${PN}"
+
+require sourceforge [ project="${PN}fonts" suffix="zip" ] xfont
+
+LICENCES="OFL"
+SLOT="0"
+PLATFORMS="~amd64 ~x86"
+
+WORK="${WORKBASE}/Fonts"
+
+src_install() {
+	insinto "/usr/share/fonts/X11/${FONT}"
+	doins */*.otf
+	default
+}
