@@ -14,6 +14,10 @@ LICENCES="LPPL"
 SLOT="0"
 PLATFORMS="~amd64 ~x86"
 
+DEPENDENCIES="
+	build:
+		app-arch/unzip"
+
 WORK="${WORKBASE}"
 
 src_install() {
