@@ -1,0 +1,22 @@
+# Copyright MMXI
+#     Mikael Voss <mikael+exherbo@illdefined.org>
+# Distributed under the terms of the GNU General Public License v2
+
+FONT="${PN}"
+
+require xfont
+
+SUMMARY="Latin Modern math fount"
+DOWNLOADS="http://www.gust.org.pl/projects/e-foundry/${PN}/download/lm${PV}otf.zip"
+
+LICENCES="LPPL"
+SLOT="0"
+PLATFORMS="~amd64 ~x86"
+
+WORK="${WORKBASE}"
+
+src_install() {
+	insinto "/usr/share/fonts/X11/${FONT}"
+	doins *.otf
+	default
+}
