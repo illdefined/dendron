@@ -1,0 +1,23 @@
+# Copyright MMXI
+#     Mikael Voss <mikael+exherbo@illdefined.org>
+# Distributed under the terms of the GNU General Public License v2
+
+MY_PV="${PV/_/-}"
+MY_PNV="${PN}-${MY_PV}"
+
+SUMMARY="Userland utilities for the NILFS2 file system"
+HOMEPAGE="http://www.nilfs.org/"
+DOWNLOADS="${HOMEPAGE}download/${MY_PNV}.tar.bz2"
+
+LICENCES="GPL-2"
+SLOT="0"
+PLATFORMS="~amd64 ~x86"
+
+DEPENDENCIES="
+	build+run:
+		sys-apps/util-linux [[
+			description = [ Needed for libmount ]
+		]]
+"
+
+WORK="${WORKBASE}/${MY_PNV}"
