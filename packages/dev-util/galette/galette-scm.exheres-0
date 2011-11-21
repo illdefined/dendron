@@ -2,7 +2,7 @@
 #     Mikael Voss <mikael+exherbo@illdefined.org>
 # Distributed under the terms of the GNU General Public License v2
 
-SUMMARY="GCC wrapper to generate position-independent executables"
+SUMMARY="Hardening GCC wrapper"
 HOMEPAGE="https://github.com/illdefined/${PN}/"
 SCM_REPOSITORY="git://github.com/illdefined/${PN}.git"
 
