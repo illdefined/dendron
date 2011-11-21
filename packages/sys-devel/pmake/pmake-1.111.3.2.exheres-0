@@ -2,12 +2,12 @@
 #     Mikael Voss <mikael+exherbo@illdefined.org>
 # Distributed under the terms of the GNU General Public License v2
 
-MY_PV="$(ever range 1-2 ${PV})"
-MY_PNV="${PN}_${MY_PV}"
-
 SUMMARY="NetBSD make"
 HOMEPAGE="http://packages.debian.org/${PN}"
-DOWNLOADS="$(echo mirror://debian/pool/main/${PN:0:1}/${PN}/${MY_PNV}{.orig.tar.gz,-2.debian.tar.gz})"
+DOWNLOADS="
+	mirror://debian/pool/main/${PN:0:1}/${PN}/${PN}_$(ever range 1-2).orig.tar.gz
+	mirror://debian/pool/main/${PN:0:1}/${PN}/${PN}_$(ever replace 2 -).debian.tar.gz
+"
 
 LICENCES="BSD-3"
 SLOT="0"
