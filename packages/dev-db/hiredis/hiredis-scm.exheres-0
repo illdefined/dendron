@@ -16,3 +16,5 @@ DEPENDENCIES="
 	test:
 		dev-db/redis
 "
+
+DEFAULT_SRC_INSTALL_PARAMS=( PREFIX="${IMAGE}/usr" )
