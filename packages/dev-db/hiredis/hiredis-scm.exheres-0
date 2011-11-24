@@ -11,3 +11,8 @@ require scm-git
 LICENCES="BSD-3"
 SLOT="0"
 PLATFORMS="~amd64 ~x86"
+
+DEPENDENCIES="
+	test:
+		dev-db/redis
+"
