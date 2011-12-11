@@ -15,3 +15,9 @@ PLATFORMS="~amd64 ~x86"
 DEPENDENCIES="
 	run:
 		dev-lang/lua"
+
+src_install() {
+	default
+
+	keepdir "/var/lib/${PN}/"
+}
