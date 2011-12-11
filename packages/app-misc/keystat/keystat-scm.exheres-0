@@ -1,0 +1,17 @@
+# Copyright MMXI
+#     Mikael Voss <mikael+exherbo@illdefined.org>
+# Distributed under the terms of the GNU General Public License v2
+
+SUMMARY="Keyboard statistics generator"
+HOMEPAGE="https://github.com/illdefined/${PN}/"
+SCM_REPOSITORY="git://github.com/illdefined/${PN}.git"
+
+require scm-git
+
+LICENCES="MirOS"
+SLOT="0"
+PLATFORMS="~amd64 ~x86"
+
+DEPENDENCIES="
+	run:
+		dev-lang/lua"
