@@ -1,0 +1,32 @@
+# Copyright MMXII
+#     Mikael Voss <mikael+exherbo@illdefined.org>
+# Distributed under the terms of the GNU General Public License v2
+
+require scons
+
+MY_PNV="${PN}-src-r${PV}"
+
+SUMMARY="A scalable high-performance NoSQL database"
+HOMEPAGE="http://www.${PN}.org/"
+DOWNLOADS="http://downloads.${PN}.org/src/${MY_PNV}.tar.gz"
+
+LICENCES="
+	AGPL-3
+	Apache-2.0"
+
+SLOT="0"
+PLATFORMS="~amd64 ~x86"
+
+DEPENDENCIES="
+	build+run:
+		dev-libs/boost
+		dev-libs/openssl
+		dev-libs/spidermonkey"
+
+WORK="${WORKBASE}/${MY_PNV}"
+
+SCONS_SRC_INSTALL_PARAMS=(
+	--config=auto
+	--prefix="${IMAGE}/usr"
+	--full
+)
