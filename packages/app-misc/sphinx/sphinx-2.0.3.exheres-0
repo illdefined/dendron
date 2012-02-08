@@ -1,0 +1,78 @@
+# Copyright MMXII
+#     Mikael Voss <mikael+exherbo@illdefined.org>
+# Distributed under the terms of the GNU General Public License v2
+
+MY_PNV="${PNV}-release"
+
+SUMMARY="Full-text search engine"
+HOMEPAGE="http://www.sphinxsearch.com/"
+DOWNLOADS="
+	${HOMEPAGE}files/${MY_PNV}.tar.gz
+	stemmer? ( http://snowball.tartarus.org/dist/libstemmer_c.tgz )"
+
+LICENCES="GPL-2"
+SLOT="0"
+PLATFORMS="~amd64 ~x86"
+
+MYOPTIONS="
+	id64 [[ description = [ Use 64-bit document and word IDs ] ]]
+	mysql [[ description = [ Support MySQL database indexing ] ]]
+	odbc [[ description = [ Support ODBC database indexing ] ]]
+	postgres [[ description = [ Support PostgresSQL database indexing ] ]]
+	stemmer [[ description = [ Support for stemming through libstemmer ] ]]
+	syslog [[ description = [ Enable logging to system log ] ]]"
+
+DEPENDENCIES="
+	build+run:
+		dev-libs/expat
+		sys-libs/zlib
+
+		mysql? ( dev-db/mysql )
+		odbc? ( dev-db/unixODBC )
+		postgres? ( dev-db/postgresql )
+
+	run:
+		syslog? ( virtual/syslog )"
+
+WORK="${WORKBASE}/${MY_PNV}"
+
+DEFAULT_SRC_CONFIGURE_OPTION_ENABLES=( "id64" )
+DEFAULT_SRC_CONFIGURE_OPTION_WITHS=(
+	"mysql"
+	"odbc unixodbc"
+	"postgres pgsql"
+	"stemmer libstemmer"
+	"syslog"
+)
+
+src_unpack() {
+	default
+
+	edo cd "${WORK}"
+	unpack "libstemmer_c.tgz"
+}
+
+src_configure() {
+	default
+
+	edo cd "api/libsphinxclient"
+	econf --hates=docdir
+}
+
+src_compile() {
+	default
+
+	emake -C "api/libsphinxclient" -j 1
+}
+
+src_install() {
+	default
+
+	emake -C "api/libsphinxclient" -j 1 DESTDIR="${IMAGE}" install
+
+	edo rm -r "${IMAGE}/var"
+}
+
+src_test() {
+	emake -C "api/libsphinxclient" -j 1 test
+}
