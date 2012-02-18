@@ -11,3 +11,10 @@ require scm-git
 LICENCES="MIT"
 SLOT="0"
 PLATFORMS="~amd64 ~x86"
+
+DEPENDENCIES="
+	build:
+		dev-libs/defy
+
+	build+run:
+		dev-libs/libev"
