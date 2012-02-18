@@ -16,10 +16,10 @@ purify_script() {
 		local macro="${token%%=*}"
 		if [ "${token}" == "${macro}" ]
 		then
-			printf '/^%s[[:blank:]]*:?=/D\n' "$(purify_escape ${macro})"
+			printf '/^[[:blank:]]*%s[[:blank:]]*:?=/D\n' "$(purify_escape ${macro})"
 		else
 			local value="${token#*=}"
-			printf 's/^(%s[[:blank:]]*:?=[[:blank:]]*).*$/\\1%s/\n' \
+			printf 's/^([[:blank:]]*%s[[:blank:]]*:?=[[:blank:]]*).*$/\\1%s/\n' \
 				"$(purify_escape ${macro})" \
 				"$(purify_escape ${value})"
 		fi
