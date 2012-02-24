@@ -1,0 +1,19 @@
+# Copyright MMXII
+#     Mikael Voss <mikael+exherbo@illdefined.org>
+# Distributed under the terms of the GNU General Public License v2
+
+SUMMARY="Small utility to describe system error numbers"
+HOMEPAGE="https://github.com/illdefined/${PN}"
+SCM_REPOSITORY="git://github.com/illdefined/${PN}.git"
+
+require scm-git
+
+LICENCES="MirOS"
+SLOT="0"
+PLATFORMS="~amd64 ~x86"
+
+DEPENDENCIES="
+	build:
+		dev-libs/defy"
+
+DEFAULT_SRC_INSTALL_PARAMS=( PREFIX="usr" )
