@@ -1,0 +1,27 @@
+# Copyright MMXII
+#     Mikael Voss <mikael+exherbo@illdefined.org>
+# Distributed under the terms of the GNU General Public License v2
+
+FONT="${PN}"
+
+require xfont
+
+SUMMARY="Lato sans-serif typeface"
+HOMEPAGE="http://www.latofonts.com/"
+DOWNLOADS="${HOMEPAGE}download/LatoOFL.zip"
+
+LICENCES="OFL"
+SLOT="0"
+PLATFORMS="~amd64 ~x86"
+
+DEPENDENCIES="
+	build:
+		app-arch/unzip"
+
+WORK="${WORKBASE}"
+
+src_install() {
+	insinto "/usr/share/fonts/X11/${FONT}"
+	doins *.ttf
+	default
+}
