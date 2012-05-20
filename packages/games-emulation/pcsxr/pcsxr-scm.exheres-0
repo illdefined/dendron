@@ -16,12 +16,14 @@ PLATFORMS="~amd64 ~x86"
 RESTRICT="test"
 
 MYOPTIONS="
-	alsa [[ description = [ Build ALSA sound plugin ] ]]
 	cdio [[ description = [ Enable CD‐ROM support ] ]]
-	openal [[ description = [ Build OpenAL sound plugin ] ]]
 	opengl [[ description = [ Build OpenGL video plugin ] ]]
-	oss [[ description = [ Build OSS sound plugin ] ]]
-	pulseaudio [[ description = [ Build PulseAudio sound plugin ] ]]"
+	(
+		alsa [[ description = [ Build ALSA sound plugin ] ]]
+		openal [[ description = [ Build OpenAL sound plugin ] ]]
+		oss [[ description = [ Build OSS sound plugin ] ]]
+		pulseaudio [[ description = [ Build PulseAudio sound plugin ] ]]
+	) [[ number-selected = at-most-one ]]"
 
 DEPENDENCIES="
 	build+run:
@@ -48,3 +50,21 @@ DEFAULT_SRC_CONFIGURE_OPTION_ENABLES=(
 	"opengl"
 	"oss sound oss"
 	"pulseaudio sound pulseaudio" )
+
+switch() {
+	for option in "$@"
+	do
+		if optionq "$option"
+		then
+			echo "$option"
+			return
+		fi
+	done
+}
+
+src_configure() {
+	econf \
+		$(option_enable opengl) \
+		$(option_enable {,lib}cdio) \
+		--enable-sound=$(switch alsa openal oss pulseaudio)
+}
