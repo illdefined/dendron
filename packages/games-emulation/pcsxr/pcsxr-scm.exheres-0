@@ -41,7 +41,7 @@ DEPENDENCIES="
 		oss? ( sys-sound/oss )
 		pulseaudio? ( media-sound/pulseaudio )"
 
-DEFAULTSRC_CONFIGURE_OPTION_ENABLES=(
+DEFAULT_SRC_CONFIGURE_OPTION_ENABLES=(
 	"alsa sound alsa"
 	"cdio libcdio"
 	"openal sound openal"
