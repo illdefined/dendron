@@ -1,0 +1,50 @@
+# Copyright MMXII
+#     Mikael Voss <mikael+exherbo@illdefined.org>
+# Distributed under the terms of the GNU General Public License v2
+
+SUMMARY="Sony PlayStation emulator"
+HOMEPAGE="http://${PN}.codeplex.com/"
+SCM_REPOSITORY="https://${PN}.svn.codeplex.com/svn/${PN}"
+SCM_SVN_RAW_URI=1
+
+require autotools [ supported_autoconf=[ 2.5 ] supported_automake=[ 1.12 ] ] scm-svn
+
+LICENCES="GPL-2"
+SLOT="0"
+PLATFORMS="~amd64 ~x86"
+
+RESTRICT="test"
+
+MYOPTIONS="
+	alsa [[ description = [ Build ALSA sound plugin ] ]]
+	cdio [[ description = [ Enable CD‐ROM support ] ]]
+	openal [[ description = [ Build OpenAL sound plugin ] ]]
+	opengl [[ description = [ Build OpenGL video plugin ] ]]
+	oss [[ description = [ Build OSS sound plugin ] ]]
+	pulseaudio [[ description = [ Build PulseAudio sound plugin ] ]]"
+
+DEPENDENCIES="
+	build+run:
+		dev-libs/glib:2
+		gnome-platform/libglade:2
+		media-libs/SDL
+		sys-libs/zlib
+		x11-libs/gtk+:2
+		x11-libs/libXtst
+		x11-libs/libXv
+		alsa? ( sys-sound/alsa-lib )
+		cdio? ( dev-libs/cdio )
+		openal? ( media-libs/openal )
+		opengl? (
+			x11-dri/mesa
+			x11-libs/libXxf86vm )
+		oss? ( sys-sound/oss )
+		pulseaudio? ( media-sound/pulseaudio )"
+
+DEFAULTSRC_CONFIGURE_OPTION_ENABLES=(
+	"alsa sound alsa"
+	"cdio libcdio"
+	"openal sound openal"
+	"opengl"
+	"oss sound oss"
+	"pulseaudio sound pulseaudio" )
