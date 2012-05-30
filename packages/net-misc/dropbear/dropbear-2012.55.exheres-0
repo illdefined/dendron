@@ -43,7 +43,7 @@ pkg_postinst() {
 		edo dropbearkey -t rsa -f "${rsa}" -s 4096
 	fi
 
-	if [[ ! -f "${dsa}" ]]
+	if [[ ! -f "${dss}" ]]
 	then
 		edo dropbearkey -t dss -f "${dss}"
 	fi
