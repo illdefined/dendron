@@ -1,0 +1,48 @@
+# Copyright MMXII
+#     Mikael Voss <mikael+exherbo@illdefined.org>
+# Distributed under the terms of the GNU General Public License v2
+
+require systemd-service
+
+SUMMARY="Small SSH client/server implementation"
+HOMEPAGE="http://matt.ucc.asn.au/${PN}/${PN}.html"
+DOWNLOADS="http://matt.ucc.asn.au/${PN}/${PNV}.tar.bz2"
+
+REMOTE_IDS="freshmeat:${PN}-ssh"
+
+LICENCES="MIT"
+SLOT="0"
+PLATFORMS="~amd64 ~x86"
+
+MYOPTIONS="pam"
+
+DEPENDENCIES="
+	build+run:
+		sys-libs/zlib
+		pam? ( sys-libs/pam )"
+
+DEFAULT_SRC_CONFIGURE_OPTION_ENABLES=( pam )
+
+src_install() {
+	default
+
+	keepdir "/etc/dropbear"
+
+	insinto "/etc/default"
+	doins "${FILES}/dropbear"
+}
+
+pkg_postinst() {
+	local rsa="/etc/dropbear/dropbear_rsa_host_key"
+	local dss="/etc/dropbear/dropbear_dss_host_key"
+
+	if [[ ! -f "${rsa}" ]]
+	then
+		edo dropbearkey -t rsa -f "${rsa}" -s 4096
+	fi
+
+	if [[ ! -f "${dsa}" ]]
+	then
+		edo dropbearkey -t dss -f "${dss}"
+	fi
+}

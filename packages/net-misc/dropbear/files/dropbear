@@ -1,0 +1,2 @@
+# Disable root and password logins by default
+DROPBEAR_OPTIONS="-w -s"
