@@ -4,6 +4,9 @@ After=network.target
 
 [Service]
 User=couchdb
+PermissionsStartOnly=true
+ExecStartPre=/usr/bin/mkdir /run/couchdb
+ExecStartPre=/usr/bin/chown couchdb:couchdb /run/couchdb
 ExecStart=/usr/bin/couchdb
 
 [Install]
