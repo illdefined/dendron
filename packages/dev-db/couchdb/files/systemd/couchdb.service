@@ -1,0 +1,10 @@
+[Unit]
+Description=CouchDB database
+After=network.target
+
+[Service]
+User=couchdb
+ExecStart=/usr/bin/couchdb
+
+[Install]
+WantedBy=multi-user.target
