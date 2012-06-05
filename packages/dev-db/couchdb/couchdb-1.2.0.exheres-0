@@ -49,3 +49,9 @@ src_install() {
 	edo chown couchdb:couchdb "${IMAGE}"/var/{lib,log}/couchdb
 	edo rmdir "${IMAGE}"/run/{couchdb,}
 }
+
+src_test() {
+	esandbox disable_net
+
+	default
+}
