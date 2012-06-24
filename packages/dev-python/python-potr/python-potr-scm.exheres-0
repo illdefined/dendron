@@ -1,0 +1,17 @@
+# Copyright MMXII
+#     Mikael Voss <mikael+exherbo@illdefined.org>
+# Distributed under the terms of the GNU General Public License v2
+
+SUMMARY="Pure Python OTR implementation"
+HOMEPAGE="https://github.com/afflux/pure-python-otr"
+SCM_REPOSITORY="git://github.com/afflux/pure-python-otr.git"
+
+require scm-git distutils
+
+LICENCES="GPL-3"
+SLOT="0"
+PLATFORMS="~amd64 ~x86"
+
+DEPENDENCIES="
+	build+run:
+		dev-python/pycrypto"
