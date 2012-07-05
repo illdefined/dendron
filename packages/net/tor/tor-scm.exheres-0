@@ -27,5 +27,9 @@ DEPENDENCIES="
 src_install() {
 	default
 
+	keepdir /var/lib/tor/data
+	edo chown tor:tor "${IMAGE}"/var/lib/tor{,/data}
+	edo chmod 700 "${IMAGE}"/var/lib/tor{,/data}
+
 	install_systemd_files
 }
