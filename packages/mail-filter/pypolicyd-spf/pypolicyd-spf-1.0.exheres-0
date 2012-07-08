@@ -1,0 +1,18 @@
+# Copyright MMXII
+#     Mikael Voss <mikael+exherbo@illdefined.org>
+# Distributed under the terms of the GNU General Public License v2
+
+require launchpad distutils
+
+SUMMARY="SPF Postfix policy server"
+
+LICENCES="Apache-2.0"
+SLOT="0"
+PLATFORMS="~amd64 ~x86"
+
+DEPENDENCIES="
+	run:
+		dev-python/pyspf
+
+	post+recommendation:
+		mail-mta/postfix"
