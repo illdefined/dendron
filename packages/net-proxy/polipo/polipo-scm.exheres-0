@@ -8,7 +8,7 @@ SCM_REPOSITORY="git://git.wifi.pps.jussieu.fr/${PN}"
 
 require scm-git systemd-service
 
-REMOTE_IDS="freshmeat:${PN}"
+REMOTE_IDS="freecode:${PN}"
 
 LICENCES="MIT"
 SLOT="0"

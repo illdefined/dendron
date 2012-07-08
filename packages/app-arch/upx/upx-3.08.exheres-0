@@ -7,7 +7,7 @@ HOMEPAGE="http://${PN}.sourceforge.net/"
 DOWNLOADS="${HOMEPAGE}download/${PNV}-src.tar.bz2
 	mirror://sourceforge/sevenzip/lzma920.tar.bz2"
 
-REMOTE_IDS="freshmeat:${PN}"
+REMOTE_IDS="freecode:${PN}"
 
 LICENCES="GPL-2"
 SLOT="0"

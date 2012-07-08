@@ -6,7 +6,7 @@ SUMMARY="IPsec implementation for Linux ≥2.6"
 HOMEPAGE="http://www.${PN}.org/"
 DOWNLOADS="http://download.${PN}.org/${PNV}.tar.bz2"
 
-REMOTE_IDS="freshmeat:${PN}"
+REMOTE_IDS="freecode:${PN}"
 
 LICENCES="GPL-2"
 SLOT="0"

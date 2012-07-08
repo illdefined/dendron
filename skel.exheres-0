@@ -6,7 +6,7 @@ SUMMARY=""
 HOMEPAGE=""
 DOWNLOADS=""
 
-REMOTE_IDS="freshmeat:${PN}"
+REMOTE_IDS="freecode:${PN}"
 
 LICENCES=""
 SLOT="0"

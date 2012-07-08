@@ -9,7 +9,7 @@ require scm-git cmake
 SUMMARY="Yet Another JSON Library"
 HOMEPAGE="http://lloyd.github.com/${PN}/"
 
-REMOTE_IDS="freshmeat:${PN}"
+REMOTE_IDS="freecode:${PN}"
 
 LICENCES="ISC"
 SLOT="0"

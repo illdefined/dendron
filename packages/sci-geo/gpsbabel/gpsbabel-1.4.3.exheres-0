@@ -6,7 +6,7 @@ SUMMARY="GPS data transfer and conversion utility"
 HOMEPAGE="http://www.${PN}.org/"
 DOWNLOADS="http://kybele.illdefined.org/${PNV}.tar.gz"
 
-REMOTE_IDS="freshmeat:${PN}"
+REMOTE_IDS="freecode:${PN}"
 
 LICENCES="GPL-2"
 SLOT="0"

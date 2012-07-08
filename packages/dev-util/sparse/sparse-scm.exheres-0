@@ -9,7 +9,7 @@ require scm-git purify
 SUMMARY="Semantic parser for C"
 HOMEPAGE="https://${PN}.wiki.kernel.org/"
 
-REMOTE_IDS="freshmeat:${PN}"
+REMOTE_IDS="freecode:${PN}"
 
 LICENCES="OSL-1.1"
 SLOT="0"

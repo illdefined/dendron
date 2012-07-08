@@ -6,7 +6,7 @@ SUMMARY="Experimental Call interface implementation"
 HOMEPAGE="http://telepathy.freedesktop.org/wiki/"
 DOWNLOADS="http://telepathy.freedesktop.org/releases/${PN}/${PNV}.tar.gz"
 
-REMOTE_IDS="freshmeat:${PN}"
+REMOTE_IDS="freecode:${PN}"
 
 LICENCES="LGPL-2.1"
 SLOT="0"

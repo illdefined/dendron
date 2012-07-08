@@ -7,7 +7,7 @@ require googlecode [ suffix=tgz ]
 SUMMARY="Encrypted file system for FUSE"
 HOMEPAGE="http://www.arg0.net/${PN}"
 
-REMOTE_IDS="freshmeat:${PN}"
+REMOTE_IDS="freecode:${PN}"
 
 LICENCES="GPL-3"
 SLOT="0"
