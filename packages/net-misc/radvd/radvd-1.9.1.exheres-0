@@ -16,6 +16,7 @@ PLATFORMS="~amd64 ~x86"
 
 DEPENDENCIES="
 	build+run:
+		user/radvd
 		dev-libs/libdaemon"
 
 src_install() {

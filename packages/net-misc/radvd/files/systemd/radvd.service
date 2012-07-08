@@ -4,7 +4,7 @@ Wants=network.target
 After=syslog.target
 
 [Service]
-ExecStart=/usr/sbin/radvd --nodaemon
+ExecStart=/usr/sbin/radvd --nodaemon --username radvd
 
 [Install]
 WantedBy=multi-user.target
