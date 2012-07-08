@@ -1,0 +1,17 @@
+# Copyright MMXII
+#     Mikael Voss <mikael+exherbo@illdefined.org>
+# Distributed under the terms of the GNU General Public License v2
+
+SUMMARY="IPv6 Router Advertisement Daemon"
+HOMEPAGE="http://www.litech.org/${PN}/"
+DOWNLOADS="http://www.litech.org/${PN}/dist/${PNV}.tar.gz"
+
+REMOTE_IDS="freecode:${PN}"
+
+LICENCES="BSD-4"
+SLOT="0"
+PLATFORMS="~amd64 ~x86"
+
+DEPENDENCIES="
+	build+run:
+		dev-libs/libdaemon"
