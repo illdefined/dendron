@@ -12,6 +12,7 @@ PLATFORMS="~amd64 ~x86"
 
 DEPENDENCIES="
 	run:
+		user/policyd-spf
 		dev-python/pyspf
 
 	post+recommendation:
