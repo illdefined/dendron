@@ -9,3 +9,7 @@ SUMMARY="Python Sender Policy Framework implementation"
 LICENCES="PSF"
 SLOT="0"
 PLATFORMS="~amd64 ~x86"
+
+DEPENDENCIES="
+	run:
+		dev-python/pydns"
