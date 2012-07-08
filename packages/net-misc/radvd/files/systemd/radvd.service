@@ -1,0 +1,10 @@
+[Unit]
+Description=IPv6 Router Advertisement Daemon
+Wants=network.target
+After=syslog.target
+
+[Service]
+ExecStart=/usr/sbin/radvd --nodaemon
+
+[Install]
+WantedBy=multi-user.target
