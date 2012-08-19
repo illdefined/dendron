@@ -1,0 +1,11 @@
+# Copyright MMXII
+#     Mikael Voss <mikael+exherbo@illdefined.org>
+# Distributed under the terms of the GNU General Public License v2
+
+require pypi distutils
+
+SUMMARY="Alternative regular expression module for Python"
+
+LICENCES="PSF"
+SLOT="0"
+PLATFORMS="~amd64 ~x86"
