@@ -12,5 +12,6 @@ SLOT="0"
 PLATFORMS="~amd64 ~x86"
 
 DEPENDENCIES="
-	recommendation:
+	run:
+		dev-python/PyYAML
 		dev-python/numpy"
