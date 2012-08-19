@@ -1,0 +1,16 @@
+# Copyright MMXII
+#     Mikael Voss <mikael+exherbo@illdefined.org>
+# Distributed under the terms of the GNU General Public License v2
+
+require pypi distutils
+
+SUMMARY="Natural Language Toolkit"
+DESCRIPTION="The Natural Language Toolkit is a suite of Python libraries and programs for symbolic and statistical natural processing"
+
+LICENCES="Apache-2.0"
+SLOT="0"
+PLATFORMS="~amd64 ~x86"
+
+DEPENDENCIES="
+	recommendation:
+		dev-python/numpy"
