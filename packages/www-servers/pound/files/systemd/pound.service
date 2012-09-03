@@ -3,8 +3,10 @@ Description=Pound daemon
 After=network.target
 
 [Service]
-User=pound
-ExecStart=/usr/sbin/pound -f /etc/pound.cfg
+Type=forking
+PIDFile=/run/pound.pid
+ExecStart=/usr/sbin/pound -f /etc/pound.cfg -p /run/pound.pid
+KillSignal=SIGHUP
 
 [Install]
 WantedBy=multi-user.target
