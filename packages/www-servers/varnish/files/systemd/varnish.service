@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 EnvironmentFile=-/etc/default/varnish
-ExecStart=/usr/sbin/varnishd $VARNISH_OPTIONS -F -u varnish
+ExecStart=/usr/sbin/varnishd -a ${VARNISH_LISTEN} -f ${VARNISH_VCL} -s ${VARNISH_STORAGE} -t ${VARNISH_TTL} $VARNISH_OPTIONS -u varnish -g varnish -F
 
 [Install]
 WantedBy=multi-user.target
