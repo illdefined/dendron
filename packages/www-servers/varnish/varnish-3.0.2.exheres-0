@@ -1,0 +1,35 @@
+# Copyright MMXII
+#     Mikael Voss <mikael+exherbo@illdefined.org>
+# Distributed under the terms of the GNU General Public License v2
+
+require systemd-service
+
+SUMMARY="Caching HTTP proxy"
+HOMEPAGE="https://www.varnish-cache.org/"
+DOWNLOADS="http://repo.varnish-cache.org/source/${PNV}.tar.gz"
+
+RESTRICT="test"
+
+REMOTE_IDS="freecode:${PN}"
+
+LICENCES="BSD-2"
+SLOT="0"
+PLATFORMS="~amd64 ~x86"
+
+DEPENDENCIES="
+	build+run:
+		user/varnish
+		dev-libs/libedit
+		dev-libs/pcre"
+
+src_install() {
+	default
+
+	keepdir /var/lib/varnish
+}
+
+src_test() {
+	esandbox allow_net LOOPBACK
+
+	default
+}

@@ -1,0 +1,10 @@
+[Unit]
+Description=Varnish HTTP proxy
+After=network.target
+
+[Service]
+EnvironmentFile=-/etc/default/varnish
+ExecStart=/usr/sbin/varnishd $VARNISH_OPTIONS -F -u varnish
+
+[Install]
+WantedBy=multi-user.target
