@@ -1,0 +1,10 @@
+[Unit]
+Description=Pound daemon
+After=network.target
+
+[Service]
+User=pound
+ExecStart=/usr/sbin/pound -f /etc/pound.cfg
+
+[Install]
+WantedBy=multi-user.target

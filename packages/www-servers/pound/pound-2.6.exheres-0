@@ -1,0 +1,25 @@
+# Copyright MMXII
+#     Mikael Voss <mikael+exherbo@illdefined.org>
+# Distributed under the terms of the GNU General Public License v2
+
+require systemd-service
+
+MY_PNV="${PNV/p/P}"
+
+SUMMARY="HTTP(S) reverse proxy and load balancer"
+HOMEPAGE="http://www.apsis.ch/${PN}/"
+DOWNLOADS="${HOMEPAGE}${MY_PNV}.tgz"
+
+REMOTE_IDS="freecode:${PN}"
+
+LICENCES="GPL-3"
+SLOT="0"
+PLATFORMS="~amd64 ~x86"
+
+DEPENDENCIES="
+	build+run:
+		user/pound
+		dev-libs/openssl
+		dev-libs/pcre"
+
+WORK="${WORKBASE}/${MY_PNV}"
