@@ -1,12 +1,12 @@
-# Copyright MMXI
+# Copyright MMXI­MMXII
 #     Mikael Voss <mikael+exherbo@illdefined.org>
 # Distributed under the terms of the GNU General Public License v2
 
+require purify
+
 SUMMARY="Fefe’s reimplementation of libdjb"
 HOMEPAGE="http://www.fefe.de/${PN}/"
-SCM_REPOSITORY=":pserver:cvs@cvs.fefe.de:/cvs"
-
-require scm-cvs purify
+DOWNLOADS="http://dl.fefe.de/${PNV}.tar.bz2"
 
 REMOTE_IDS="freecode:${PN}"
 
