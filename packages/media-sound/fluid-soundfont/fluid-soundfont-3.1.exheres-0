@@ -4,11 +4,13 @@
 
 SUMMARY="Frank Wen’s Fluid soundfont"
 HOMEPAGE="http://musescore.org/en/handbook/soundfont"
-DOWNLOADS="http://prereleases.musescore.org/soundfont/${PN}_${PV}.tar.gz"
+DOWNLOADS="http://musescore.org/download/${PN}.tar.gz -> ${PN}.zip"
 
 LICENCES="MIT"
 SLOT="0"
 PLATFORMS="~amd64 ~x86"
+
+WORK="${WORKBASE}"
 
 src_install() {
 	default
