@@ -15,5 +15,6 @@ PLATFORMS="~amd64 ~x86"
 DEFAULT_SRC_CONFIGURE_PARAMS=(
 	--prefix="/usr/musl"
 	--exec-prefix="/usr"
-	--syslibdir="/${LIBDIR:-lib}"
+	--libdir="/usr/musl/${LIBDIR:-lib}"
+	--syslibdir="/usr/musl/${LIBDIR:-lib}"
 )
