@@ -1,0 +1,24 @@
+# Copyright MMXIII
+#     Mikael Voss <mikael+exherbo@illdefined.org>
+# Distributed under the terms of the GNU General Public License v2
+
+SUMMARY="Icon set for Dia"
+HOMEPAGE="http://${PN}.sourceforge.net/"
+DOWNLOADS="${HOMEPAGE}files/rib-network-v${PV}.tar.gz"
+
+REMOTE_IDS="freecode:${PN}"
+
+LICENCES="GPL-3"
+SLOT="0"
+PLATFORMS="~amd64 ~x86"
+
+DEPENDENCIES="
+	recommendation:
+		app-diagram/dia"
+
+WORK="${WORKBASE}"
+
+src_install() {
+	insinto /usr/share/dia
+	doins -r shapes sheets
+}
