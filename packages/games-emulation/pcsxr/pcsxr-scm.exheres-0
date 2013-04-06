@@ -28,11 +28,9 @@ MYOPTIONS="
 DEPENDENCIES="
 	build+run:
 		dev-libs/glib:2
-		gnome-platform/libglade:2
 		media-libs/SDL
 		sys-libs/zlib
-		x11-libs/gtk+:2
-		x11-libs/libXtst
+		x11-libs/gtk+:3
 		x11-libs/libXv
 		alsa? ( sys-sound/alsa-lib )
 		cdio? ( dev-libs/cdio )
