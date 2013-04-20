@@ -1,0 +1,25 @@
+# Copyright MMXIII
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+SUMMARY="Daemon to hold browser profiles in RAM"
+HOMEPAGE="https://github.com/graysky2/${PN}"
+SCM_REPOSITORY="git://github.com/graysky2/${PN}.git"
+
+require scm-git systemd-service [ systemd_files=[ "${WORK}"/init/{psd.service,psd-resync.{service,timer}} ] ]
+
+LICENCES="MIT"
+SLOT="0"
+PLATFORMS="~amd64 ~x86"
+
+src_install() {
+	default
+
+	dobin common/profile-sync-daemon
+	newman doc/psd.1 profile-sync-daemon.1
+
+	insinto /etc
+	doins common/psd.conf
+
+    install_systemd_files
+}
