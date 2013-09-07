@@ -1,0 +1,25 @@
+# Copyright MMXIII
+#     Mikael Voss <mikael+exherbo@illdefined.org>
+# Distributed under the terms of the GNU General Public License v2
+
+SUMMARY="C HTTP server library"
+HOMEPAGE="https://github.com/nyantec/${PN}/"
+SCM_REPOSITORY="git://github.com/nyantec/${PN}.git"
+
+require scm-git
+
+LICENCES="AGPL-3"
+SLOT="0"
+PLATFORMS="~amd64 ~x86"
+
+DEPENDENCIES="
+    build:
+        dev-libs/defy
+
+    build+run:
+        dev-libs/libev
+
+    test:
+        dev-libs/check"
+
+DEFAULT_SRC_INSTALL_PARAMS=( PREFIX="usr" )
