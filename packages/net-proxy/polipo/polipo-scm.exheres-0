@@ -4,7 +4,7 @@
 
 SUMMARY="Caching web proxy"
 HOMEPAGE="http://www.pps.jussieu.fr/~jch/software/${PN}/"
-SCM_REPOSITORY="git://git.wifi.pps.jussieu.fr/${PN}"
+SCM_REPOSITORY="git://git.wifi.pps.univ-paris-diderot.fr/${PN}"
 
 require scm-git systemd-service
 
