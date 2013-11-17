@@ -1,0 +1,17 @@
+# Copyright MMXII
+#     Mikael Voss <mikael+exherbo@illdefined.org>
+# Distributed under the terms of the GNU General Public License v2
+
+SUMMARY="A monospaced typeface for programming"
+
+require github [ user=madmalik ] xfont
+
+LICENCES="OFL"
+SLOT="0"
+PLATFORMS="~amd64 ~x86"
+
+src_install() {
+	insinto "/usr/share/fonts/X11/${FONT}"
+	doins *.otf
+	default
+}
