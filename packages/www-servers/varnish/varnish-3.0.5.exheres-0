@@ -1,5 +1,5 @@
-# Copyright MMXII
-#     Mikael Voss <mikael+exherbo@illdefined.org>
+# Copyright MMXII, MXIV
+#     Mikael Voss <mvs+exherbo@illdefined.org>
 # Distributed under the terms of the GNU General Public License v2
 
 require systemd-service
