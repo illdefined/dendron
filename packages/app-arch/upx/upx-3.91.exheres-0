@@ -1,11 +1,11 @@
-# Copyright MMXI
-#     Mikael Voss <mikael+exherbo@illdefined.org>
+# Copyright MMXI, MMXIV
+#     Mikael Voss <mvs+exherbo@illdefined.org>
 # Distributed under the terms of the GNU General Public License v2
 
 SUMMARY="Portable executable packer"
 HOMEPAGE="http://${PN}.sourceforge.net/"
 DOWNLOADS="${HOMEPAGE}download/${PNV}-src.tar.bz2
-	mirror://sourceforge/sevenzip/lzma920.tar.bz2"
+	mirror://sourceforge/sevenzip/lzma922.tar.bz2"
 
 REMOTE_IDS="freecode:${PN}"
 
