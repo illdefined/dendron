@@ -1,9 +1,9 @@
-# Copyright MMXII
-#     Mikael Voss <mikael+exherbo@illdefined.org>
+# Copyright MMXII, MMXIV
+#     Mikael Voss <mvs+exherbo@illdefined.org>
 # Distributed under the terms of the GNU General Public License v2
 
 SUMMARY="Lightweight C library"
-HOMEPAGE="http://www.etalabs.net/${PN}/"
+HOMEPAGE="http://www.musl-libc.org/"
 DOWNLOADS="${HOMEPAGE}releases/${PNV}.tar.gz"
 
 REMOTE_IDS="freecode:${PN}"
