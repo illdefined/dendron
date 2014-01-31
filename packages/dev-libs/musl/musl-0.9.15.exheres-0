@@ -18,3 +18,10 @@ DEFAULT_SRC_CONFIGURE_PARAMS=(
 	--libdir="/usr/musl/${LIBDIR:-lib}"
 	--syslibdir="/usr/musl/${LIBDIR:-lib}"
 )
+
+src_install() {
+	default
+
+	insinto "/etc"
+	hereins "ld-musl-${CHOST%%-*}.path" <<< "/usr/musl/${LIBDIR:-lib}"
+}
