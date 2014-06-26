@@ -6,7 +6,7 @@ require purify
 
 SUMMARY="Utility to manipulate PaX flags of ELF binaries"
 HOMEPAGE="http://pax.grsecurity.net/"
-DOWNLOADS="${HOMEPAGE}${PNV}.tar.bz2"
+DOWNLOADS="${HOMEPAGE}${PNV}.tar.gz"
 
 LICENCES="GPL-2"
 SLOT="0"
