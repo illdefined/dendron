@@ -1,0 +1,28 @@
+# Copyright MMXIII
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require gnu [ suffix=gz ]
+
+SUMMARY="Program for statistical analysis of sampled data"
+
+LICENCES="GPL-3"
+SLOT="0"
+PLATFORMS="~amd64"
+
+DEPENDENCIES="
+    build:
+        dev-util/pkg-config
+
+    build+run:
+        dev-libs/glib
+        dev-libs/libxml2
+        gnome-desktop/gtksourceview:2
+        gnome-platform/libglade
+        sci-libs/gsl
+        sys-devel/gettext
+        sys-libs/ncurses
+        sys-libs/zlib
+        x11-libs/cairo
+        x11-libs/pango
+        x11-libs/gtk+:2"
