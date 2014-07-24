@@ -33,7 +33,7 @@ DEPENDENCIES="
 		x11-libs/gtk+:3
 		x11-libs/libXv
 		alsa? ( sys-sound/alsa-lib )
-		cdio? ( dev-libs/cdio )
+		cdio? ( dev-libs/libcdio )
 		openal? ( media-libs/openal )
 		opengl? (
 			x11-dri/mesa
