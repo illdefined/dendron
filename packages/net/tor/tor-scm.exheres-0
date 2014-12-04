@@ -4,7 +4,7 @@
 
 SUMMARY="Anonymity network"
 HOMEPAGE="https://www.torproject.org/"
-SCM_REPOSITORY="git://git.torproject.org/${PN}.git"
+SCM_REPOSITORY="https://git.torproject.org/${PN}.git"
 
 require scm-git autotools [ supported_autoconf=[ 2.5 ] supported_automake=[ 1.13 ] ] systemd-service
 
