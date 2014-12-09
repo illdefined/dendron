@@ -1,0 +1,28 @@
+# Copyright MMXIV
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require github [ user=atom pn=atom release=v${PV} tag=v${PV} ]
+
+SUMMARY="A hackable text editor"
+HOMEPAGE="https://atom.io/"
+
+LICENCES=""
+SLOT="0"
+PLATFORMS="~amd64"
+
+DEPENDENCIES="
+    build+run:
+        dev-lang/node[>=0.10][npm]
+        dev-scm/git
+        gnome-desktop/gnome-keyring"
+
+src_compile() {
+    # FIXME: Ugly hack to work around horribly broken build system
+    esandbox disable_net
+    edo script/build
+}
+
+src_install() {
+    edo script/grunt install --install-dir "${IMAGE}/usr"
+}
