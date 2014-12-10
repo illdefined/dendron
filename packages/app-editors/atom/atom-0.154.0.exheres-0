@@ -7,7 +7,7 @@ require github [ user=atom pn=atom release=v${PV} tag=v${PV} ]
 SUMMARY="A hackable text editor"
 HOMEPAGE="https://atom.io/"
 
-LICENCES=""
+LICENCES="MIT"
 SLOT="0"
 PLATFORMS="~amd64"
 
