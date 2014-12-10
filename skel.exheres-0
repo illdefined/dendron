@@ -1,4 +1,4 @@
-# Copyright MMXIII
+# Copyright MMXIV
 #     Mikael Voss <mvs@nyantec.com>
 # Distributed under the terms of the GNU General Public License v2
 
@@ -6,11 +6,9 @@ SUMMARY=""
 HOMEPAGE=""
 DOWNLOADS=""
 
-REMOTE_IDS="freecode:${PN}"
-
 LICENCES=""
 SLOT="0"
-PLATFORMS="~amd64 ~x86"
+PLATFORMS="~amd64"
 
 MYOPTIONS=""
 
