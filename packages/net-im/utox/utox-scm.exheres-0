@@ -1,0 +1,35 @@
+# Copyright MMXIV
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require \
+    github [ user=notsecure pn=uTox ] \
+    purify
+
+SUMMARY="Lightweight Tox client"
+
+LICENCES="GPL-3"
+SLOT="0"
+PLATFORMS="~amd64"
+
+DEPENDENCIES="
+    build:
+        virtual/pkg-config
+
+    build+run:
+        media-libs/freetype
+        media-libs/libvpx
+        media-libs/openal
+        media-libs/v4l-utils
+        net-libs/tox
+        x11-libs/libX11
+        x11-libs/libXext"
+
+src_prepare() {
+    default
+    purify Makefile CC CFLAGS
+}
+
+src_install() {
+    emake DESTDIR="${IMAGE}" PREFIX="/usr" install
+}
