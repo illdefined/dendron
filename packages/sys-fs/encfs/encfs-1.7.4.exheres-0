@@ -1,5 +1,5 @@
-# Copyright MMIX–MMXI
-#     Mikael Voss <mikael+exherbo@illdefined.org>
+# Copyright MMIX–MMXV
+#     Mikael Voss <mvs@nyantec.com>
 # Distributed under the terms of the GNU General Public License v2
 
 require googlecode [ suffix=tgz ]
@@ -25,7 +25,7 @@ DEPENDENCIES="
 
 	build+run:
 		dev-libs/boost[>=1.34]
-		dev-libs/openssl
 		dev-libs/rlog
 		sys-fs/fuse[>=2.6]
+		virtual/libssl
 		xattr? ( sys-apps/attr )"
