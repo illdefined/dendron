@@ -1,18 +1,16 @@
-# Copyright MMXIII
+# Copyright MMXIII⁠–⁠MMXV
 #     Mikael Voss <mvs@nyantec.com>
 # Distributed under the terms of the GNU General Public License v2
 
-SUMMARY="Utility to vacuum browser profiles"
-HOMEPAGE="https://github.com/graysky2/${PN}"
-SCM_REPOSITORY="git://github.com/graysky2/${PN}.git"
+require github [ user=graysky2 ]
 
-require scm-git
+SUMMARY="Utility to vacuum browser profiles"
 
 LICENCES="MIT"
 SLOT="0"
-PLATFORMS="~amd64 ~x86"
+PLATFORMS="~amd64"
 
 DEPENDENCIES="
-	dev-db/sqlite
-	dev-util/parallel
-	sys-apps/bc"
+    run:
+        dev-db/sqlite
+        dev-util/parallel"
