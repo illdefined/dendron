@@ -1,0 +1,201 @@
+# Copyright MMXV
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+SUMMARY="Speech synthesiser based on diphone concatenation"
+HOMEPAGE="http://tcts.fpms.ac.be/synthesis/mbrola.html"
+DOWNLOADS="
+    http://tcts.fpms.ac.be/synthesis/mbrola/bin/pclinux/mbr301h.zip
+    linguas:af? (
+        http://tcts.fpms.ac.be/synthesis/mbrola/dba/af1/af1.zip )
+    linguas:ar? (
+        http://tcts.fpms.ac.be/synthesis/mbrola/dba/ar1/ar1-981103.zip
+        http://tcts.fpms.ac.be/synthesis/mbrola/dba/ar2/ar2-001015.zip )
+    linguas:br? (
+        http://tcts.fpms.ac.be/synthesis/mbrola/dba/bz1/bz1-980116.zip )
+    linguas:cs? (
+        http://tcts.fpms.ac.be/synthesis/mbrola/dba/cz1/cz1-991020.zip
+        http://tcts.fpms.ac.be/synthesis/mbrola/dba/cz2/cz2-001009.zip )
+    linguas:de? (
+        http://tcts.fpms.ac.be/synthesis/mbrola/dba/de1/de1-980227.zip
+        http://tcts.fpms.ac.be/synthesis/mbrola/dba/de2/de2-990106.zip
+        http://tcts.fpms.ac.be/synthesis/mbrola/dba/de3/de3-000307.zip
+        http://tcts.fpms.ac.be/synthesis/mbrola/dba/de4/de4.zip
+        http://tcts.fpms.ac.be/synthesis/mbrola/dba/de5/de5.zip
+        http://tcts.fpms.ac.be/synthesis/mbrola/dba/de6/de6.zip
+        http://tcts.fpms.ac.be/synthesis/mbrola/dba/de7/de7.zip
+        http://tcts.fpms.ac.be/synthesis/mbrola/dba/de8/de8.zip )
+    linguas:el? (
+        http://tcts.fpms.ac.be/synthesis/mbrola/dba/gr1/gr1-990610.zip
+        http://tcts.fpms.ac.be/synthesis/mbrola/dba/gr2/gr2-010521.zip )
+    linguas:en_GB? (
+        http://tcts.fpms.ac.be/synthesis/mbrola/dba/en1/en1-980910.zip )
+    linguas:en_US? (
+        http://tcts.fpms.ac.be/synthesis/mbrola/dba/us1/us1-980512.zip
+        http://tcts.fpms.ac.be/synthesis/mbrola/dba/us2/us2-980812.zip
+        http://tcts.fpms.ac.be/synthesis/mbrola/dba/us3/us3-990208.zip )
+    linguas:es_ES? (
+        http://tcts.fpms.ac.be/synthesis/mbrola/dba/es1/es1-980610.zip
+        http://tcts.fpms.ac.be/synthesis/mbrola/dba/es2/es2-989825.zip
+        http://tcts.fpms.ac.be/synthesis/mbrola/dba/es3/es3.zip
+        http://tcts.fpms.ac.be/synthesis/mbrola/dba/es4/es4.zip )
+    linguas:es_MX? (
+        http://tcts.fpms.ac.be/synthesis/mbrola/dba/mx1/mx1-990208.zip
+        http://tcts.fpms.ac.be/synthesis/mbrola/dba/mx2/mx2.zip )
+    linguas:es_VE? (
+        http://tcts.fpms.ac.be/synthesis/mbrola/dba/vz1/vz1.zip )
+    linguas:et? (
+        http://tcts.fpms.ac.be/synthesis/mbrola/dba/ee1/ee1.zip )
+    linguas:fa? (
+        http://tcts.fpms.ac.be/synthesis/mbrola/dba/ir1/ir1.zip )
+    linguas:fr? (
+        http://tcts.fpms.ac.be/synthesis/mbrola/dba/fr1/fr1-990204.zip
+        http://tcts.fpms.ac.be/synthesis/mbrola/dba/fr2/fr2-980806.zip
+        http://tcts.fpms.ac.be/synthesis/mbrola/dba/fr3/fr3-990324.zip
+        http://tcts.fpms.ac.be/synthesis/mbrola/dba/fr4/fr4-990521.zip
+        http://tcts.fpms.ac.be/synthesis/mbrola/dba/fr5/fr5-991020.zip
+        http://tcts.fpms.ac.be/synthesis/mbrola/dba/fr6/fr6-010330.zip
+        http://tcts.fpms.ac.be/synthesis/mbrola/dba/fr7/fr7-010330.zip )
+    linguas:fr_CA? (
+        http://tcts.fpms.ac.be/synthesis/mbrola/dba/ca1/ca1.zip
+        http://tcts.fpms.ac.be/synthesis/mbrola/dba/ca2/ca2.zip )
+    linguas:he? (
+        http://tcts.fpms.ac.be/synthesis/mbrola/dba/hb1/hb1-000308.zip
+        http://tcts.fpms.ac.be/synthesis/mbrola/dba/hb2/hb2.zip )
+    linguas:hi? (
+        http://tcts.fpms.ac.be/synthesis/mbrola/dba/in1/in1-010206.zip
+        http://tcts.fpms.ac.be/synthesis/mbrola/dba/in2/in2-010202.zip )
+    linguas:hr? (
+        http://tcts.fpms.ac.be/synthesis/mbrola/dba/cr1/cr1-981028.zip )
+    linguas:hu? (
+        http://tcts.fpms.ac.be/synthesis/mbrola/dba/hu1/hu1.zip )
+    linguas:is? (
+        http://tcts.fpms.ac.be/synthesis/mbrola/dba/ic1/ic1.zip )
+    linguas:it? (
+        http://tcts.fpms.ac.be/synthesis/mbrola/dba/it1/it1-010213.zip
+        http://tcts.fpms.ac.be/synthesis/mbrola/dba/it2/it2-010406.zip
+        http://tcts.fpms.ac.be/synthesis/mbrola/dba/it3/it3-010304.zip
+        http://tcts.fpms.ac.be/synthesis/mbrola/dba/it4/it4-010926.zip )
+    linguas:ja? (
+        http://tcts.fpms.ac.be/synthesis/mbrola/dba/jp1/jp1-000314.zip
+        http://tcts.fpms.ac.be/synthesis/mbrola/dba/jp2/jp2-270202.zip
+        http://tcts.fpms.ac.be/synthesis/mbrola/dba/jp3/jp3.zip )
+    linguas:ko? (
+        http://tcts.fpms.ac.be/synthesis/mbrola/dba/hn1/hn1-990923.zip )
+    linguas:la? (
+        http://tcts.fpms.ac.be/synthesis/mbrola/dba/la1/la1.zip )
+    linguas:lt? (
+        http://tcts.fpms.ac.be/synthesis/mbrola/dba/lt1/lt1.zip
+        http://tcts.fpms.ac.be/synthesis/mbrola/dba/lt2/lt2.zip )
+    linguas:mi? (
+        http://tcts.fpms.ac.be/synthesis/mbrola/dba/nz1/nz1-000911.zip )
+    linguas:ms? (
+        http://tcts.fpms.ac.be/synthesis/mbrola/dba/ma1/ma1.zip )
+    linguas:nl? (
+        http://tcts.fpms.ac.be/synthesis/mbrola/dba/nl1/nl1-980609.zip
+        http://tcts.fpms.ac.be/synthesis/mbrola/dba/nl2/nl2-990507.zip
+        http://tcts.fpms.ac.be/synthesis/mbrola/dba/nl3/nl3-001013.zip )
+    linguas:pl? (
+        http://tcts.fpms.ac.be/synthesis/mbrola/dba/pl1/pl1.zip )
+    linguas:pt_PT? (
+        http://tcts.fpms.ac.be/synthesis/mbrola/dba/pt1/pt1-000509.zip )
+    linguas:pt_BR? (
+        http://tcts.fpms.ac.be/synthesis/mbrola/dba/br1/br1-971105.zip
+        http://tcts.fpms.ac.be/synthesis/mbrola/dba/br2/br2-000119.zip
+        http://tcts.fpms.ac.be/synthesis/mbrola/dba/br3/br3-000119.zip )
+    linguas:ro? (
+        http://tcts.fpms.ac.be/synthesis/mbrola/dba/ro1/ro1-980317.zip )
+    linguas:sv? (
+        http://tcts.fpms.ac.be/synthesis/mbrola/dba/sw1/sw1-980623.zip
+        http://tcts.fpms.ac.be/synthesis/mbrola/dba/sw2/sw2-140102.zip )
+    linguas:te? (
+        http://tcts.fpms.ac.be/synthesis/mbrola/dba/tl1/tl1.zip )
+    linguas:tr? (
+        http://tcts.fpms.ac.be/synthesis/mbrola/dba/tr1/tr1-010209.zip
+        http://tcts.fpms.ac.be/synthesis/mbrola/dba/tr2/tr2-010212.zip )
+    linguas:zh? (
+        http://tcts.fpms.ac.be/synthesis/mbrola/dba/cn1/cn1.zip )"
+
+LICENCES="MBROLA"
+SLOT="0"
+PLATFORMS="~x86"
+
+MYOPTIONS="
+    linguas:
+        af
+        ar
+        br
+        cs
+        de
+        el
+        en_GB
+        en_US
+        es_ES
+        es_MX
+        es_VE
+        et
+        fa
+        fr
+        fr_CA
+        he
+        hi
+        hr
+        hu
+        is
+        it
+        ja
+        ko
+        la
+        lt
+        mi
+        ms
+        nl
+        pl
+        pt_PT
+        pt_BR
+        ro
+        sv
+        te
+        tr
+        zh
+    platform:
+        x86"
+
+DEPENDENCIES="
+    build:
+        app-arch/unzip"
+
+WORK="${WORKBASE}"
+
+src_install() {
+    newbin "mbrola-linux-i386" "mbrola"
+    dodoc "readme.txt"
+
+    # Voices
+    for voice in [a-z][a-z][0-9]
+    do
+        insinto "/usr/share/${PN}/${voice}/"
+        if [[ -d "${voice}" ]]
+        then
+            doins "${voice}/${voice}"
+            [[ -f "${voice}/${voice}mrpa" ]] \
+                && doins "${voice}/${voice}mrpa"
+            [[ -f "${voice}/${voice}.txt" ]] \
+                && dodoc "${voice}/${voice}.txt"
+            [[ -f "${voice}/license.txt" ]] \
+                && doins "${voice}/license.txt"
+
+            if [[ -d "${voice}/TEST" ]]
+            then
+                insinto "/usr/share/${PN}/${voice}/TEST"
+                doins "${voice}/TEST/"*
+            fi
+        else
+            doins "${voice}"
+            [[ -f "${voice}mrpa" ]] \
+                && doins "${voice}mrpa"
+            [[ -f "${voice}.txt" ]] \
+                && dodoc "${voice}.txt"
+        fi
+    done
+}
