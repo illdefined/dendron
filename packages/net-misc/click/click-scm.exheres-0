@@ -1,0 +1,39 @@
+# Copyright MMXV
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require \
+    github [ user=kohler ] \
+    autotools [ supported_autoconf=[ 2.5 ] supported_automake=[ 1.13 ] ]
+
+SUMMARY="Modular software router toolkit"
+
+LICENCES="GPL-2"
+SLOT="0"
+PLATFORMS="~amd64"
+
+MYOPTIONS="
+    etherswitch [[ description = [ Include Ethernet switch elements ] ]]
+    grid [[ description = [ Include Grid elements ] ]]
+    ipv6 [[ description = [ Include IPv6 elements ] ]]
+    ipsec [[ description = [ Include IP security elements ] ]]
+    local [[ description = [ Include local elements ] ]]
+    radio [[ description = [ Include radio elements ] ]]
+    wifi [[ description = [ Include wifi elements and support ] ]]"
+
+DEFAULT_SRC_CONFIGURE_OPTION_ENABLES=(
+    "etherswitch"
+    "grid"
+    "ipv6 ip6"
+    "ipsec"
+    "local"
+    "radio"
+    "wifi"
+)
+
+src_install() {
+    default
+
+    # Remove empty man3 directory
+    nonfatal edo rmdir "${IMAGE}/usr/share/man/man3"
+}
