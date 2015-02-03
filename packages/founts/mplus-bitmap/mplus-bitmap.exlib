@@ -1,0 +1,27 @@
+# Copyright MMX–MMXI
+#     Mikael Voss <mikael+exherbo@illdefined.org>
+# Distributed under the terms of the GNU General Public License v2
+
+MY_PN="${PN/-bitmap/_pcf}"
+MY_PNV="${MY_PN}-${PV}"
+
+FONT="${PN}"
+
+require sourceforge-jp [ project="mplus-fonts" package="5030" suffix="tar.gz" ] xfont
+
+SUMMARY="M+ outline founts"
+
+LICENCES="as-is"
+SLOT="0"
+
+WORK="${WORKBASE}/mplus"
+
+DEFAULT_SRC_INSTALL_EXTRA_DOCS=( "README_E" "README_J" )
+
+mplus-bitmap_src_install() {
+	insinto "/usr/share/fonts/X11/${FONT}"
+	doins *.pcf.gz
+	default
+}
+
+export_exlib_phases src_install
