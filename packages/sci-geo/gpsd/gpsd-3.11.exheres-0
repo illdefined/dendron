@@ -1,0 +1,42 @@
+# Copyright MMXV
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require scons systemd-service [ systemd_files=[ "${WORK}/systemd" ] ]
+
+SUMMARY="GPS service daemon"
+HOMEPAGE="http://www.catb.org/${PN}/"
+DOWNLOADS="http://download-mirror.savannah.gnu.org/releases/${PN}/${PNV}.tar.gz"
+
+LICENCES="BSD-3"
+SLOT="0"
+PLATFORMS="~amd64"
+
+SCONS_SRC_CONFIGURE_PARAMS=(
+    prefix="/usr"
+    libdir="${LIBDIR}"
+)
+
+DEPENDENCIES="
+    build:
+        dev-libs/libxslt
+
+    build+run:
+        dev-libs/libusb
+        sys-apps/dbus
+
+    run:
+        dev-lang/python:2.7"
+
+src_prepare() {
+    default
+
+    # Correct systemd unit path
+    edo sed -i "s/\('\/\)lib\(\/systemd\/systemd'\)/\1usr\/${LIBDIR}\2/" SConstruct
+}
+
+src_install() {
+    default
+    DESTDIR="${IMAGE}" scons_src_install
+    install_systemd_files
+}
