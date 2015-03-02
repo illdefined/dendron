@@ -18,6 +18,7 @@ DEPENDENCIES="
 
     build+run:
         media-libs/freetype
+        media-libs/libfilteraudio
         media-libs/libvpx
         media-libs/openal
         media-libs/v4l-utils
