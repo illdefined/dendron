@@ -1,0 +1,15 @@
+# Copyright MMXV
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require github [ user=irungentoo pn=filter_audio ]
+
+SUMMARY="Audio filtering library based on WebRTC code"
+
+LICENCES="BSD-3"
+SLOT="0"
+PLATFORMS="~amd64"
+
+src_install() {
+    emake DESTDIR="${IMAGE}" PREFIX="/usr" install
+}
