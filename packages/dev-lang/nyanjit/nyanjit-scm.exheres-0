@@ -1,0 +1,25 @@
+# Copyright MMXV
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require github [ user=nyantec ]
+
+SUMMARY="Wrapper for the LLVM dynamic compiler"
+
+LICENCES="MirOS"
+SLOT="0"
+PLATFORMS="~amd64"
+
+DEPENDENCIES="
+    run:
+        dev-lang/llvm
+
+    test:
+        dev-lang/clang
+
+    suggestion:
+        sys-apps/systemd [[
+            description = [ Automatic binfmt_misc configuration ]
+        ]]"
+
+DEFAULT_SRC_INSTALL_PARAMS=( PREFIX="/usr/$(exhost --target)" )
