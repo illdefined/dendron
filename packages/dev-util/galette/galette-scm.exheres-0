@@ -1,5 +1,5 @@
-# Copyright MMXI
-#     Mikael Voss <mikael+exherbo@illdefined.org>
+# Copyright MMXI–MMXV
+#     Mikael Voss <mvs@nyantec.com>
 # Distributed under the terms of the GNU General Public License v2
 
 SUMMARY="Hardening GCC wrapper"
@@ -12,7 +12,29 @@ LICENCES="public-domain"
 SLOT="0"
 PLATFORMS="~amd64 ~x86"
 
+CROSS_COMPILE_TARGETS="
+    i686-pc-linux-gnu
+    x86_64-pc-linux-gnu"
+
+MYOPTIONS="
+    targets: ${CROSS_COMPILE_TARGETS}"
+
 src_install() {
-	newbin galette{.sh,}
-	doman galette.1
+    newbin "${PN}"{.sh,}
+    doman "${PN}.1"
+
+    local prefix="/usr/$(exhost --target)"
+    local bindir="${prefix}/libexec/${PN}"
+    dodir "${bindir}"
+
+    for target in ${CROSS_COMPILE_TARGETS}
+    do
+        if option targets:${target}
+        then
+            for tool in g{cc,++}
+            do
+                dosym "${prefix}/bin/${PN}" "${bindir}/${target}-${tool}"
+            done
+        fi
+    done
 }
