@@ -1,5 +1,5 @@
-# Copyright MMXII
-#     Mikael Voss <mikael+exherbo@illdefined.org>
+# Copyright MMXII, MMXV
+#     Mikael Voss <mvs@nyantec.com>
 # Distributed under the terms of the GNU General Public License v2
 
 SUMMARY="Small utility to run multiple instances of a programme in parallel"
@@ -19,4 +19,6 @@ DEPENDENCIES="
 	build+run:
 		dev-libs/libev"
 
-DEFAULT_SRC_INSTALL_PARAMS=( PREFIX="usr" )
+src_install() {
+    emake DESTDIR="${IMAGE}" PREFIX="usr/$(exhost --target)" install
+}
