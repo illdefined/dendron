@@ -1,5 +1,5 @@
-# Copyright MMXI
-#     Mikael Voss <mikael+exherbo@illdefined.org>
+# Copyright MMXI, MMXV
+#     Mikael Voss <mvs@nyantec.com>
 # Distributed under the terms of the GNU General Public License v2
 
 SUMMARY="Aggregation of useless C macros"
@@ -11,3 +11,7 @@ require scm-git
 LICENCES="public-domain"
 SLOT="0"
 PLATFORMS="~amd64 ~x86"
+
+src_install() {
+    emake DESTDIR="${IMAGE}" PREFIX="/usr/$(exhost --target)" install
+}
