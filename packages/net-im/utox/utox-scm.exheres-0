@@ -29,9 +29,9 @@ DEPENDENCIES="
 
 src_prepare() {
     default
-    purify Makefile CC CFLAGS
+    sed -i "s/shell pkg-config/shell $(exhost --target)-pkg-config/" Makefile
 }
 
 src_install() {
-    emake DESTDIR="${IMAGE}" PREFIX="/usr" install
+    emake DESTDIR="${IMAGE}" PREFIX="/usr/$(exhost --target)" install
 }
