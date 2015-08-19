@@ -23,6 +23,7 @@ DEPENDENCIES="
         media-libs/openal
         media-libs/v4l-utils
         net-libs/tox
+        sys-apps/dbus
         x11-libs/libX11
         x11-libs/libXext"
 
