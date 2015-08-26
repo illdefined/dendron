@@ -21,3 +21,8 @@ DEPENDENCIES="
         net-libs/tox
         x11-libs/qtbase[gui][sql]
         x11-libs/qtsvg"
+
+src_install() {
+    default
+    dobin qtox
+}
