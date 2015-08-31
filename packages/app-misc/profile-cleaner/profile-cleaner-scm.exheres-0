@@ -14,3 +14,7 @@ DEPENDENCIES="
     run:
         dev-db/sqlite
         dev-util/parallel"
+
+src_install() {
+    emake install DESTDIR="${IMAGE}" PREFIX="/usr/$(exhost --target)"
+}
