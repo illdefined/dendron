@@ -11,5 +11,5 @@ SLOT="0"
 PLATFORMS="~amd64"
 
 src_install() {
-    emake DESTDIR="${IMAGE}" PREFIX="/usr" install
+    emake DESTDIR="${IMAGE}" PREFIX="/usr/$(exhost --target)" install
 }
