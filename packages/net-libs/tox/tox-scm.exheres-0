@@ -24,3 +24,8 @@ DEPENDENCIES="
         dev-libs/libsodium
         media-libs/libvpx
         media-libs/opus"
+
+src_test() {
+    esandbox allow_net inet:0.0.0.0@1024-65535
+    default
+}
