@@ -1,0 +1,21 @@
+# Copyright MMXV
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+SUMMARY="IPv6 diagnostic tools"
+HOMEPAGE="http://www.remblab.net/${PN}/"
+DOWNLOADS="http://www.remlab.net/files/${PN}/${PNV}.tar.bz2"
+
+LICENCES="GPL-2"
+SLOT="0"
+PLATFORMS="~amd64"
+
+DEPENDENCIES="
+    build+run:
+        sys-devel/gettext"
+
+src_install() {
+    default
+
+    edo rm -r "${IMAGE}"/var
+}
