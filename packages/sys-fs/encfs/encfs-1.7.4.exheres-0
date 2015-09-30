@@ -14,20 +14,20 @@ SLOT="0"
 PLATFORMS="~amd64 ~x86"
 
 MYOPTIONS="
-	xattr [[
-		description = [ Enable support for extended file attributes ] ]]
+    xattr [[
+        description = [ Enable support for extended file attributes ] ]]
     ( providers: libressl openssl ) [[ number-selected = exactly-one ]]"
 
 DEPENDENCIES="
-	build:
-		dev-lang/perl [[
-			note = [ pod2man is required to generate the man pages ] ]]
-		dev-util/pkg-config
+    build:
+        dev-lang/perl [[
+            note = [ pod2man is required to generate the man pages ] ]]
+        dev-util/pkg-config
 
-	build+run:
-		dev-libs/boost[>=1.34]
-		dev-libs/rlog
-		sys-fs/fuse[>=2.6]
+    build+run:
+        dev-libs/boost[>=1.34]
+        dev-libs/rlog
+        sys-fs/fuse[>=2.6]
         providers:libressl? ( dev-libs/libressl:= )
         providers:openssl? ( dev-libs/openssl )
-		xattr? ( sys-apps/attr )"
+        xattr? ( sys-apps/attr )"
