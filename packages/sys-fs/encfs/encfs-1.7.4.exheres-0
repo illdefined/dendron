@@ -15,7 +15,8 @@ PLATFORMS="~amd64 ~x86"
 
 MYOPTIONS="
 	xattr [[
-		description = [ Enable support for extended file attributes ] ]]"
+		description = [ Enable support for extended file attributes ] ]]
+    ( providers: libressl openssl ) [[ number-selected = exactly-one ]]"
 
 DEPENDENCIES="
 	build:
@@ -27,5 +28,6 @@ DEPENDENCIES="
 		dev-libs/boost[>=1.34]
 		dev-libs/rlog
 		sys-fs/fuse[>=2.6]
-		virtual/libssl
+        providers:libressl? ( dev-libs/libressl:= )
+        providers:openssl? ( dev-libs/openssl )
 		xattr? ( sys-apps/attr )"
