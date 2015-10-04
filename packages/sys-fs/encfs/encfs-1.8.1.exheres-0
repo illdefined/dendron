@@ -2,12 +2,11 @@
 #     Mikael Voss <mvs@nyantec.com>
 # Distributed under the terms of the GNU General Public License v2
 
-require googlecode [ suffix=tgz ]
+require github [ user=vgough ]
+require autotools [ supported_autoconf=[ 2.5 ] supported_automake=[ 1.15 ] ]
 
 SUMMARY="Encrypted file system for FUSE"
-HOMEPAGE="http://www.arg0.net/${PN}"
-
-REMOTE_IDS="freecode:${PN}"
+HOMEPAGE="https://vgough.github.io/${PN}/"
 
 LICENCES="GPL-3"
 SLOT="0"
@@ -31,3 +30,9 @@ DEPENDENCIES="
         providers:libressl? ( dev-libs/libressl:= )
         providers:openssl? ( dev-libs/openssl )
         xattr? ( sys-apps/attr )"
+
+DEFAULT_SRC_CONFIGURE_OPTION_ENABLES=( "xattr" )
+
+src_prepare() {
+    edo autoreconf --force --install
+}
