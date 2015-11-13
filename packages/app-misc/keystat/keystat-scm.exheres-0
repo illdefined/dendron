@@ -21,7 +21,7 @@ DEPENDENCIES="
         sys-apps/systemd"
 
 src_install() {
-    default
+    emake DESTDIR="${IMAGE}" PREFIX="/usr/$(exhost --target)" LIBDIR="/usr/$(exhost --target)/lib" install
 
     # Create state directory
     dir="/var/lib/${PN}"
