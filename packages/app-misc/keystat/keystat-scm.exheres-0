@@ -26,6 +26,6 @@ src_install() {
     # Create state directory
     dir="/var/lib/${PN}"
     keepdir "${dir}"
-    edo chown keystat:input "${dir}"
-    edo chmod 750 "${dir}"
+    edo chown keystat:input "${IMAGE}${dir}"
+    edo chmod 750 "${IMAGE}${dir}"
 }
