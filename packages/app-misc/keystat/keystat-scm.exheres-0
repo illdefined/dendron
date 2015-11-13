@@ -1,5 +1,5 @@
-# Copyright MMXI
-#     Mikael Voss <mikael+exherbo@illdefined.org>
+# Copyright MMXI, MMXV
+#     Mikael Voss <mvs@nyantec.com>
 # Distributed under the terms of the GNU General Public License v2
 
 SUMMARY="Keyboard statistics generator"
@@ -13,11 +13,19 @@ SLOT="0"
 PLATFORMS="~amd64 ~x86"
 
 DEPENDENCIES="
-	run:
-		dev-lang/lua"
+    build+run:
+        user/keystat
+
+    run:
+        dev-lang/lua
+        sys-apps/systemd"
 
 src_install() {
-	default
+    default
 
-	keepdir "/var/lib/${PN}/"
+    # Create state directory
+    dir="/var/lib/${PN}"
+    keepdir "${dir}"
+    edo chown keystat:input "${dir}"
+    edo chmod 750 "${dir}"
 }
