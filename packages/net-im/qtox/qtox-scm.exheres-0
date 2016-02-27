@@ -25,5 +25,8 @@ DEPENDENCIES="
 
 src_install() {
     default
-    dobin qtox
+
+    local target="$(exhost --target)"
+    edo mkdir -p "${IMAGE}/usr/${target}"
+    edo mv "${IMAGE}"/usr/{bin,"${target}"}
 }
