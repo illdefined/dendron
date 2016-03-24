@@ -1,0 +1,17 @@
+# Copyright MMXVI
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require github [ user=Yubico tag="v${PV}" ]
+require autotools [ supported_autoconf=[ 2.5 ] supported_automake=[ 1.15 ] ]
+
+SUMMARY="Yubico C low‐level library"
+
+LICENCES="BSD-2"
+SLOT="0"
+PLATFORMS="~amd64"
+
+DEPENDENCIES="
+    dev-libs/json-c
+    dev-libs/libusb:1
+    sys-auth/libyubikey"
