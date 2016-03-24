@@ -1,0 +1,25 @@
+# Copyright MMXVI
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require github [ user=Yubico tag="${PNV}" ]
+
+SUMMARY="Yubico YubiKey NEO CCID manager C library"
+
+LICENCES="LGPLv3"
+SLOT="0"
+PLATFORMS="~amd64"
+
+DEPENDENCIES="
+    build:
+        dev-util/gengetopt
+        sys-apps/help2man
+
+    build+run:
+        app-arch/libzip
+        sys-apps/pcsc-lite"
+
+src_prepare() {
+    edo touch ChangeLog
+    edo autoreconf --install
+}
