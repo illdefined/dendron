@@ -1,0 +1,29 @@
+# Copyright MMXVI
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require github [ user=Yubico tag="${PNV}" ]
+require qmake [ slot=4 ]
+
+SUMMARY="GUI for personalisation of Yubico’s YubiKey"
+
+LICENCES="BSD-2"
+SLOT="0"
+PLATFORMS="~amd64"
+
+DEPENDENCIES="
+    build+run:
+        dev-libs/glib:2
+        dev-libs/libusb:1
+        sys-auth/libyubikey
+        sys-auth/yubikey-personalization
+        x11-libs/qt:4"
+
+src_configure() {
+    eqmake YKPersonalization.pro
+}
+
+src_install() {
+    dobin "build/release/${PN}"
+    doman "resources/lin/${PN}.1"
+}
