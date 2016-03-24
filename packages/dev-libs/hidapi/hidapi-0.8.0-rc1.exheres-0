@@ -1,0 +1,16 @@
+# Copyright MMXVI
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require github [ user=signal11 tag="${PNV}" ]
+require autotools [ supported_autoconf=[ 2.5 ] supported_automake=[ 1.15 ] ]
+
+SUMMARY="Multi‐platform library for USB and Bluetooth HID devices"
+
+LICENCES="|| ( BSD-3 GPL-3 )"
+SLOT="0"
+PLATFORMS="~amd64"
+
+DEPENDENCIES="
+    build+run:
+        dev-libs/libusb:1"
