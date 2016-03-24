@@ -1,0 +1,24 @@
+# Copyright MMXVI
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require github [ user=Yubico tag="${PNV}" ]
+
+SUMMARY="Yubico Universal 2nd Factor (U2F) host C library"
+
+LICENCES="GPL-3 LGPL-2"
+SLOT="0"
+PLATFORMS="~amd64"
+
+DEPENDENCIES="
+    build:
+        dev-util/gengetopt
+        sys-apps/help2man
+
+    build+run:
+        dev-libs/hidapi
+        dev-libs/json-c"
+
+src_prepare() {
+    edo autoreconf --install
+}
