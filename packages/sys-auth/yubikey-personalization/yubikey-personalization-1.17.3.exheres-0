@@ -5,7 +5,7 @@
 require github [ user=Yubico tag="v${PV}" ]
 require autotools [ supported_autoconf=[ 2.5 ] supported_automake=[ 1.15 ] ]
 
-SUMMARY="Yubico C low‐level library"
+SUMMARY="Library and tool for personalisation of Yubico’s YubiKey"
 
 LICENCES="BSD-2"
 SLOT="0"
