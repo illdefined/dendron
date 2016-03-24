@@ -1,0 +1,13 @@
+# Copyright MMXV
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require gnu [ suffix=gz ]
+
+SUMMARY="Command line option parser generetor"
+
+LICENCES="GPLv3"
+SLOT="0"
+PLATFORMS="~amd64"
+
+DEFAULT_SRC_PREPARE_PATCHES=( "${FILES}/${PNV}-makefile.patch" )
