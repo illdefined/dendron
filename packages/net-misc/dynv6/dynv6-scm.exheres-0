@@ -1,0 +1,29 @@
+# Copyright MMXVI
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require github [ user=illdefined ]
+require systemd-service [ systemd_files=[ "${WORK}/${PN}."{service,timer} ] ]
+
+SUMMARY="dynv6 update service"
+
+LICENCES="public-domain"
+SLOT="0"
+PLATFORMS="~amd64 ~x86"
+
+DEPENDENCIES="
+    build+run:
+        user/dynv6
+
+    run:
+        net-misc/curl"
+
+src_install() {
+    exeinto "/usr/$(exhost --target)/libexec/${PN}"
+    doexe update.sh
+
+    insinto "/etc/default"
+    newins "${PN}.env" "${PN}"
+
+    install_systemd_files
+}
