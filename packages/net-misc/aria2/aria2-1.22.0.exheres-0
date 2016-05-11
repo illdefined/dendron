@@ -1,0 +1,102 @@
+# Copyright 2010-2015 Johannes Nixdorf <mixi@exherbo.org>
+# Distributed under the terms of the GNU General Public License v2
+
+require github [ user="tatsuhiro-t" release="release-${PV}" suffix="tar.xz" ] bash-completion
+
+SUMMARY="A multi-protocol and multi-source cli download manager"
+HOMEPAGE="http://aria2.sourceforge.net/"
+
+LICENCES="GPL-2"
+SLOT="0"
+PLATFORMS="~amd64 ~x86"
+MYOPTIONS="
+    ares [[ description = [ Required for async DNS resolving ] ]]
+    bash-completion
+    sftp [[ description = [ Support downloading from SFTP servers ] ]]
+    sqlite [[ description = [ Required for Chrome/Firefox cookie support ] ]]
+    xml [[ description = [ Required for Metalink and XML-RPC support ] ]]
+
+    ( providers: gnutls libressl openssl ) [[ number-selected = exactly-one ]]
+
+    xml? ( providers: libxml2 expat ) [[ number-selected = exactly-one ]]
+"
+
+RESTRICT="test" # network sandboxing
+
+DEPENDENCIES="
+    build:
+        dev-python/Sphinx
+        dev-python/docutils
+        virtual/pkg-config
+    build+run:
+        app-misc/ca-certificates
+        sys-devel/gettext[>=0.18]
+        sys-libs/zlib[>=1.2.3]
+        ares? ( net-dns/c-ares[>=1.7.0] )
+        sftp? ( net-libs/libssh2 )
+        providers:gnutls? (
+            dev-libs/gmp:=
+            dev-libs/gnutls[>=2.2.0]
+            dev-libs/nettle
+        )
+        providers:libressl? ( dev-libs/libressl:= )
+        providers:openssl? ( dev-libs/openssl )
+        sqlite? ( dev-db/sqlite:3 )
+        providers:libxml2? ( dev-libs/libxml2[>=2.6.24] )
+        providers:expat? ( dev-libs/expat )
+    suggestion:
+        xml? (
+            dev-lang/ruby:* [[ description = [ For the RPC clients aria2rpc and aria2mon ] ]]
+        )
+    test:
+        dev-cpp/cppunit[>=1.12.0]
+"
+
+src_configure() {
+    local myconf=()
+
+    myconf+=(
+        --enable-bittorrent
+        --enable-epoll
+        --enable-libaria2
+        --with-ca-bundle=/etc/ssl/certs/ca-certificates.crt
+        --with-libz
+        --with-ssl
+        --without-appletls
+        --without-libgcrypt
+        --without-libuv
+        $(option_enable xml metalink)
+        $(option_with ares libcares)
+        $(option_with bash-completion bashcompletiondir /usr/share/bash-completion/completions)
+        $(option_with sftp libssh2)
+        $(option_with sqlite sqlite3)
+        ## Providers for XML parsers
+        $(option_with providers:expat libexpat)
+        $(option_with providers:libxml2 libxml2)
+        ## Providers for the SSL library
+        $(option_with providers:gnutls libgmp)
+        $(option_with providers:gnutls libnettle)
+        $(option_with providers:gnutls gnutls)
+    )
+
+    if option providers:libressl || option providers:openssl; then
+        myconf+=( --with-openssl )
+    else
+        myconf+=( --without-openssl )
+    fi
+
+    econf "${myconf[@]}"
+}
+
+src_install() {
+    default
+
+    # disabling the option is broken
+    if ! option bash-completion; then
+        edo rm "${IMAGE}"/no/aria2c
+        edo rmdir "${IMAGE}"/no
+    fi
+
+    option xml && dobin doc/xmlrpc/aria2{rpc,mon}
+}
+
