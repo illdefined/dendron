@@ -1,0 +1,12 @@
+# Copyright MMXVI
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require github [ user=jedisct1 ]
+require autotools [ supported_autoconf=[ 2.5 ] supported_automake=[ 1.15 ] ]
+
+SUMMARY="Easy-to-use crypto library"
+
+LICENCES="ISC"
+SLOT="0"
+PLATFORMS="~amd64"
