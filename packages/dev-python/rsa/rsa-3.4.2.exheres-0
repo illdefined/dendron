@@ -1,0 +1,11 @@
+# Copyright MMXVI
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require pypi distutils
+
+SUMMARY="Pure-Python RSA implementation"
+
+LICENCES="ASL-2"
+SLOT="0"
+PLATFORMS="~amd64"
