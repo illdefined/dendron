@@ -1,0 +1,20 @@
+# Copyright MMXVI
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require github [ user="aperezdc" tag="0.6.0" ]
+
+SUMMARY="Simple no-frills terminal emulator using VTE"
+
+LICENCES="MIT"
+SLOT="0"
+PLATFORMS="~amd64"
+
+DEPENDENCIES="
+    build+run:
+        dev-libs/vte"
+
+DEFAULT_SRC_INSTALL_PARAMS=(
+    PREFIX="/usr"
+    exec_prefix="/usr/$(exhost --target)"
+)
