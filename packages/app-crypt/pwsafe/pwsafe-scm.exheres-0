@@ -1,0 +1,23 @@
+# Copyright MMXVI
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require github [ user="nsd20463" ]
+require autotools [ supported_autoconf=[ 2.5 ] supported_automake=[ 1.15 ] ]
+
+SUMMARY="Command-line password manager"
+
+LICENCES="GPL-2"
+SLOT="0"
+PLATFORMS="~amd64"
+
+MYOPTIONS="X"
+
+DEPENDENCIES="
+    build+run:
+        virtual/libssl
+        X? (
+            x11-libs/libX11
+            x11-libs/libXmu )"
+
+DEFAULT_SRC_CONFIGURE_OPTION_WITHS=( "X x" )
