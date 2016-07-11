@@ -1,0 +1,36 @@
+# Copyright MMXIV, MMXVI
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+SUMMARY="DNS tunnel server and client"
+HOMEPAGE="http://code.kryo.se/${PN}/"
+DOWNLOADS="${HOMEPAGE}${PNV}.tar.gz"
+
+REMOTE_IDS="freecode:${PN}"
+
+LICENCES="MIT"
+SLOT="0"
+PLATFORMS="~amd64"
+
+DEPENDENCIES="
+    build+run:
+        sys-apps/systemd
+        sys-libs/zlib
+
+    test:
+        dev-libs/check"
+
+DEFAULT_SRC_COMPILE_PARAMS=( CC="$(exhost --target)-cc" )
+DEFAULT_SRC_TEST_PARAMS=( CC="$(exhost --target)-cc" )
+
+DEFAULT_SRC_INSTALL_PARAMS=(
+    prefix="/usr/$(exhost --target)"
+    sbindir="\$(prefix)/bin"
+    datadir="/usr/share" )
+
+src_prepare() {
+    default
+
+    edo sed -i 's/\(-lsystemd\)-daemon/\1/' src/osflags
+    edo sed -i 's/\(pkg-config\)/'"$(exhost --target)"'-\1/' tests/Makefile
+}
