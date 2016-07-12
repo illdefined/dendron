@@ -20,8 +20,8 @@ DEPENDENCIES="
     test:
         dev-libs/check"
 
-DEFAULT_SRC_COMPILE_PARAMS=( CC="$(exhost --target)-cc" )
-DEFAULT_SRC_TEST_PARAMS=( CC="$(exhost --target)-cc" )
+DEFAULT_SRC_COMPILE_PARAMS=( CC="$(exhost --tool-prefix)cc" )
+DEFAULT_SRC_TEST_PARAMS=( CC="$(exhost --tool-prefix)cc" )
 
 DEFAULT_SRC_INSTALL_PARAMS=(
     prefix="/usr/$(exhost --target)"
@@ -32,5 +32,5 @@ src_prepare() {
     default
 
     edo sed -i 's/\(-lsystemd\)-daemon/\1/' src/osflags
-    edo sed -i 's/\(pkg-config\)/'"$(exhost --target)"'-\1/' tests/Makefile
+    edo sed -i 's/\(pkg-config\)/'"$(exhost --tool-prefix)"'\1/' tests/Makefile
 }
