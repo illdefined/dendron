@@ -18,7 +18,8 @@ DEPENDENCIES="
 
     run:
         dev-lang/lua
-        sys-apps/systemd"
+        sys-apps/systemd
+        x11-apps/xmodmap"
 
 src_install() {
     emake DESTDIR="${IMAGE}" PREFIX="/usr/$(exhost --target)" LIBDIR="/usr/$(exhost --target)/lib" install
