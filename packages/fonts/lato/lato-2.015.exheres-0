@@ -22,6 +22,6 @@ WORK="${WORKBASE}"
 
 src_install() {
 	insinto "/usr/share/fonts/X11/${FONT}"
-	doins TTF/*.ttf
+	doins Lato2OFL/*.ttf
 	default
 }
