@@ -3,12 +3,13 @@
 # Distributed under the terms of the GNU General Public License v2
 
 FONT="${PN}"
+MY_PNV="${PNV/./}"
 
 require xfont
 
 SUMMARY="Latin Modern math fount"
-HOMEPAGE="http://www.gust.org.pl/projects/e-foundry/${PN}/"
-DOWNLOADS="${HOMEPAGE}download/latinmodern-math-${PV/./}.zip -> ${PNV}.zip"
+HOMEPAGE="http://www.gust.org.pl/projects/e-foundry/lm-math/"
+DOWNLOADS="${HOMEPAGE}download/${MY_PNV}.zip"
 
 LICENCES="LPPL"
 SLOT="0"
@@ -22,6 +23,6 @@ WORK="${WORKBASE}"
 
 src_install() {
     insinto "/usr/share/fonts/X11/${FONT}"
-    doins latinmodern-math-${PV/./}/otf/latinmodern-math.otf
+    doins "${MY_PNV}/otf/${PN}.otf"
     default
 }
