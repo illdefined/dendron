@@ -8,20 +8,20 @@ require xfont
 
 SUMMARY="Latin Modern math fount"
 HOMEPAGE="http://www.gust.org.pl/projects/e-foundry/${PN}/"
-DOWNLOADS="${HOMEPAGE}download/lmmath0903otf -> ${PNV}.zip"
+DOWNLOADS="${HOMEPAGE}download/latinmodern-math-${PV/./}.zip -> ${PNV}.zip"
 
 LICENCES="LPPL"
 SLOT="0"
 PLATFORMS="~amd64 ~x86"
 
 DEPENDENCIES="
-	build:
-		app-arch/unzip"
+    build:
+        virtual/unzip"
 
 WORK="${WORKBASE}"
 
 src_install() {
-	insinto "/usr/share/fonts/X11/${FONT}"
-	doins *.otf
-	default
+    insinto "/usr/share/fonts/X11/${FONT}"
+    doins latinmodern-math-${PV/./}/otf/latinmodern-math.otf
+    default
 }
