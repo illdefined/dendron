@@ -8,7 +8,7 @@ require xfont
 
 SUMMARY="Lato sans-serif typeface"
 HOMEPAGE="http://www.latofonts.com/"
-DOWNLOADS="${HOMEPAGE}download/LatoOFL.zip"
+DOWNLOADS="${HOMEPAGE}download/Lato2OFL.zip"
 
 LICENCES="OFL"
 SLOT="0"
