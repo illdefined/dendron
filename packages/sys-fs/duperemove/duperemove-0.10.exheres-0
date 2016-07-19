@@ -1,0 +1,28 @@
+# Copyright MMXVI
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require github [ user="markfasheh" tag="v0.10" ]
+
+SUMMARY="Filesystem deduplication tool"
+
+LICENCES=""
+SLOT="0"
+PLATFORMS="~amd64"
+
+DEPENDENCIES="
+    build:
+        virtual/pkg-config
+
+    build+run:
+        dev-libs/glib:2
+        dev-db/sqlite:3"
+
+DEFAULT_SRC_COMPILE_PARAMS=(
+    CC="$(exhost --tool-prefix)cc" )
+
+DEFAULT_SRC_INSTALL_PARAMS=(
+    DESTDIR="${IMAGE}"
+    PREFIX="/usr/$(exhost --target)"
+    SHAREDIR="/usr/share"
+    SBINDIR="/usr/\$(PREFIX)/bin" )
