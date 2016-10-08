@@ -2,7 +2,7 @@
 #     Mikael Voss <mvs@nyantec.com>
 # Distributed under the terms of the GNU General Public License v2
 
-require github [ user="markfasheh" tag="v0.10" ]
+require github [ user="markfasheh" tag="v0.11.beta4" ]
 
 SUMMARY="Filesystem deduplication tool"
 
@@ -19,6 +19,7 @@ DEPENDENCIES="
         dev-db/sqlite:3"
 
 DEFAULT_SRC_COMPILE_PARAMS=(
+    check=":"
     CC="$(exhost --tool-prefix)cc" )
 
 DEFAULT_SRC_INSTALL_PARAMS=(
