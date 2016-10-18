@@ -21,4 +21,5 @@ DEPENDENCIES="
         dev-python/s3transfer
         dev-python/jmespath
         dev-python/colorama
-        dev-python/rsa"
+        dev-python/rsa
+        dev-python/python-dateutil"
