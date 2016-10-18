@@ -22,4 +22,5 @@ DEPENDENCIES="
         dev-python/jmespath
         dev-python/colorama
         dev-python/rsa
-        dev-python/python-dateutil"
+        dev-python/python-dateutil
+        dev-python/pyasn1"
