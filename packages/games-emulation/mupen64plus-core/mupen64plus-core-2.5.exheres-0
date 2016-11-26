@@ -1,0 +1,42 @@
+# Copyright MMXVI
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require github [ user=mupen64plus ]
+
+SUMMARY="Nintendo 64 emulator, core library"
+HOMEPAGE="http://www.mupen64plus.org/"
+
+LICENCES="GPL-2"
+SLOT="0"
+PLATFORMS="~amd64"
+
+DEPENDENCIES="
+    build+run:
+        media-libs/SDL:=
+        media-libs/libpng
+        media-libs/freetype
+        sys-libs/zlib
+
+    suggestion:
+        games-emulation/mupen64plus-audio-sdl
+        games-emulation/mupen64plus-input-sdl
+        games-emulation/mupen64plus-ui-console
+        games-emulation/mupen64plus-ui-python
+        games-emulation/mupen64plus-video-glide64mk2
+        games-emulation/mupen64plus-video-rice"
+
+WORK="${WORK}/projects/unix"
+
+params=(
+    CC="$(exhost --tool-prefix)cc"
+    CXX="$(exhost --tool-prefix)c++"
+    PKG_CONFIG="$(exhost --tool-prefix)pkg-config"
+    PREFIX="/usr/$(exhost --target)"
+    SHAREDIR="/usr/share"
+    DESTDIR="${IMAGE}"
+    INSTALL_STRIP_FLAG=""
+)
+
+DEFAULT_SRC_COMPILE_PARAMS=( "${params[@]}" )
+DEFAULT_SRC_INSTALL_PARAMS=( "${params[@]}" )
