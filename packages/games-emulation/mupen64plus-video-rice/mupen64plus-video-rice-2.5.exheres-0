@@ -1,0 +1,33 @@
+# Copyright MMXVI
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require github [ user=mupen64plus ]
+
+SUMMARY="Nintendo 64 emulator, Rice video plugin"
+HOMEPAGE="http://www.mupen64plus.org/"
+
+LICENCES="GPL-2"
+SLOT="0"
+PLATFORMS="~amd64"
+
+DEPENDENCIES="
+    build+run:
+        media-libs/SDL:=
+        media-libs/libpng
+        x11-dri/mesa"
+
+WORK="${WORK}/projects/unix"
+
+params=(
+    CC="$(exhost --tool-prefix)cc"
+    CXX="$(exhost --tool-prefix)c++"
+    PKG_CONFIG="$(exhost --tool-prefix)pkg-config"
+    PREFIX="/usr/$(exhost --target)"
+    SHAREDIR="/usr/share"
+    DESTDIR="${IMAGE}"
+    INSTALL_STRIP_FLAG=""
+)
+
+DEFAULT_SRC_COMPILE_PARAMS=( "${params[@]}" )
+DEFAULT_SRC_INSTALL_PARAMS=( "${params[@]}" )
