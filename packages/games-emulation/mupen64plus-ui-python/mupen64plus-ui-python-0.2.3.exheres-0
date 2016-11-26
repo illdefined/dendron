@@ -1,0 +1,18 @@
+# Copyright MMXVI
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require github [ user=mupen64plus ]
+require setup-py [ import=distutils ]
+
+SUMMARY="Nintendo 64 emulator, PyQt UI"
+HOMEPAGE="http://m64py.sourceforge.net/"
+
+LICENCES="GPL-3"
+SLOT="0"
+PLATFORMS="~amd64"
+
+DEPENDENCIES="
+    build+run:
+        media-libs/SDL:=
+        dev-python/PyQt5"
