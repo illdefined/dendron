@@ -1,0 +1,44 @@
+# Copyright MMXVI
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require github [ user="g2p" tag="v${PV}" ]
+
+SUMMARY="Userspace tools for bcache"
+
+LICENCES="GPL-2"
+SLOT="0"
+PLATFORMS="~amd64"
+
+DEPENDENCIES="
+    build+run:
+        sys-apps/util-linux
+        virtual/libssl"
+
+DEFAULT_SRC_INSTALL_PARAMS=(
+    PREFIX="/usr/$(exhost --target)"
+    UDEVLIBDIR="\$(PREFIX)/lib/udev"
+    DRACUTLIBDIR="\$(PREFIX)/lib/dracut"
+    DESTDIR="${IMAGE}"
+)
+
+src_prepare() {
+    edo sed -i \
+        -e "s/\\(pkg-config\\)/$(exhost --tool-prefix)\\1/g" \
+        -e 's/${PREFIX}\(\/share\/\)/\/usr\1/g' \
+        -e 's/\/sbin/\/bin/g' \
+        Makefile
+
+    edo sed -i 's/^inline \(uint64_t crc64\)/\1/' bcache.c
+}
+
+src_install() {
+    edo mkdir -p \
+        "${IMAGE}/usr/$(exhost --target)/bin" \
+        "${IMAGE}/usr/$(exhost --target)/lib/udev/rules.d" \
+        "${IMAGE}/usr/share/man/man8"
+
+    default
+
+    edo rm -f -r "${IMAGE}/usr/lib"
+}
