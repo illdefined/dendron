@@ -21,5 +21,5 @@ DEPENDENCIES="
         dev-python/msgpack-python
         sys-apps/acl
         sys-apps/attr[parts:libraries]
-        providers:libressl ( dev-libs/libressl )
-        providers:openssl ( dev-libs/openssl )"
+        providers:libressl? ( dev-libs/libressl )
+        providers:openssl? ( dev-libs/openssl )"
