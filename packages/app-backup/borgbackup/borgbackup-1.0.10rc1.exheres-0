@@ -17,6 +17,7 @@ DEPENDENCIES="
     build+run:
         app-arch/lz4[parts:libraries]
         dev-python/Cython
+        dev-python/llfuse
         dev-python/msgpack-python
         sys-apps/acl
         sys-apps/attr[parts:libraries]
