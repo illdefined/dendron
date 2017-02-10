@@ -1,0 +1,17 @@
+# Copyright MMXVII
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require pypi
+require setup-py [ import=setuptools ]
+
+SUMMARY="Python bindings for the low-level FUSE API"
+
+LICENCES="LGPL-2"
+SLOT="0"
+PLATFORMS="~amd64"
+
+DEPENDENCIES="
+    build+run:
+        dev-python/Cython
+        sys-fs/fuse"
