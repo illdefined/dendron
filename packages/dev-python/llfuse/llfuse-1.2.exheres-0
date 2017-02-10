@@ -2,7 +2,7 @@
 #     Mikael Voss <mvs@nyantec.com>
 # Distributed under the terms of the GNU General Public License v2
 
-require pypi
+require pypi [ suffix=tar.bz2 ]
 require setup-py [ import=setuptools ]
 
 SUMMARY="Python bindings for the low-level FUSE API"
