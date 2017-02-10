@@ -15,3 +15,10 @@ DEPENDENCIES="
     build+run:
         dev-python/Cython
         sys-fs/fuse"
+
+prepare_one_multibuild() {
+    edo sed -i "s/'pkg-config'/'$(exhost --tool-prefix)pkg-config'/" \
+        "${WORK}"/PYTHON_ABIS/${MULTIBUILD_TARGET}/${PNV}/setup.py
+
+    setup-py_prepare_one_multibuild
+}
