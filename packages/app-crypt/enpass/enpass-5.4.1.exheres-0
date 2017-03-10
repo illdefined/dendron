@@ -1,0 +1,34 @@
+# Copyright MMXVII
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+SUMMARY="Cross‐platform password manager"
+HOMEPAGE="https://www.enpass.io/"
+DOWNLOADS="http://repo.sinew.in/pool/main/${PN:0:1}/${PN}/${PN}_${PV}_amd64.deb"
+
+LICENCES="all-rights-reserved"
+SLOT="0"
+PLATFORMS="~amd64"
+
+DEPENDENCIES="
+    run:
+        sys-process/lsof
+        x11-libs/libXScrnSaver"
+
+WORK="${WORKBASE}"
+
+pkg_setup() {
+    exdirectory --allow /opt
+}
+
+src_compile() {
+    :
+}
+
+src_install() {
+    local target="$(exhost --target)"
+    edo tar -x -z -C "${IMAGE}" --exclude=".DS_STORE" --exclude="*.swp" -f "${WORKBASE}/data.tar.gz"
+    edo find "${IMAGE}" -type d -empty -delete
+    edo mkdir -p "${IMAGE}/usr/${target}/bin"
+    edo ln -s "/opt/Enpass/bin/runenpass.sh" "${IMAGE}/usr/${target}/bin/enpass"
+}
