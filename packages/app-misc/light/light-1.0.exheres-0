@@ -1,0 +1,27 @@
+# Copyright MMXVII
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require github [ user=haikarainen tag="v${PV}" ]
+
+SUMMARY="Backlight control utility"
+
+LICENCES="GPL-3"
+SLOT="0"
+PLATFORMS="~amd64"
+
+DEPENDENCIES="
+    build:
+        sys-apps/help2man"
+
+DEFAULT_SRC_COMPILE_PARAMS=(
+    CC="${CC}"
+    CFLAGS="${CPPFLAGS} ${CFLAGS} ${LDFLAGS} -Iinclude"
+)
+
+DEFAULT_SRC_INSTALL_PARAMS=(
+    "${DEFAULT_SRC_COMPILE_PARAMS[@]}"
+    DESTDIR="${IMAGE}"
+    PREFIX="\$(DESTDIR)/usr/$(exhost --target)"
+    MANDIR="\$(DESTDIR)/usr/share/man/man1"
+)
