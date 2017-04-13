@@ -1,0 +1,30 @@
+# Copyright MMXVII
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+SUMMARY="SANE drivers from Brother for brscan4 compatible models"
+HOMEPAGE="http://support.brother.com/"
+DOWNLOADS="http://download.brother.com/welcome/dlf006645/${PNV/_/-}.amd64.deb"
+
+LICENCES="all-rights-reserved"
+SLOT="0"
+PLATFORMS="~amd64"
+
+DEPENDENCIES="
+    run:
+        dev-libs/libusb:0.1
+        media-gfx/sane-backends"
+
+WORK="${WORKBASE}"
+
+pkg_setup() {
+    exdirectory --allow /opt
+}
+
+src_install() {
+    local target="$(exhost --target)"
+    edo tar -x -z -f "data.tar.gz" -C "${IMAGE}"
+    edo mkdir -p "${IMAGE}/usr/${target}"
+    edo mv "${IMAGE}/usr/lib64" "${IMAGE}/usr/${target}/lib"
+    edo mv "${IMAGE}/usr/bin" "${IMAGE}/usr/${target}/"
+}
