@@ -2,7 +2,7 @@
 #     Mikael Voss <mvs@nyantec.com>
 # Distributed under the terms of the GNU General Public License v2
 
-require github [ user=facebook ]
+require github [ user=facebook tag="v${PV}" ]
 
 SUMMARY="Zstandard compression algorithm library and utilities"
 HOMEPAGE="https://facebook.github.io/zstd/"
