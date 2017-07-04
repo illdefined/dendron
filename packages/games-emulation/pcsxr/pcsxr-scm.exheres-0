@@ -1,13 +1,13 @@
-# Copyright MMXII
+# Copyright MMXII, MMXVII
 #     Mikael Voss <mikael+exherbo@illdefined.org>
 # Distributed under the terms of the GNU General Public License v2
 
 SUMMARY="Sony PlayStation emulator"
 HOMEPAGE="http://${PN}.codeplex.com/"
-SCM_REPOSITORY="https://${PN}.svn.codeplex.com/svn/${PN}"
-SCM_SVN_RAW_URI=1
+SCM_REPOSITORY="https://git01.codeplex.com/${PN}"
 
-require autotools [ supported_autoconf=[ 2.5 ] supported_automake=[ 1.12 ] ] scm-svn
+require scm-git
+require cmake
 
 LICENCES="GPL-2"
 SLOT="0"
@@ -16,53 +16,26 @@ PLATFORMS="~amd64 ~x86"
 RESTRICT="test"
 
 MYOPTIONS="
-	cdio [[ description = [ Enable CD‐ROM support ] ]]
-	opengl [[ description = [ Build OpenGL video plugin ] ]]
-	(
-		alsa [[ description = [ Build ALSA sound plugin ] ]]
-		openal [[ description = [ Build OpenAL sound plugin ] ]]
-		oss [[ description = [ Build OSS sound plugin ] ]]
-		pulseaudio [[ description = [ Build PulseAudio sound plugin ] ]]
-	) [[ number-selected = at-most-one ]]"
+    cdio [[ description = [ Enable CD‐ROM support ] ]]
+    libarchive [[ description = [ Enable compressed data tracks support ] ]]"
 
 DEPENDENCIES="
-	build+run:
-		dev-libs/glib:2
-		media-libs/SDL
-		sys-libs/zlib
-		x11-libs/gtk+:3
-		x11-libs/libXv
-		alsa? ( sys-sound/alsa-lib )
-		cdio? ( dev-libs/libcdio )
-		openal? ( media-libs/openal )
-		opengl? (
-			x11-dri/mesa
-			x11-libs/libXxf86vm )
-		oss? ( sys-sound/oss )
-		pulseaudio? ( media-sound/pulseaudio )"
+    build+run:
+        dev-libs/atk
+        dev-libs/glib:2
+        media-libs/SDL:2
+        sys-devel/gettext
+        sys-libs/zlib
+        x11-dri/mesa
+        x11-libs/cairo
+        x11-libs/gdk-pixbuf
+        x11-libs/gtk+:3
+        x11-libs/pango
+        cdio? ( dev-libs/libcdio )
+        libarchive? ( dev-libs/libarchive )"
 
-DEFAULT_SRC_CONFIGURE_OPTION_ENABLES=(
-	"alsa sound alsa"
-	"cdio libcdio"
-	"openal sound openal"
-	"opengl"
-	"oss sound oss"
-	"pulseaudio sound pulseaudio" )
+CMAKE_SRC_CONFIGURE_OPTION_USES=(
+    "cdio libcdio"
+    "libarchive" )
 
-switch() {
-	for option in "$@"
-	do
-		if optionq "$option"
-		then
-			echo "$option"
-			return
-		fi
-	done
-}
-
-src_configure() {
-	econf \
-		$(option_enable opengl) \
-		$(option_enable {,lib}cdio) \
-		--enable-sound=$(switch alsa openal oss pulseaudio)
-}
+WORK="${WORK}/${PN}"
