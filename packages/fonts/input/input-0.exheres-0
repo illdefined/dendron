@@ -1,0 +1,27 @@
+# Copyright MMXVII
+#     Mikael Voss <mikael+exherbo@illdefined.org>
+# Distributed under the terms of the GNU General Public License v2
+
+FONT="${PN}"
+
+require xfont
+
+SUMMARY="Fonts for code from DJR & Font Bureau"
+HOMEPAGE="http://${PN}.fontbureau.com/"
+DOWNLOADS="http://input.fontbureau.com/build/?fontSelection=whole&a=0&g=0&i=0&l=0&zero=0&asterisk=0&braces=0&preset=default&line-height=1.2&accept=I+do&email= -> Input-Font.zip"
+
+LICENCES="all-rights-reserved"
+SLOT="0"
+PLATFORMS="~amd64 ~x86"
+
+DEPENDENCIES="
+	build:
+		virtual/unzip"
+
+WORK="${WORKBASE}/Input_Fonts"
+
+src_install() {
+	insinto "/usr/share/fonts/X11/${FONT}"
+	doins */*/*.ttf
+	default
+}
