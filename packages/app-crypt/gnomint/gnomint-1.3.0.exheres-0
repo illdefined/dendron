@@ -1,0 +1,33 @@
+# Copyright MMXVII
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require github [ user=davefx pn=gnoMint ]
+require autotools [ supported_autoconf=[ 2.5 ] supported_automake=[ 1.15 ] ]
+
+SUMMARY="Certification Authority management tool"
+
+LICENCES="GPL-3"
+SLOT="0"
+PLATFORMS="~amd64"
+
+DEPENDENCIES="
+    build:
+        dev-util/intltool
+
+    build+run:
+        app-text/iso-codes
+        dev-db/sqlite
+        dev-libs/glib:2
+        dev-libs/gnutls
+        dev-libs/libgcrypt
+        gnome-platform/GConf
+        sys-libs/readline
+        x11-libs/gdk-pixbuf:2.0
+        x11-libs/gtk+:2"
+
+src_prepare() {
+    edo intltoolize --force --automake
+
+    eautoreconf
+}
