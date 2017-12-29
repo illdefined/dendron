@@ -1,0 +1,48 @@
+# Copyright MMXVII
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+SCM_REPOSITORY="https://git.kernel.org/pub/scm/linux/kernel/git/jejb/${PN}.git"
+SCM_TAG="v${PV}"
+
+SCM_SECONDARY_REPOSITORIES="ccan"
+SCM_ccan_REPOSITORY="git://git.ozlabs.org/~ccan/ccan"
+SCM_EXTERNAL_REFS="lib/ccan.git:ccan"
+
+SUMMARY="Signing utility for UEFI Secure Boot"
+HOMEPAGE="https://git.kernel.org/pub/scm/linux/kernel/git/jejb/${PN}.git/"
+
+require scm-git
+require autotools [ supported_autoconf=[ 2.5 ] supported_automake=[ 1.15 ] ]
+
+LICENCES="GPL-3"
+SLOT="0"
+PLATFORMS="~amd64"
+
+MYOPTIONS="( providers: libressl openssl ) [[ number-selected = exactly-one ]]"
+
+DEPENDENCIES="
+    build:
+        sys-apps/help2man
+        sys-boot/gnu-efi
+
+    build+run:
+        sys-apps/util-linux
+        providers:libressl? ( dev-libs/libressl )
+        providers:openssl? ( dev-libs/openssl )"
+
+DEFAULT_SRC_PREPARE_PATCHES=( "${FILES}/libressl.patch" )
+DEFAULT_SRC_COMPILE_PARAMS=( AR="$(exhost --tool-prefix)ar" )
+
+src_prepare() {
+    default
+
+    local modules=(
+        $(grep -E '^ccan_modules=' autogen.sh | head -n 1 | cut -d = -f 2 | sed -e 's/^"//' -e 's/"$//')
+    )
+
+    edo lib/ccan.git/tools/create-ccan-tree \
+        --build-type=automake lib/ccan "${modules[@]}"
+
+    eautoreconf
+}
