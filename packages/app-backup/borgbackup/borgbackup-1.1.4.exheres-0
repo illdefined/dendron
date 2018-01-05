@@ -16,6 +16,7 @@ MYOPTIONS="( providers: libressl openssl ) [[ number-selected = exactly-one ]]"
 DEPENDENCIES="
     build+run:
         app-arch/lz4[parts:libraries]
+        app-arch/zstd
         dev-python/Cython
         dev-python/llfuse
         dev-python/msgpack-python
