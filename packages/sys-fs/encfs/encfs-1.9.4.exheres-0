@@ -28,6 +28,6 @@ DEPENDENCIES="
         providers:openssl? ( dev-libs/openssl )
         xattr? ( sys-apps/attr )"
 
-DEFAULT_SRC_PREPARE_PATCHES=( "${FILES}/encfs-1.9.2-libressl.patch" )
+#DEFAULT_SRC_PREPARE_PATCHES=( "${FILES}/encfs-1.9.2-libressl.patch" )
 
 CMAKE_SRC_CONFIGURE_OPTION_ENABLES=( "xattr" )
