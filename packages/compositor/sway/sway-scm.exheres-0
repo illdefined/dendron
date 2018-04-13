@@ -1,0 +1,32 @@
+# Copyright MMXVIII
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require github [ user=swaywm ]
+require meson
+
+SUMMARY="i3-compatible Wayland compository"
+
+LICENCES="MIT"
+SLOT="0"
+PLATFORMS="~amd64"
+
+MYOPTIONS="zsh-completion"
+
+DEPENDENCIES="
+    build+run:
+        dev-libs/json-c[>=0.13]
+        dev-libs/pcre
+        dev-libs/wlroots[caps]
+        sys-libs/libcap
+        sys-libs/libinput
+        sys-libs/pam
+        sys-libs/wayland
+        sys-libs/wayland-protocols
+        x11-libs/cairo
+        x11-libs/gdk-pixbuf
+        x11-libs/libxkbcommon
+        x11-libs/pango
+        x11-libs/pixman"
+
+MESON_SRC_CONFIGURE_OPTION_ENABLES=( "zsh-completion zsh_completions" )
