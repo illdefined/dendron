@@ -30,3 +30,7 @@ DEPENDENCIES="
         x11-libs/pixman"
 
 MESON_SRC_CONFIGURE_OPTION_ENABLES=( "zsh-completion zsh_completions" )
+
+pkg_postinst() {
+    edo setcap "cap_sys_ptrace,cap_sys_tty_config=eip" "${ROOT}/usr/$(exhost --target)/bin/sway"
+}
