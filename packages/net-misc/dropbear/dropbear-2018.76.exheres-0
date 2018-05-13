@@ -8,8 +8,6 @@ SUMMARY="Small SSH client/server implementation"
 HOMEPAGE="http://matt.ucc.asn.au/${PN}/${PN}.html"
 DOWNLOADS="http://matt.ucc.asn.au/${PN}/${PNV}.tar.bz2"
 
-REMOTE_IDS="freecode:${PN}-ssh"
-
 LICENCES="MIT"
 SLOT="0"
 PLATFORMS="~amd64 ~x86"
