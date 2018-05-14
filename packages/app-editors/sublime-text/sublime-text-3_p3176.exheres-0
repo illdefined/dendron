@@ -2,6 +2,8 @@
 #     Mikael Voss <mvs@nyantec.com>
 # Distributed under the terms of the GNU General Public License v2
 
+require gtk-icon-cache
+
 MY_PN="${PN/-/_}"
 MY_PV="${PV#*_p}"
 MY_PNV="${MY_PN}_${PV%_p*}"
@@ -37,4 +39,17 @@ pkg_setup() {
 src_install() {
     dodir "/opt/${MY_PNV}"
     edo cp -a * "${IMAGE}/opt/${MY_PNV}"
+
+    local bindir="/usr/$(exhost --target)/bin"
+    dodir "${bindir}"
+    dosym "../../../opt/${MY_PNV}/sublime_text" "${bindir}/"
+
+    cd Icon
+    for size in *
+    do
+        local icondir="/usr/share/icons/hicolor/${size}/apps"
+        dodir "${icondir}"
+        dosym "../../../../../../opt/${MY_PNV}/Icon/${size}/sublime-text.png" \
+            "${icondir}/sublime-text.png"
+    done
 }
