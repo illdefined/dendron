@@ -1,0 +1,33 @@
+# Copyright MMXVIII
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+SCM_REPOSITORY="https://svn.code.sf.net/p/dosbox/code-0/dosbox"
+
+require scm-svn
+require autotools [ supported_autoconf=[ 2.5 ] supported_automake=[ 1.16 ] ]
+
+SUMMARY="DOS emulator"
+HOMEPAGE="https://www.dosbox.com/"
+
+LICENCES="GPL-2"
+SLOT="0"
+PLATFORMS="~amd64"
+
+MYOPTIONS="
+    alsa [[ description = [ Enable ALSA MIDI support ] ]]
+    debug [[ description = [ Enable internal debugger ] ]]"
+
+DEPENDENCIES="
+    build+run:
+        media-libs/SDL:0
+        media-libs/SDL_net:0
+        media-libs/SDL_sound
+        media-libs/libpng:=
+        x11-dri/mesa
+        x11-libs/libX11
+        alsa? ( media-libs/SDL_sound )
+        debug? ( sys-libs/ncurses )"
+
+DEFAULT_SRC_CONFIGURE_OPTION_ENABLES=( "alsa alsa-midi" debug )
+DEFAULT_SRC_COMPILE_PARAMS=( "AR=$(exhost --tool-prefix)ar" )
