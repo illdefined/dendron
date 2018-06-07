@@ -1,0 +1,30 @@
+# Copyright MMXVI
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+SUMMARY="Git subtree utility"
+HOMEPAGE="https://git-scm.com/"
+DOWNLOADS="mirror://kernel/software/scm/git/git-${PV}.tar.xz"
+
+LICENCES="GPL-2"
+SLOT="0"
+PLATFORMS="~amd64"
+
+RESTRICT="test"
+
+DEPENDENCIES="
+    build:
+        app-text/xmlto
+
+    run:
+        dev-scm/git"
+
+WORK="${WORKBASE}/git-${PV}/contrib/subtree"
+
+DEFAULT_SRC_COMPILE_PARAMS=( git-subtree git-subtree.1 )
+
+src_install() {
+    exeinto "/usr/$(exhost --target)/libexec/git"
+    doexe git-subtree
+    doman git-subtree.1
+}
