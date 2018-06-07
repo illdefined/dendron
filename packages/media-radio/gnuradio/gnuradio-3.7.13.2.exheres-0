@@ -1,0 +1,35 @@
+# Copyright MMXVIII
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require github [ user=gnuradio tag=v${PV} ]
+require cmake [ api=2 ]
+require python [ blacklist=none multibuild=false ]
+
+SUMMARY="Software radio development toolkit"
+HOMEPAGE="https://www.gnuradio.org/"
+
+LICENCES="GPL-3"
+SLOT="0"
+PLATFORMS="~amd64"
+
+MYOPTIONS=""
+
+DEPENDENCIES="
+    build+run:
+        dev-lang/swig[python]
+        dev-libs/boost
+        dev-python/lxml[python_abis:*(-)?]
+        dev-python/numpy[python_abis:*(-)?]
+        dev-python/Cheetah[python_abis:*(-)?]
+        dev-python/Mako[python_abis:*(-)?]
+        sci-libs/fftw
+        sci-libs/gsl
+        sci-libs/volk
+
+    test:
+        dev-cpp/cppunit"
+
+CMAKE_SRC_CONFIGURE_PARAMS=(
+    -DENABLE_INTERNAL_VOLK=OFF
+)
