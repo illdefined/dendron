@@ -1,0 +1,27 @@
+# Copyright MMXVIII
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require github [ user=gnuradio tag=v${PV} ]
+require cmake [ api=2 ]
+require python [ blacklist=none multibuild=false ]
+
+SUMMARY="Vector-Optimized Library of Kernels"
+HOMEPAGE="https://libvolk.org/"
+
+LICENCES="GPL-3"
+SLOT="0"
+PLATFORMS="~amd64"
+
+DEPENDENCIES="
+    build+run:
+        dev-libs/boost
+        dev-libs/orc
+        dev-python/Mako[python_abis:*(-)?]
+        dev-python/six[python_abis:*(-)?]"
+
+src_install() {
+    cmake_src_install
+
+    edo find "${IMAGE}" -type d -empty -delete
+}
