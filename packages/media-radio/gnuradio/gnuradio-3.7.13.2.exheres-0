@@ -21,12 +21,12 @@ DEPENDENCIES="
         dev-libs/boost
         dev-python/lxml[python_abis:*(-)?]
         dev-python/numpy[python_abis:*(-)?]
-        dev-python/Cheetah[python_abis:*(-)?]
         dev-python/Mako[python_abis:*(-)?]
         sci-libs/fftw
         sci-libs/gsl
         sci-libs/volk
         gtk? (
+            dev-python/Cheetah[python_abis:*(-)?]
             dev-python/wxPython:2.8[python_abis:*(-)?]
             gnome-bindings/pygtk[python_abis:*(-)?]
         )
