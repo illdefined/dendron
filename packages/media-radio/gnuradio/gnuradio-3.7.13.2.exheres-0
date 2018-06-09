@@ -13,7 +13,7 @@ LICENCES="GPL-3"
 SLOT="0"
 PLATFORMS="~amd64"
 
-MYOPTIONS="gtk qt4"
+MYOPTIONS="alsa gtk qt4 sdl"
 
 DEPENDENCIES="
     build+run:
@@ -25,6 +25,9 @@ DEPENDENCIES="
         sci-libs/fftw
         sci-libs/gsl
         sci-libs/volk
+        alsa? (
+            sys-sound/alsa-lib
+        )
         gtk? (
             dev-python/Cheetah[python_abis:*(-)?]
             dev-python/wxPython:2.8[python_abis:*(-)?]
@@ -33,6 +36,9 @@ DEPENDENCIES="
         qt4? (
             dev-python/PyQt4[python_abis:*(-)?]
             x11-libs/qwt
+        )
+        sdl? (
+            media-libs/SDL:0
         )
 
     test:
@@ -43,7 +49,9 @@ CMAKE_SRC_CONFIGURE_PARAMS=(
 )
 
 CMAKE_SRC_CONFIGURE_OPTION_ENABLES=(
+    "alsa GR_AUDIO"
     "gtk GRC"
     "gtk GR_WXGUI"
     "qt4 GR_QTGUI"
+    "sdl GR_VIDEO_SDL"
 )
