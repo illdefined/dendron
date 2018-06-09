@@ -28,6 +28,7 @@ DEPENDENCIES="
         sci-libs/volk
         gtk? (
             dev-python/wxPython:2.8[python_abis:*(-)?]
+            gnome-bindings/pygtk[python_abis:*(-)?]
         )
         qt4? (
             dev-python/PyQt4[python_abis:*(-)?]
@@ -42,6 +43,7 @@ CMAKE_SRC_CONFIGURE_PARAMS=(
 )
 
 CMAKE_SRC_CONFIGURE_OPTION_ENABLES=(
+    "gtk GRC"
     "gtk GR_WXGUI"
     "qt4 GR_QTGUI"
 )
