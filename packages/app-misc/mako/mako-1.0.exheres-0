@@ -1,0 +1,21 @@
+# Copyright MMXVIII
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require github [ user=emersion tag="v${PV}" ]
+require meson
+
+SUMMARY="Lightweight notification daemon for Wayland"
+HOMEPAGE="https://mako-project.org/"
+
+LICENCES="MIT"
+SLOT="0"
+PLATFORMS="~amd64"
+
+DEPENDENCIES="
+    build+run:
+        sys-apps/systemd
+        sys-libs/wayland
+        sys-libs/wayland-protocols
+        x11-libs/cairo
+        x11-libs/pango"
