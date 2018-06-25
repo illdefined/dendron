@@ -31,6 +31,12 @@ DEPENDENCIES="
 
 MESON_SRC_CONFIGURE_OPTION_ENABLES=( "zsh-completion zsh_completions" )
 
+src_prepare() {
+    default
+
+    edo sed -i "s:@prefix@/bin/:/usr/$(exhost --target)/bin/:" "${MESON_SOURCE}/security.d/"*.in
+}
+
 pkg_postinst() {
     edo setcap "cap_sys_ptrace,cap_sys_tty_config=eip" "${ROOT}/usr/$(exhost --target)/bin/sway"
 }
