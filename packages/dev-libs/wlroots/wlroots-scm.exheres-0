@@ -36,6 +36,7 @@ DEPENDENCIES="
         providers:eudev? ( sys-apps/eudev )
         providers:systemd? ( sys-apps/systemd )"
 
+MESON_SRC_CONFIGURE_PARAMS=( -Denable-examples=false )
 MESON_SRC_CONFIGURE_OPTION_ENABLES=(
     "X xwayland"
     "caps libcap"
