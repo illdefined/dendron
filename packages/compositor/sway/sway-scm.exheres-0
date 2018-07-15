@@ -34,6 +34,7 @@ MESON_SRC_CONFIGURE_OPTION_ENABLES=( "zsh-completion zsh_completions" )
 src_prepare() {
     default
 
+    edo sed -i "s:werror=true:werror=false:" "${MESON_SOURCE}/meson.build"
     edo sed -i "s:@prefix@/bin/:/usr/$(exhost --target)/bin/:" "${MESON_SOURCE}/security.d/"*.in
 }
 
