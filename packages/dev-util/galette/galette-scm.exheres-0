@@ -14,7 +14,9 @@ PLATFORMS="~amd64 ~x86"
 
 CROSS_COMPILE_TARGETS="
     i686-pc-linux-gnu
-    x86_64-pc-linux-gnu"
+    i686-pc-linux-musl
+    x86_64-pc-linux-gnu
+    x86_64-pc-linux-musl"
 
 MYOPTIONS="
     targets: ${CROSS_COMPILE_TARGETS}"
