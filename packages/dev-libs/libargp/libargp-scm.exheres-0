@@ -1,0 +1,39 @@
+# Copyright MMXVI
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+SCM_REPOSITORY="https://git.savannah.gnu.org/git/gnulib.git"
+
+require scm-git
+require autotools [ supported_autoconf=[ 2.5 ] supported_automake=[ 1.16 ] ]
+
+SUMMARY="argp module from gnulib"
+HOMEPAGE="https://www.gnu.org/software/gnulib/"
+
+LICENCES="GPL-3 LGPL-2.1"
+SLOT="0"
+PLATFORMS="~amd64"
+
+WORK="${WORKBASE}/${PN}"
+
+DEPENDENCIES="
+    build+run:
+        !sys-libs/glibc"
+
+src_unpack() {
+    scm_src_unpack
+
+    edo "${WORKBASE}/${PNV}/gnulib-tool" --dir="${WORKBASE}/${PN}" --lib="${PN}" \
+        --libtool --create-testdir argp
+}
+
+src_prepare() {
+    default
+
+    edo sed -i \
+        -e 's/^noinst_LTLIBRARIES += libargp.la/lib_LTLIBRARIES = libargp.la\ninclude_HEADERS = argp.h/' \
+        -e '/^libargp_la_LDFLAGS = /alibargp_la_LDFLAGS += -shared' \
+        gllib/Makefile.am
+
+    eautomake
+}
