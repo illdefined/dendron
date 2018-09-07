@@ -1,0 +1,13 @@
+# Copyright MMXVIII
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require github [ user="fmtlib" tag="${PV}" ]
+require cmake
+
+SUMMARY="String formatting library for C++"
+HOMEPAGE="http://fmtlib.net"
+
+LICENCES="BSD-2"
+SLOT="0"
+PLATFORMS="~amd64"
