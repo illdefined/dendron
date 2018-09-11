@@ -16,12 +16,12 @@ DEPENDENCIES="
         dev-cpp/libsigc++:2
         dev-libs/fmt
         dev-libs/jsoncpp
-        dev-libs/wlroots
         gnome-bindings/gtkmm:3
         media-sound/pulseaudio
         net-libs/libnl:3.0
         sys-libs/wayland
-        sys-libs/wayland-protocols"
+        sys-libs/wayland-protocols
+        sys-libs/wlroots"
 
 MESON_SOURCE="${WORKBASE}/${PNV^}"
 
