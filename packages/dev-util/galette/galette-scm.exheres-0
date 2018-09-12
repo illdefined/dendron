@@ -27,8 +27,7 @@ src_install() {
     newbin "${PN}"{.sh,}
     doman "${PN}.1"
 
-    local prefix="/usr/$(exhost --target)"
-    local bindir="${prefix}/libexec/${PN}"
+    local bindir="/usr/$(exhost --target)/libexec/${PN}"
     dodir "${bindir}"
 
     for target in ${CROSS_COMPILE_TARGETS}
@@ -37,7 +36,7 @@ src_install() {
         then
             for tool in g{cc,++} clang{,++} cc c++
             do
-                dosym "${prefix}/bin/${PN}" "${bindir}/${target}-${tool}"
+                dosym "../../bin/${PN}" "${bindir}/${target}-${tool}"
             done
         fi
     done
