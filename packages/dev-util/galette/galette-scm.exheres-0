@@ -2,11 +2,9 @@
 #     Mikael Voss <mvs@nyantec.com>
 # Distributed under the terms of the GNU General Public License v2
 
-SUMMARY="Hardening GCC wrapper"
-HOMEPAGE="https://github.com/illdefined/${PN}/"
-SCM_REPOSITORY="git://github.com/illdefined/${PN}.git"
+require github [ user="illdefined" ]
 
-require scm-git
+SUMMARY="Hardening GCC wrapper"
 
 LICENCES="public-domain"
 SLOT="0"
