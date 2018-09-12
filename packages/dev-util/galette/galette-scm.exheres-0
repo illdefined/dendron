@@ -35,7 +35,7 @@ src_install() {
     do
         if option targets:${target}
         then
-            for tool in g{cc,++}
+            for tool in g{cc,++} clang{,++} cc c++
             do
                 dosym "${prefix}/bin/${PN}" "${bindir}/${target}-${tool}"
             done
