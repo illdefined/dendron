@@ -38,6 +38,11 @@ src_install() {
             do
                 dosym "../../bin/${PN}" "${bindir}/${target}-${tool}"
             done
+
+            for tool in ar nm ranlib
+            do
+                dosym "../../bin/${target}-gcc-${tool}" "${bindir}/${target}-${tool}"
+            done
         fi
     done
 }
