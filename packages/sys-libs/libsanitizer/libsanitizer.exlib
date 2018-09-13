@@ -1,0 +1,45 @@
+# Copyright MMXVIII
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require gnu [ suffix=tar.xz subdir=gcc-${PV} pn=gcc ]
+require toolchain-runtime-libraries
+
+SUMMARY="GCC run-time instrumentation library"
+
+LICENCES="|| ( MIT UoI-NCSA )"
+SLOT="$(ever major)"
+
+DEPENDENCIES="
+    build:
+        sys-devel/gcc:${SLOT}[>=7]
+        sys-libs/libstdc++:${SLOT}"
+
+ECONF_SOURCE="${WORKBASE}/gcc-${PV}/${PN}"
+WORK="${WORKBASE}/build"
+
+RESTRICT="test"
+
+DEFAULT_SRC_CONFIGURE_PARAMS=( --disable-multilib )
+
+libsanitizer_src_unpack() {
+    default
+    edo mkdir -p "${WORK}"
+
+    edo sed \
+        -e '/^ *LIBSTDCXX_RAW_CXX_LDFLAGS="/{n;c\/usr\/'"$(exhost --target)"'\/lib\/libstdc++.la"'$'\n}' \
+        -i "${ECONF_SOURCE}/configure"
+}
+
+libsanitizer_src_install() {
+    default
+
+    for lib in lib{a,l,t,ub}san
+    do
+        symlink_dynamic_libs ${lib}
+        slot_dynamic_libs ${lib}
+        slot_other_libs ${lib}{_preinit.o,.{a,la}}
+    done
+}
+
+export_exlib_phases src_unpack src_install
