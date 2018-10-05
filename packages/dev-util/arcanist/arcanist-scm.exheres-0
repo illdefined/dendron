@@ -1,0 +1,23 @@
+# Copyright MMXVI
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require phacility
+
+SUMMARY="Command line interface for Phabricator"
+
+LICENCES="Apache-2.0"
+SLOT="0"
+PLATFORMS="~amd64"
+
+DEPENDENCIES="
+    run:
+        dev-libs/libphutil"
+
+src_install() {
+    phacility_src_install
+
+    local bindir="/usr/$(exhost --target)/bin"
+    dodir "${bindir}"
+    dosym ../../../opt/phacility/arcanist/bin/arc "${bindir}"
+}
