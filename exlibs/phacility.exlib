@@ -1,0 +1,30 @@
+# Copyright MMXVIII
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require github [ user=phacility ]
+
+export_exlib_phases pkg_setup src_configure src_compile src_install
+
+DEPENDENCIES="
+    run:
+        dev-lang/php[php_extensions:curl]"
+
+phacility_pkg_setup() {
+    exdirectory --allow /opt
+}
+
+phacility_src_configure() {
+    :
+}
+
+phacility_src_compile() {
+    :
+}
+
+phacility_src_install() {
+    default
+
+    edo mkdir -p "${IMAGE}/opt/phacility/${PN}/"
+    edo find "${WORK}" -mindepth 1 -maxdepth 1 -type d '!' -name '.*' -execdir cp -R '{}' "${IMAGE}/opt/phacility/${PN}/" ';'
+}
