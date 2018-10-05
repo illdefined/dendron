@@ -1,0 +1,11 @@
+# Copyright MMXVI
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require phacility
+
+SUMMARY="Collection of PHP utility classes"
+
+LICENCES="Apache-2.0"
+SLOT="0"
+PLATFORMS="~amd64"
