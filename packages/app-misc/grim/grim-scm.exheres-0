@@ -1,0 +1,17 @@
+# Copyright MMXVIII
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require github [ user=emersion ]
+require meson
+
+SUMMARY="Screen capture utility for Wayland compositors"
+
+LICENCES="MIT"
+SLOT="0"
+PLATFORMS="~amd64"
+
+DEPENDENCIES="
+    build+run:
+        sys-libs/wayland
+        x11-libs/cairo"
