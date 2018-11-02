@@ -16,6 +16,7 @@ DEPENDENCIES="
         dev-cpp/libsigc++:2
         dev-libs/fmt
         dev-libs/jsoncpp
+        dev-libs/libdbusmenu
         gnome-bindings/gtkmm:3
         media-sound/pulseaudio
         net-libs/libnl:3.0
@@ -24,6 +25,12 @@ DEPENDENCIES="
         sys-libs/wlroots"
 
 MESON_SOURCE="${WORKBASE}/${PNV^}"
+
+MESON_SRC_CONFIGURE_PARAMS=(
+    -Dlibnl=enabled
+    -Dpulseaudio=enabled
+    -Ddbusmenu-gtk=enabled
+)
 
 src_prepare() {
     default
