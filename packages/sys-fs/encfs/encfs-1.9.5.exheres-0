@@ -23,11 +23,9 @@ DEPENDENCIES="
             note = [ pod2man is required to generate the man pages ] ]]
 
     build+run:
-        sys-fs/fuse[>=2.6]
+        sys-fs/fuse:0[>=2.6]
         providers:libressl? ( dev-libs/libressl:= )
         providers:openssl? ( dev-libs/openssl )
         xattr? ( sys-apps/attr )"
-
-#DEFAULT_SRC_PREPARE_PATCHES=( "${FILES}/encfs-1.9.2-libressl.patch" )
 
 CMAKE_SRC_CONFIGURE_OPTION_ENABLES=( "xattr" )
