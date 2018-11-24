@@ -1,0 +1,12 @@
+# Copyright MMXVII
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require github [ user=haikarainen tag="v${PV}" ]
+require autotools [ supported_autoconf=[ 2.5 ] supported_automake=[ 1.16 ] ]
+
+SUMMARY="Backlight control utility"
+
+LICENCES="GPL-3"
+SLOT="0"
+PLATFORMS="~amd64"
