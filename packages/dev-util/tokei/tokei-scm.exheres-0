@@ -1,0 +1,12 @@
+# Copyright MMXVIII
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require github [ user=Aaronepower ]
+require cargo
+
+SUMMARY="Lines of code counting utility"
+
+LICENCES="|| ( MIT Apache-2.0 )"
+SLOT="0"
+PLATFORMS="~amd64"
