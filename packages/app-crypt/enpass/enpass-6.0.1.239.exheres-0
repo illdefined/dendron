@@ -30,5 +30,5 @@ src_install() {
     edo tar -x -z -C "${IMAGE}" --exclude=".DS_STORE" --exclude="*.swp" -f "${WORKBASE}/data.tar.gz"
     edo find "${IMAGE}" -type d -empty -delete
     edo mkdir -p "${IMAGE}/usr/${target}/bin"
-    edo ln -s "/opt/Enpass/bin/runenpass.sh" "${IMAGE}/usr/${target}/bin/enpass"
+    edo ln -s "/opt/enpass/Enpass" "${IMAGE}/usr/${target}/bin/enpass"
 }
