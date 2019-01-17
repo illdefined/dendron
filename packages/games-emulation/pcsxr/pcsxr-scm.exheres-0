@@ -1,19 +1,16 @@
-# Copyright MMXII, MMXVII
-#     Mikael Voss <mikael+exherbo@illdefined.org>
+# Copyright MMXII, MMXVII, MMXIX
+#     Mikael Voss <mvs+exherbo@nya.yt>
 # Distributed under the terms of the GNU General Public License v2
 
 SUMMARY="Sony PlayStation emulator"
-HOMEPAGE="http://${PN}.codeplex.com/"
-SCM_REPOSITORY="https://git01.codeplex.com/${PN}"
+HOMEPAGE="https://archive.codeplex.com/?p=${PN}"
 
-require scm-git
-require cmake
+require github [ user='iCatButler' ]
+require cmake [ api=2 ]
 
-LICENCES="GPL-2"
+LICENCES="GPL-3"
 SLOT="0"
 PLATFORMS="~amd64 ~x86"
-
-RESTRICT="test"
 
 MYOPTIONS="
     cdio [[ description = [ Enable CD‐ROM support ] ]]
@@ -30,6 +27,7 @@ DEPENDENCIES="
         x11-libs/cairo
         x11-libs/gdk-pixbuf
         x11-libs/gtk+:3
+        x11-libs/libXv
         x11-libs/pango
         cdio? ( dev-libs/libcdio )
         libarchive? ( dev-libs/libarchive )"
