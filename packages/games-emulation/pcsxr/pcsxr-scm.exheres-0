@@ -37,3 +37,10 @@ CMAKE_SRC_CONFIGURE_OPTION_USES=(
     "libarchive" )
 
 WORK="${WORK}/${PN}"
+
+src_prepare() {
+    default
+
+    edo sed -i 's:\${CMAKE_INSTALL_PREFIX}/share/:${CMAKE_INSTALL_DATAROOTDIR}/:g' \
+        "${CMAKE_SOURCE}"/*/CMakeLists.txt
+}
