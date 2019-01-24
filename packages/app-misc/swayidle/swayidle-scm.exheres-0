@@ -1,0 +1,29 @@
+# Copyright MMXIX
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require github [ user=swaywm ]
+require meson
+
+SUMMARY="Idle management daemon for Wayland"
+
+LICENCES="MIT"
+SLOT="0"
+PLATFORMS="~amd64"
+
+MYOPTIONS="
+    bash-completion
+    zsh-completion
+    ( providers: elogind systemd ) [[ number-selected = exactly-one ]]"
+
+DEPENDENCIES="
+    build+run:
+        sys-libs/wayland
+        sys-libs/wayland-protocols
+        providers:elogind? ( sys-auth/elogind )
+        providers:systemd? ( sys-apps/systemd )"
+
+MESON_SRC_CONFIGURE_OPTION_ENABLES=(
+    "bash-completion bash_completions"
+    "zsh-completion zsh_completions"
+)
