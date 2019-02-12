@@ -1,0 +1,26 @@
+# Copyright MMXIX
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require github [ user=numediart pn=MBROLA-voices ]
+
+SUMMARY="Voice data for mbrola speech synthesiser"
+
+LICENCES="MBROLA"
+SLOT="0"
+PLATFORMS="~amd64"
+
+DEPENDENCIES="
+    run:
+        app-speech/mbrola"
+
+src_install() {
+    pushd data
+
+    for voice in [a-z][a-z][0-9]; do
+        insinto "/usr/share/mbrola/${voice}/"
+        doins "${voice}/${voice}"
+    done
+
+    popd
+}
