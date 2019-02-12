@@ -1,0 +1,22 @@
+# Copyright MMXIX
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require github [ user=numediart pn="${PN^^}" ]
+
+SUMMARY="Speech synthesiser based on diphone concatenation"
+
+LICENCES="AGPL-3"
+SLOT="0"
+PLATFORMS="~amd64"
+
+DEPENDENCIES="
+    recommendation:
+        app-speech/mbrola-voices"
+
+DEFAULT_SRC_COMPILE_PARAMS=( "CC=${CC}" )
+DEFAULT_SRC_TEST_PARAMS=( "CC=${CC}" )
+
+src_install() {
+    dobin "Bin/mbrola"
+}
