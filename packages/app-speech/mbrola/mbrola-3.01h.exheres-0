@@ -5,7 +5,7 @@
 SUMMARY="Speech synthesiser based on diphone concatenation"
 HOMEPAGE="http://tcts.fpms.ac.be/synthesis/mbrola.html"
 DOWNLOADS="
-    http://tcts.fpms.ac.be/synthesis/mbrola/bin/pclinux/mbr301h.zip
+    http://tcts.fpms.ac.be/synthesis/mbrola/bin/amd64linux/mbrola_AMD_Linux.zip
     linguas:af? (
         http://tcts.fpms.ac.be/synthesis/mbrola/dba/af1/af1.zip )
     linguas:ar? (
@@ -118,7 +118,9 @@ DOWNLOADS="
 
 LICENCES="MBROLA"
 SLOT="0"
-PLATFORMS="~x86"
+PLATFORMS="~amd64"
+
+RESTRICT="strip"
 
 MYOPTIONS="
     linguas:
@@ -168,8 +170,7 @@ DEPENDENCIES="
 WORK="${WORKBASE}"
 
 src_install() {
-    newbin "mbrola-linux-i386" "mbrola"
-    dodoc "readme.txt"
+    dobin "mbrola"
 
     # Voices
     for voice in [a-z][a-z][0-9]
