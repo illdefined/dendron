@@ -8,7 +8,7 @@ require xfont
 
 SUMMARY="Fonts for code from DJR & Font Bureau"
 HOMEPAGE="http://${PN}.fontbureau.com/"
-DOWNLOADS="http://input.fontbureau.com/build/?fontSelection=whole&a=ss&g=ss&i=0&l=0&zero=0&asterisk=0&braces=straight&preset=default&line-height=1.2&accept=I+do&email= -> Input-Font.zip"
+DOWNLOADS="http://input.fontbureau.com/build/?fontSelection=whole&a=ss&g=ss&i=serifs_round&l=serifs_round&zero=0&asterisk=0&braces=straight&preset=default&line-height=1.2&accept=I+do&email= -> Input-Font.zip"
 
 LICENCES="all-rights-reserved"
 SLOT="0"
