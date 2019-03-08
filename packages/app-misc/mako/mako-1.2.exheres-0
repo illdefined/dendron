@@ -12,10 +12,18 @@ LICENCES="MIT"
 SLOT="0"
 PLATFORMS="~amd64"
 
+MYOPTIONS="( providers: elogind systemd ) [[ number-selected = exactly-one ]]"
+
 DEPENDENCIES="
+    build:
+        app-doc/scdoc
+
     build+run:
-        sys-apps/systemd
         sys-libs/wayland
         sys-libs/wayland-protocols
         x11-libs/cairo
-        x11-libs/pango"
+        x11-libs/gdk-pixbuf:2.0
+        x11-libs/gtk+:3
+        x11-libs/pango
+        providers:elogind? ( sys-auth/elogind )
+        providers:systemd? ( sys-apps/systemd )"
