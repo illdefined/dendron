@@ -1,0 +1,41 @@
+# Copyright MMXIX
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require github [ user=jwilm ]
+require cargo
+require bash-completion zsh-completion
+
+SUMMARY="GPU‐accelerated terminal emulator"
+
+LICENCES="Apache-2.0"
+SLOT="0"
+PLATFORMS="~amd64"
+
+DEPENDENCIES="
+    build+run:
+        media-libs/fontconfig
+        media-libs/freetype
+        x11-dri/mesa
+
+    run:
+        x11-utils/xclip"
+
+BASH_COMPLETIONS=( alacritty-completions.bash )
+ZSH_COMPLETIONS=( alacritty-completions.zsh )
+
+src_compile() {
+    default
+
+    edo tic -x -o terminfo alacritty.info
+}
+
+src_install() {
+    cargo_src_install
+
+    insinto /usr/share/applications
+    doins alacritty.desktop
+
+    insinto /usr/share
+    doins -r terminfo
+}
