@@ -19,6 +19,7 @@ DEPENDENCIES="
         app-doc/scdoc
 
     build+run:
+        !app-misc/mako [[ resolution = uninstall-blocked-after ]]
         sys-libs/wayland
         sys-libs/wayland-protocols
         x11-libs/cairo

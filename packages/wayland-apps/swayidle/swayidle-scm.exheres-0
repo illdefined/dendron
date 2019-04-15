@@ -18,6 +18,7 @@ MYOPTIONS="
 
 DEPENDENCIES="
     build+run:
+        !app-misc/swayidle [[ resolution = uninstall-blocked-after ]]
         sys-libs/wayland
         sys-libs/wayland-protocols
         providers:elogind? ( sys-auth/elogind )

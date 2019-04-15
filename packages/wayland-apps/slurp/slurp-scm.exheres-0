@@ -13,5 +13,6 @@ PLATFORMS="~amd64"
 
 DEPENDENCIES="
     build+run:
+        !app-misc/slurp [[ resolution = uninstall-blocked-after ]]
         sys-libs/wayland
         x11-libs/cairo"

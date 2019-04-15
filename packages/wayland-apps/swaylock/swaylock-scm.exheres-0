@@ -18,6 +18,7 @@ MYOPTIONS="
 
 DEPENDENCIES="
     build+run:
+        !app-misc/swaylock [[ resolution = uninstall-blocked-after ]]
         sys-libs/wayland
         sys-libs/wayland-protocols
         x11-libs/cairo

@@ -13,6 +13,7 @@ PLATFORMS="~amd64"
 
 DEPENDENCIES="
     build+run:
+        !app-misc/waybar [[ resolution = uninstall-blocked-after ]]
         dev-cpp/libsigc++:2
         dev-libs/fmt
         dev-libs/jsoncpp
