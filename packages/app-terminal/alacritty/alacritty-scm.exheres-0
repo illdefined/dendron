@@ -25,7 +25,7 @@ BASH_COMPLETIONS=( alacritty-completions.bash )
 ZSH_COMPLETIONS=( alacritty-completions.zsh )
 
 src_compile() {
-    default
+    cargo_src_compile
 
     edo tic -x -o terminfo alacritty.info
 }
