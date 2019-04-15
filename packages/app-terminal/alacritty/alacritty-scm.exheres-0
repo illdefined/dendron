@@ -27,15 +27,15 @@ ZSH_COMPLETIONS=( alacritty-completions.zsh )
 src_compile() {
     cargo_src_compile
 
-    edo tic -x -o terminfo alacritty.info
+    edo tic -x -o "${TEMP}/terminfo" extra/alacritty.info
 }
 
 src_install() {
     cargo_src_install
 
     insinto /usr/share/applications
-    doins alacritty.desktop
+    doins extra/linux/alacritty.desktop
 
     insinto /usr/share
-    doins -r terminfo
+    doins -r "${TEMP}/terminfo"
 }
