@@ -5,6 +5,7 @@
 require github [ user=jwilm ]
 require cargo
 require bash-completion zsh-completion
+require freedesktop-desktop gtk-icon-cache
 
 SUMMARY="GPU‐accelerated terminal emulator"
 
@@ -31,7 +32,10 @@ src_compile() {
 }
 
 src_install() {
-    cargo_src_install
+    dobin target/release/alacritty
+
+    insinto /usr/share/pixmaps
+    newins extra/logo/alacritty-term.svg Alacritty.svg
 
     insinto /usr/share/applications
     doins extra/linux/alacritty.desktop
