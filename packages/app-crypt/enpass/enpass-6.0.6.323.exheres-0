@@ -2,6 +2,8 @@
 #     Mikael Voss <mvs@nyantec.com>
 # Distributed under the terms of the GNU General Public License v2
 
+require gtk-icon-cache
+
 SUMMARY="Cross‐platform password manager"
 HOMEPAGE="https://www.enpass.io/"
 DOWNLOADS="http://repo.sinew.in/pool/main/${PN:0:1}/${PN}/${PN}_${PV}_amd64.deb"
