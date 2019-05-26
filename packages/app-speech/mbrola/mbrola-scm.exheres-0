@@ -17,6 +17,10 @@ DEPENDENCIES="
 DEFAULT_SRC_COMPILE_PARAMS=( "CC=${CC}" )
 DEFAULT_SRC_TEST_PARAMS=( "CC=${CC}" )
 
+src_prepare() {
+    edo sed -i 's/CFLAGS += -O6/CFLAGS += -O3/' Makefile
+}
+
 src_install() {
     dobin "Bin/mbrola"
 }
