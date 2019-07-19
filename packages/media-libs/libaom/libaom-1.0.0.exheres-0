@@ -1,0 +1,67 @@
+# Copyright MMXIX
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require cmake
+
+SUMMARY="AV1 codec library"
+HOMEPAGE="https://aomedia.googlesource.com/aom/"
+DOWNLOADS="https://aomedia.googlesource.com/aom/+archive/v${PV}.tar.gz -> ${PNV}.tar.gz"
+
+LICENCES="BSD-2"
+SLOT="0"
+PLATFORMS="~amd64"
+
+MYOPTIONS="
+    platform:
+        amd64
+        x86
+    amd64_cpu_features: sse3 ssse3 sse4.1 sse4.2 avx avx2
+    arm_cpu_features: neon
+    x86_cpu_features: mmx sse sse2 sse3 ssse3 sse4.1 sse4.2 avx avx2"
+
+DEPENDENCIES="
+    build:
+        platform:amd64? ( dev-lang/yasm )
+        platform:x86? ( dev-lang/yasm )"
+
+WORK="${WORKBASE}"
+
+src_configure() {
+    local cmakeargs=(
+        -DENABLE_TOOLS:BOOL=TRUE
+        $(expecting_tests -DENABLE_TESTS:BOOL=TRUE)
+    )
+
+    if option platform:amd64; then
+        cmakeargs+=(
+            -DENABLE_MMX:BOOL=TRUE
+            -DENABLE_SSE:BOOL=TRUE
+            -DENABLE_SSE2:BOOL=TRUE
+            $(cmake_enable amd64_cpu_features:sse3 SSE3)
+            $(cmake_enable amd64_cpu_features:ssse3 SSSE3)
+            $(cmake_enable amd64_cpu_features:sse4.1 SSE4_1)
+            $(cmake_enable amd64_cpu_features:sse4.2 SSE4_2)
+            $(cmake_enable amd64_cpu_features:avx AVX)
+            $(cmake_enable amd64_cpu_features:avx AVX2)
+        )
+    elif option platform:arm; then
+        cmakeargs+=(
+            $(cmake_enable arm_cpu_features:neon NEON)
+        )
+    elif option platform:x86; then
+        cmakeargs+=(
+            $(cmake_enable x86_cpu_features:mmx MMX)
+            $(cmake_enable x86_cpu_features:sse SSE)
+            $(cmake_enable x86_cpu_features:sse2 SSE2)
+            $(cmake_enable x86_cpu_features:sse3 SSE3)
+            $(cmake_enable x86_cpu_features:ssse3 SSSE3)
+            $(cmake_enable x86_cpu_features:sse4.1 SSE4_1)
+            $(cmake_enable x86_cpu_features:sse4.2 SSE4_2)
+            $(cmake_enable x86_cpu_features:avx AVX)
+            $(cmake_enable x86_cpu_features:avx AVX2)
+        )
+    fi
+
+    ecmake "${cmakeargs[@]}"
+}
