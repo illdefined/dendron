@@ -30,6 +30,7 @@ WORK="${WORKBASE}"
 src_configure() {
     local cmakeargs=(
         -DENABLE_TOOLS:BOOL=TRUE
+        -DBUILD_SHARED_LIBS:BOOL=TRUE
         $(expecting_tests -DENABLE_TESTS:BOOL=TRUE)
     )
 
