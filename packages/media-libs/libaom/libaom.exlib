@@ -6,16 +6,13 @@ require cmake
 
 SUMMARY="AV1 codec library"
 HOMEPAGE="https://aomedia.googlesource.com/aom/"
+SCM_REPOSITORY="https://aomedia.googlesource.com/aom"
 
-if ever is_scm; then
-    SCM_REPOSITORY="https://aomedia.googlesource.com/aom"
-
-    require scm-git
-else
-    DOWNLOADS="https://aomedia.googlesource.com/aom/+archive/v${PV}.tar.gz -> ${PNV}.tar.gz"
-
-    WORK="${WORKBASE}"
+if ! ever is_scm; then
+    SCM_TAG="v${PV}"
 fi
+
+require scm-git
 
 LICENCES="BSD-2"
 SLOT="0"
