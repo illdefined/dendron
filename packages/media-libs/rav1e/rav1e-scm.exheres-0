@@ -1,0 +1,41 @@
+# Copyright MMXVI
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require github [ user=xiph ]
+require cargo
+
+SUMMARY="Experimental AV1 video encoder"
+
+LICENCES="MIT"
+SLOT="0"
+PLATFORMS="~amd64"
+
+MYOPTIONS="
+    platform:
+        amd64"
+
+DEPENDENCIES="
+    build:
+        dev-lang/clang
+        dev-lang/perl
+        dev-rust/cargo-c
+        dev-util/pkg-config
+        sys-devel/cmake
+        platform:amd64? ( dev-lang/nasm )"
+
+src_compile() {
+    cargo_src_compile
+
+    ecargo cbuild --release \
+        --destdir="${IMAGE}" \
+        --prefix="/usr/$(exhost --target)"
+}
+
+src_install () {
+    cargo_src_install
+
+    ecargo cinstall --release \
+        --destdir="${IMAGE}" \
+        --prefix="/usr/$(exhost --target)"
+}
