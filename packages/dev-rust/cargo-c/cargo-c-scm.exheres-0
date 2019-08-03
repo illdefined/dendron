@@ -1,0 +1,12 @@
+# Copyright MMXVI
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require github [ user=lu-zero ]
+require cargo
+
+SUMMARY="C ABI helpers for Cargo"
+
+LICENCES="MIT"
+SLOT="0"
+PLATFORMS="~amd64"
