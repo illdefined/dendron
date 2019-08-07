@@ -1,0 +1,23 @@
+# Copyright MMXVI
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+SUMMARY="Low bit rate speech codec"
+HOMEPAGE="http://www.rowetel.com/codec2.html"
+
+SCM_REPOSITORY="https://svn.code.sf.net/p/freetel/code/codec2"
+SCM_TAG="${PV}"
+
+require scm-svn
+require cmake [ api=2 ]
+
+LICENCES="LGPL-2.1"
+SLOT="0"
+PLATFORMS="~amd64"
+
+DEPENDENCIES="
+    test:
+        media-libs/libsamplerate
+        media-libs/speex"
+
+CMAKE_SRC_CONFIGURE_TESTS=( -DUNITTEST:BOOL=TRUE )
