@@ -2,8 +2,6 @@
 #     Mikael Voss <mvs@nyantec.com>
 # Distributed under the terms of the GNU General Public License v2
 
-require cmake
-
 SUMMARY="AV1 codec library"
 HOMEPAGE="https://aomedia.googlesource.com/aom/"
 SCM_REPOSITORY="https://aomedia.googlesource.com/aom"
@@ -13,6 +11,7 @@ if ! ever is_scm; then
 fi
 
 require scm-git
+require cmake [ api=2 ]
 
 LICENCES="BSD-2"
 SLOT="0"
@@ -34,7 +33,7 @@ src_configure() {
     local cmakeargs=(
         -DENABLE_TOOLS:BOOL=TRUE
         -DBUILD_SHARED_LIBS:BOOL=TRUE
-        $(expecting_tests -DENABLE_TESTS:BOOL=TRUE)
+        $(expecting_tests --expensive -DENABLE_TESTS:BOOL=TRUE)
     )
 
     if option platform:amd64; then
@@ -68,4 +67,11 @@ src_configure() {
     fi
 
     ecmake "${cmakeargs[@]}"
+}
+
+src_test_expensive() {
+    # TODO: Fetch test data separately
+    esandbox disable_net
+    emake runtests
+    esandbox enable_net
 }
