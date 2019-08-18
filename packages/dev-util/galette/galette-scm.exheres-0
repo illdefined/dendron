@@ -23,6 +23,7 @@ MYOPTIONS="
 
 src_install() {
     newbin "${PN}"{.sh,}
+    newbin "${PN}-binutils"{.sh,}
     doman "${PN}.1"
 
     local bindir="/usr/$(exhost --target)/libexec/${PN}"
@@ -37,9 +38,9 @@ src_install() {
                 dosym "../../bin/${PN}" "${bindir}/${target}-${tool}"
             done
 
-            for tool in ar nm ranlib
+            for tool in ar ld{,.bfd,.gold} nm ranlib
             do
-                dosym "../../bin/${target}-gcc-${tool}" "${bindir}/${target}-${tool}"
+                dosym "../../bin/${PN}-binutils" "${bindir}/${target}-${tool}"
             done
         fi
     done
