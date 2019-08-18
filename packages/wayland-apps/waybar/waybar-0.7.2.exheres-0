@@ -18,6 +18,7 @@ DEPENDENCIES="
         dev-libs/fmt
         dev-libs/jsoncpp
         dev-libs/libdbusmenu
+        dev-libs/spdlog
         gnome-bindings/gtkmm:3
         media-sound/pulseaudio
         net-libs/libnl:3.0
