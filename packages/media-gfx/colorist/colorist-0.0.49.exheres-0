@@ -1,0 +1,16 @@
+# Copyright MMXIX
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require github [ user=joedrago tag=v${PV} ]
+require cmake [ api=2 ]
+
+SUMMARY="Image manipulation utility"
+
+LICENCES="Boost-1.0"
+SLOT="0"
+PLATFORMS="~amd64"
+
+src_install() {
+    dobin bin/colorist/colorist
+}
