@@ -16,6 +16,7 @@ DEPENDENCIES="
         !app-misc/waybar [[ resolution = uninstall-blocked-after ]]
         dev-cpp/libsigc++:2
         dev-libs/fmt
+        dev-libs/gtk-layer-shell
         dev-libs/jsoncpp
         dev-libs/libdbusmenu
         dev-libs/spdlog
