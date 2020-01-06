@@ -1,0 +1,16 @@
+# Copyright MMXX
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require github [ user=wmww ]
+require meson
+
+SUMMARY="Layer Shell protocol library for GTK applications"
+
+LICENCES="MIT"
+SLOT="0"
+PLATFORMS="~amd64"
+
+DEPENDENCIES="
+    sys-libs/wayland
+    x11-libs/gtk+:3[gobject-introspection]"
