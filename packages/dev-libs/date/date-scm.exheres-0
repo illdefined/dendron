@@ -1,0 +1,23 @@
+# Copyright MMXX
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require github [ user=HowardHinnant ]
+require cmake
+
+SUMMARY="C++ date and time library"
+
+LICENCES=""
+SLOT="0"
+PLATFORMS="~amd64"
+
+RESTRICT="test"
+
+CMAKE_SRC_CONFIGURE_PARAMS=(
+    -DUSE_SYSTEM_TZ_DB=ON
+    -DBUILD_TZ_LIB=ON
+)
+
+CMAKE_SRC_CONFIGURE_TESTS=(
+    -DENABLE_DATE_TESTING=ON
+)
