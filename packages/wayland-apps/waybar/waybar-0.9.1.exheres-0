@@ -15,6 +15,7 @@ DEPENDENCIES="
     build+run:
         !app-misc/waybar [[ resolution = uninstall-blocked-after ]]
         dev-cpp/libsigc++:2
+        dev-libs/date
         dev-libs/fmt
         dev-libs/gtk-layer-shell
         dev-libs/jsoncpp
