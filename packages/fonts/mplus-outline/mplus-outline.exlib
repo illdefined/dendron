@@ -4,11 +4,12 @@
 
 MY_PN="${PN%-outline}"
 MY_PV="${PV/0_pre/TESTFLIGHT-}"
+MY_PV="${MY_PV/_p1/a}"
 MY_PNV="${MY_PN}-${MY_PV}"
 
 FONT="${PN}"
 
-require sourceforge-jp [ project="${MY_PN}-fonts" package="6650" suffix="tar.xz" ] xfont
+require sourceforge-jp [ project="${MY_PN}-fonts" package="62344" suffix="tar.xz" ] xfont
 
 SUMMARY="M+ outline founts"
 
