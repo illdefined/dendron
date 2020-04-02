@@ -38,7 +38,7 @@ src_install() {
     newins extra/logo/alacritty-term.svg Alacritty.svg
 
     insinto /usr/share/applications
-    doins extra/linux/alacritty.desktop
+    doins extra/linux/Alacritty.desktop
 
     insinto /usr/share
     doins -r "${TEMP}/terminfo"
