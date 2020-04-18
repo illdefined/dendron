@@ -1,5 +1,5 @@
-# Copyright MMXII
-#     Mikael Voss <mikael+exherbo@illdefined.org>
+# Copyright MMXII,MMXX
+#     Mikael Voss <mvs@nyantec.com>
 # Distributed under the terms of the GNU General Public License v2
 
 require systemd-service
@@ -21,6 +21,21 @@ DEPENDENCIES="
 
 DEFAULT_SRC_CONFIGURE_OPTION_ENABLES=( pam )
 
+src_prepare() {
+    # Disable weak cryptograhic algorithms
+    edo cat >localoptions.h <<EOF
+#define DROPBEAR_3DES 0
+#define DROPBEAR_ENABLE_CBC_MODE 0
+#define DROPBEAR_SHA1_HMAC 0
+#define DROPBEAR_SHA1_96_HMAC 0
+#define DROPBEAR_DSS 0
+#define DROPBEAR_DEFAULT_RSA_SIZE 3072
+#define DROPBEAR_DH_GROUP14_SHA1 0
+#define DROPBEAR_DH_GROUP14_SHA256 0
+#define DROPBEAR_DH_GROUP1 0
+EOF
+}
+
 src_install() {
 	default
 
@@ -34,15 +49,15 @@ src_install() {
 
 pkg_postinst() {
 	local rsa="/etc/dropbear/dropbear_rsa_host_key"
-	local dss="/etc/dropbear/dropbear_dss_host_key"
+	local ecdsa="/etc/dropbear/dropbear_ecdsa_host_key"
 
 	if [[ ! -f "${rsa}" ]]
 	then
 		edo dropbearkey -t rsa -f "${rsa}" -s 4096
 	fi
 
-	if [[ ! -f "${dss}" ]]
+	if [[ ! -f "${ecdsa}" ]]
 	then
-		edo dropbearkey -t dss -f "${dss}"
+		edo dropbearkey -t ecdsa -f "${ecdsa}"
 	fi
 }

@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 EnvironmentFile=-/etc/default/dropbear
-ExecStart=/usr/sbin/dropbear $DROPBEAR_OPTIONS -F
+ExecStart=/usr/host/bin/dropbear $DROPBEAR_OPTIONS -F
 
 [Install]
 WantedBy=multi-user.target
