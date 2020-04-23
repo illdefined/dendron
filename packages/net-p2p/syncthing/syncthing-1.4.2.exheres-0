@@ -1,0 +1,75 @@
+# Copyright 2014-2016 Kylie McClain <somasis@exherbo.org>
+# Distributed under the terms of the GNU General Public License v2
+#
+#   Based in part on '/ports/head/net/syncthing/Makefile' (from FreeBSD Ports)
+#   Copyright 2014 Steven Wills <swills@FreeBSD.org>
+#   (file is under two clause BSD license)
+#
+
+MY_PNV=${PN}-source-v${PV}
+
+require systemd-service [ systemd_files=[ etc/linux-systemd/system/ ] systemd_user_files=[ etc/linux-systemd/user/ ] ]
+require github [ release="v${PV}" suffix=tar.gz ]
+
+SUMMARY="Open-source continuous file synchronization daemon"
+SLOT="0"
+LICENCES="MPL-2.0"
+
+UPSTREAM_CHANGELOG="${HOMEPAGE}/releases [[ lang = en ]]"
+UPSTREAM_DOCUMENTATION="
+    ${HOMEPAGE}/wiki/Getting-Started [[ lang = en description = [ Getting started guide ] ]]
+    ${HOMEPAGE}/wiki                 [[ lang = en description = [ All documentation ]     ]]
+"
+
+PLATFORMS="~amd64 ~armv7 ~armv8"
+DEPENDENCIES="
+    build:
+        dev-lang/go[>=1.7]
+    suggestion:
+        x11-apps/syncthing-gtk [[
+            description = [ syncthing-gtk is a GTK user interface for syncthing ]
+        ]]
+"
+
+GOPATH="${WORKBASE}"
+WORK="${WORKBASE}/src/github.com/${PN}/${PN}"
+
+# too broken
+RESTRICT=test
+
+pkg_setup() {
+    # needed to avoid fetching vendored deps from git during build
+    # https://docs.syncthing.net/dev/building.html#building-without-git
+    export GOFLAGS=-mod=vendor
+}
+
+src_unpack() {
+    edo mkdir -p "${WORK%/syncthing}"
+    default
+    edo mv "${WORKBASE}"/${PN} "${WORK}"
+}
+
+#src_prepare() {
+#    # There must be a better way to fix this, but until then... patches welcome.
+#    edo rm internal/discover/client_test.go internal/discover/discover_test.go \
+#            internal/model/model_test.go internal/model/queue_test.go \
+#            internal/config/config_test.go internal/model/sharedpullerstate_test.go \
+#            internal/model/rwfolder_test.go internal/osutil/osutil_test.go \
+#            internal/osutil/atomic_test.go internal/scanner/walk_test.go \
+#            cmd/syncthing/main_test.go internal/versioner/*_test.go
+#}
+
+src_compile() {
+    edo go run build.go -no-upgrade -version "v${PV}" build
+}
+
+src_test() {
+    edo go run build.go -no-upgrade test
+}
+
+src_install() {
+    dobin "${PN}"
+    doman man/!(*.sh|*.md)
+    install_systemd_files
+}
+
