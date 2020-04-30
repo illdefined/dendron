@@ -1,0 +1,37 @@
+# Copyright MMXX
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require github [ user=nhorman tag="v${PV}" ]
+require autotools [ supported_autoconf=[ 2.5 ] supported_automake=[ 1.16 ] ]
+require systemd-service
+
+SUMMARY="Linux random number generator tools"
+
+LICENCES="GPL-2"
+SLOT="0"
+PLATFORMS="~amd64"
+
+MYOPTIONS="pkcs11"
+
+DEPENDENCIES="
+    build+run:
+        sys-fs/sysfsutils
+
+        pkcs11? ( dev-libs/libp11 )"
+
+DEFAULT_SRC_CONFIGURE_PARAMS=(
+    --without-nistbeacon
+    --without-rtlsdr )
+
+DEFAULT_SRC_CONFIGURE_OPTION_WITHS=( pkcs11 )
+
+src_install() {
+    default
+
+    install_systemd_files
+
+    hereconfd rngd <<EOF
+RNGD_OPTS=""
+EOF
+}

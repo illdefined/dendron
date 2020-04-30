@@ -1,0 +1,17 @@
+[Unit]
+Description=Hardware entropy gathering daemon
+
+[Service]
+EnvironmentFile=/etc/conf.d/rngd
+ExecStart=/usr/host/bin/rngd -f $RNGD_OPTS
+
+CPUSchedulingPolicy=idle
+IOSchedulingClass=idle
+
+NoNewPrivileges=true
+ProtectSystem=strict
+PrivateTmp=true
+PrivateNetwork=true
+
+[Install]
+WantedBy=sysinit.target
