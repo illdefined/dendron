@@ -1,0 +1,17 @@
+# Copyright MMXVI
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require github [ user=OpenSC suffix=tar.gz release="${PNV}" ]
+
+SUMMARY="PKCS#11 wrapper library"
+
+LICENCES="LGPL-2.1"
+SLOT="0"
+PLATFORMS="~amd64"
+
+MYOPTIONS="( providers: libressl openssl ) [[ number-selected = exactly-one ]]"
+
+DEPENDENCIES="
+    providers:libressl? ( dev-libs/libressl )
+    providers:openssl? ( dev-libs/openssl )"
