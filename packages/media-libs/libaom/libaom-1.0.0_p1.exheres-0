@@ -1,6 +1,8 @@
-# Copyright MMXIX
+# Copyright MMXIX, MMXX
 #     Mikael Voss <mvs@nyantec.com>
 # Distributed under the terms of the GNU General Public License v2
+
+MY_PV="1.0.0-errata1-avif"
 
 require libaom
 

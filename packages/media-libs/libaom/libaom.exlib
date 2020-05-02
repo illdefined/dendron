@@ -7,7 +7,7 @@ HOMEPAGE="https://aomedia.googlesource.com/aom/"
 SCM_REPOSITORY="https://aomedia.googlesource.com/aom"
 
 if ! ever is_scm; then
-    SCM_TAG="v${PV}"
+    SCM_TAG="v${MY_PV:-${PV}}"
 fi
 
 require scm-git
