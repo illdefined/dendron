@@ -1,0 +1,41 @@
+# Copyright 2014 Saleem Abdulrasool <compnerd@compnerd.org>
+# Copyright MMXX Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require github [ user=fish-shell project=fish-shell release=${PV} suffix=tar.gz ]
+require cmake
+
+SUMMARY="A smart and user-friendly command line shell"
+HOMEPAGE="http://fishshell.com/"
+
+LICENCES="GPL-2"
+SLOT="0"
+PLATFORMS="~amd64 ~x86"
+MYOPTIONS="X docs wayland"
+
+DEPENDENCIES="
+    build:
+        docs? ( dev-python/Sphinx )
+
+    build+run:
+        sys-libs/ncurses
+        dev-libs/pcre2
+
+    run:
+        X? ( x11-utils/xclip )
+        wayland? ( wayland-apps/wl-clipboard )
+
+    suggestion:
+        dev-lang/python:* [[ note = [ fish_update_completion invokes create_manpage_completions.py ] ]]"
+
+CMAKE_SRC_CONFIGURE_PARAMS=(
+    -DWITH_GETTEXT:BOOL=TRUE
+    -DCMAKE_INSTALL_SYSCONFDIR:STRING=/etc )
+CMAKE_SRC_CONFIGURE_OPTION_BUILDS=( 'docs DOCS' )
+
+src_install() {
+    default
+
+    keepdir /etc/fish/{completions,conf.d,functions}
+    keepdir /usr/share/fish/vendor_{completions,conf,functions}.d
+}
