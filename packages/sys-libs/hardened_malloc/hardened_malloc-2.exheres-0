@@ -1,0 +1,17 @@
+# Copyright MMXX
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require github [ user=GrapheneOS ]
+
+SUMMARY="Hardened memory allocator"
+
+LICENCES="MIT"
+SLOT="0"
+PLATFORMS="~amd64"
+
+DEFAULT_SRC_COMPILE_PARAMS=( CONFIG_WERROR=false )
+
+src_install() {
+    dolib libhardened_malloc.so
+}
