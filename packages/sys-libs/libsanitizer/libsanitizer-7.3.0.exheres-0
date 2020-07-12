@@ -1,3 +1,0 @@
-require libsanitizer
-
-PLATFORMS="~amd64"
