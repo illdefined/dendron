@@ -14,7 +14,10 @@ MYOPTIONS="
     pkey [[ description = [ Protect allocator metadata using Memory Protection Keys ] ]]"
 
 src_compile() {
-    emake CONFIG_WERROR=false CONFIG_SEAL_METADATA="$(option pkey true false)"
+    emake \
+        CONFIG_WERROR=false \
+        CONFIG_NATIVE=false \
+        CONFIG_SEAL_METADATA="$(option pkey true false)"
 }
 
 src_install() {
