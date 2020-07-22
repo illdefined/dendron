@@ -10,7 +10,12 @@ LICENCES="MIT"
 SLOT="0"
 PLATFORMS="~amd64"
 
-DEFAULT_SRC_COMPILE_PARAMS=( CONFIG_WERROR=false )
+MYOPTIONS="
+    pkey [[ description = [ Protect allocator metadata using Memory Protection Keys ] ]]"
+
+src_compile() {
+    emake CONFIG_WERROR=false CONFIG_SEAL_METADATA="$(option pkey true false)"
+}
 
 src_install() {
     dolib libhardened_malloc.so
