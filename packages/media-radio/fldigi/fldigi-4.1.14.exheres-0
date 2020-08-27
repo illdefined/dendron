@@ -1,0 +1,36 @@
+# Copyright MMXX
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+SUMMARY="Multimode amateur radio software modem"
+HOMEPAGE="http://www.w1hkj.com/"
+DOWNLOADS="mirror://sourceforge/${PN}/${PNV}.tar.gz"
+
+LICENCES="GPL-3"
+SLOT="0"
+PLATFORMS="~amd64"
+
+MYOPTIONS="
+    pulseaudio
+    sndfile [[ description = [ Enable reading and writing of audio files ] ]]
+
+    amd64_cpu_features:
+        sse
+        sse2
+        sse3"
+
+DEPENDENCIES="
+    pulseaudio? ( media-sound/pulseaudio )
+    sndfile? ( media-libs/libsndfile )
+
+    media-libs/libpng:1.6
+    media-libs/libsamplerate
+    media-libs/portaudio
+    x11-libs/fltk"
+
+src_configure() {
+    econf \
+        $(option_with pulseaudio) \
+        $(option_with sndfile) \
+        $(for opt in sse sse2 sse3; do if optionq "amd64_cpu_features:${opt}"; then echo --enable-optimizations="$opt"; fi; done)
+}
