@@ -37,11 +37,6 @@ src_install() {
             do
                 dosym "../../bin/${PN}" "${bindir}/${target}-${tool}"
             done
-
-            for tool in ar ld{,.bfd,.gold} nm ranlib
-            do
-                dosym "../../bin/${PN}-binutils" "${bindir}/${target}-${tool}"
-            done
         fi
     done
 }
