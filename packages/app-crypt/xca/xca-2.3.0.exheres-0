@@ -1,0 +1,23 @@
+# Copyright MMXX
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require github [ user=chris2511 tag="RELEASE.${PV}" ]
+require autotools [ supported_autoconf=[ 2.5 ] supported_automake=[ 1.16 ] ]
+
+SUMMARY="GUI for certificate and key management"
+HOMEPAGE="https://hohnstaedt.de/xca/"
+
+LICENCES=""
+SLOT="0"
+PLATFORMS="~amd64"
+
+MYOPTIONS="providers:
+    libressl
+    openssl"
+
+DEPENDENCIES="
+    build+run:
+        x11-libs/qtbase:5[gui][sqlite]
+        providers:libressl? ( dev-libs/libressl )
+        providers:openssl? ( dev-libs/openssl )"
