@@ -1,0 +1,29 @@
+# Copyright MMXX
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require github
+require autotools [ supported_autoconf=[ 2.5 ] supported_automake=[ 1.16 ] ]
+require bash-completion
+
+SUMMARY="Open source smart card tools and middleware"
+
+LICENCES="LGPL-2.1"
+SLOT="0"
+PLATFORMS="~amd64"
+
+MYOPTIONS="( providers: libressl openssl ) [[ number-selected = exactly-one ]]"
+
+DEPENDENCIES="
+    build:
+        app-text/docbook-xsl-stylesheets
+        dev-libs/libxslt
+
+    build+run:
+        sys-apps/pcsc-lite
+        sys-libs/readline
+        sys-libs/zlib
+        providers:libressl? ( dev-libs/libressl )
+        providers:openssl? ( dev-libs/openssl )"
+
+DEFAULT_SRC_CONFIGURE_PARAMS=( --with-completiondir="${BASHCOMPLETIONDIR}" )
