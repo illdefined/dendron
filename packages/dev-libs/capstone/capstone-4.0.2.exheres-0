@@ -1,0 +1,13 @@
+# Copyright MMXX
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require github [ user=aquynh ]
+require cmake
+
+SUMMARY="Lightweight multi-platform, multi-architecture disassembly framework"
+HOMEPAGE="https://www.capstone-engine.org/"
+
+LICENCES="BSD-3"
+SLOT="0"
+PLATFORMS="~amd64"
