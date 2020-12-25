@@ -1,0 +1,40 @@
+# Copyright MMXX
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require cmake
+
+SUMMARY="Weak-signal amateur radio communication"
+HOMEPAGE="https://physics.princeton.edu/pulsar/K1JT/wsjtx.html"
+DOWNLOADS="https://physics.princeton.edu/pulsar/K1JT/${PNV}.tgz"
+
+LICENCES="GPL-3"
+SLOT="0"
+PLATFORMS="~amd64"
+
+DEPENDENCIES="
+    build:
+        app-text/asciidoctor
+
+    build+run:
+        dev-libs/libusb:1
+        media-radio/hamlib
+        sci-libs/fftw[fortran]
+        sys-libs/libgfortran
+        sys-libs/libgomp[fortran]
+        x11-libs/qtbase:5[gui][sqlite]
+        x11-libs/qtmultimedia:5
+        x11-libs/qtserialport:5
+        x11-libs/qtsvg:5"
+
+CMAKE_SOURCE="${WORKBASE}/${PN}"
+CMAKE_SRC_CONFIGURE_PARAMS=(
+    -DCMAKE_Fortran_COMPILER="$(exhost --tool-prefix)gfortran"
+    -Dhamlib_LIBRARY_DIRS="$("$(exhost --tool-prefix)pkg-config" --variable=libdir hamlib)"
+)
+
+src_unpack() {
+    cmake_src_unpack
+
+    unpack "./${PNV}/src/${PN}.tgz"
+}
