@@ -1,0 +1,39 @@
+# Copyright MMXX
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require cmake
+
+SUMMARY="ARRL Logbook Of The World TrustedQSL utility"
+HOMEPAGE="http://www.arrl.org/tqsl-download"
+DOWNLOADS="http://www.arrl.org/${PN}/${PNV}.tar.gz"
+
+LICENCES="LOTW"
+SLOT="0"
+PLATFORMS="~amd64"
+
+MYOPTIONS="( providers: libressl openssl ) [[ number-selected = exactly-one ]]"
+
+DEPENDENCIES="
+    build+run:
+        dev-db/lmdb
+        dev-libs/expat
+        net-misc/curl
+        x11-libs/wxGTK
+        providers:libressl? ( dev-libs/libressl )
+        providers:openssl? ( dev-libs/openssl )"
+
+CMAKE_SRC_CONFIGURE_PARAMS=( -DCMAKE_INSTALL_MANDIR:PATH="/usr/share/man" )
+
+src_prepare() {
+    default
+
+    pushd "${CMAKE_SOURCE}"
+    edo sed -i 's:\${CMAKE_INSTALL_PREFIX}/share/:${CMAKE_INSTALL_DATAROOTDIR}/:g' \
+        CMakeLists.txt \
+        src/CMakeLists.txt
+    edo sed -i 's:DESTINATION share/:DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/:g' \
+        apps/CMakeLists.txt \
+        src/CMakeLists.txt
+    popd
+}
