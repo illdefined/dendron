@@ -26,6 +26,7 @@ DEPENDENCIES="
     media-libs/libpng:1.6
     media-libs/libsamplerate
     media-libs/portaudio
+    media-radio/hamlib
     x11-libs/fltk"
 
 src_configure() {
