@@ -1,0 +1,10 @@
+# Copyright MMXX
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require hamlib
+
+SLOT="0"
+PLATFORMS="~amd64"
+
+WORK="${WORKBASE}/${PNV}"
