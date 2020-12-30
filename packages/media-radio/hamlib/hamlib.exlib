@@ -2,7 +2,7 @@
 #     Mikael Voss <mvs@nyantec.com>
 # Distributed under the terms of the GNU General Public License v2
 
-require github [ user=Hamlib pn=Hamlib ]
+require github [ user=Hamlib pn=Hamlib release="${PV}" suffix=tar.gz ]
 require autotools [ supported_autoconf=[ 2.5 ] supported_automake=[ 1.16 ] ]
 
 SUMMARY="Ham radio control library"
