@@ -12,21 +12,21 @@ SLOT="0"
 PLATFORMS="~amd64"
 
 MYOPTIONS="
-    ( providers: libaom dav1d ) [[ number-selected = at-least-one ]]
-    ( providers: libaom rav1e ) [[ number-selected = at-least-one ]]
+    ( providers: aom dav1d ) [[ number-selected = at-least-one ]]
+    ( providers: aom rav1e ) [[ number-selected = at-least-one ]]
     ( providers: ijg-jpeg jpeg-turbo ) [[ number-selected = exactly-one ]]"
 
 DEPENDENCIES="
     build+run:
         media-libs/libpng
 
-        providers:libaom? ( media-libs/libaom )
+        providers:aom? ( media-libs/aom )
         providers:dav1d? ( media-libs/dav1d )
         providers:rav1e? ( media-libs/rav1e )
         providers:ijg-jpeg? ( media-libs/jpeg )
         providers:jpeg-turbo? ( media-libs/libjpeg-turbo )"
 
 CMAKE_SRC_CONFIGURE_OPTIONS=(
-    'providers:libaom AVIF_CODEC_AOM'
+    'providers:aom AVIF_CODEC_AOM'
     'providers:dav1d AVIF_CODEC_DAV1D'
     'providers:rav1e AVIF_CODEC_RAV1E' )
