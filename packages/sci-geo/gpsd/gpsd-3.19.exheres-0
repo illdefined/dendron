@@ -1,0 +1,49 @@
+# Copyright MMXX
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require python [ blacklist=none min_versions="2.6 3.2" multibuild=false ]
+require scons
+
+SUMMARY="GPS service daemon"
+HOMEPAGE="https://gpsd.gitlab.io/"
+DOWNLOADS="mirror://savannah/${PN}/${PNV}.tar.gz"
+
+LICENCES="BSD-2"
+SLOT="0"
+PLATFORMS="~amd64"
+
+MYOPTIONS="bluetooth dbus"
+
+DEPENDENCIES="
+    build:
+        dev-libs/libxslt
+
+    build+run:
+        dev-libs/libusb
+        dev-python/pyserial
+        sys-libs/libcap
+        sys-libs/ncurses
+        bluetooth? ( net-wireless/bluez )
+        dbus? (
+            dev-libs/dbus-glib
+            sys-apps/dbus
+        )
+
+    run:
+        user/gpsd"
+
+SCONS_SRC_CONFIGURE_PARAMS=(
+    nostrip=True
+    systemd=True
+    gpsd_user="gpsd"
+    gpsd_group="dialout"
+    prefix="/usr/$(exhost --target)"
+    mandir="/usr/share"
+    target="$(exhost --target)"
+    sbindir="bin"
+)
+
+src_install() {
+    DESTDIR="${IMAGE}" scons_src_install
+}
