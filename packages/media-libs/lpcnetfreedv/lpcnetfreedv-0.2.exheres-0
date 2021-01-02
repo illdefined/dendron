@@ -1,0 +1,61 @@
+# Copyright MMXXI
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+MY_PN="LPCNet"
+MY_PNV="${MY_PN}-${PV}"
+
+require github [ user=drowe67 tag="v${PV}" ]
+require cmake
+
+SUMMARY="Experimental Neural Net speech coding for FreeDV"
+DOWNLOADS="https://rowetel.com/downloads/deep/lpcnet_191005_v1.0.tgz"
+
+LICENCES="BSD-3"
+SLOT="0"
+PLATFORMS="~amd64 ~arm ~x86"
+
+MYOPTIONS="
+    platform:
+        amd64
+        arm
+        x86
+    amd64_cpu_features: sse4.1 avx avx2
+    arm_cpu_features: neon
+    x86_cpu_features: sse4.1 avx avx2"
+
+DEPENDENCIES="
+    build+run:
+        media-libs/codec2"
+
+WORK="${CMAKE_SOURCE}/build_linux"
+
+src_unpack() {
+    unpack "${MY_PNV}.tar.gz"
+    edo mkdir -p "${WORK}"
+    edo cp "${FETCHEDDIR}/lpcnet_191005_v1.0.tgz" "${WORK}"
+}
+
+src_configure() {
+    local cmakeargs
+
+    if option platform:amd64; then
+        cmakeargs+=(
+            $(cmake_option amd64_cpu_features:sse4.1 SSE)
+            $(cmake_option amd64_cpu_features:avx AVX)
+            $(cmake_option amd64_cpu_features:avx2 AVX2)
+        )
+    elif option platform:arm; then
+        cmakeargs+=(
+            $(cmake_option arm_cpu_features:neon NEON)
+        )
+    elif option platform:x86; then
+        cmakeargs+=(
+            $(cmake_option x86_cpu_features:sse4.1 SSE)
+            $(cmake_option x86_cpu_features:avx AVX)
+            $(cmake_option x86_cpu_features:avx2 AVX2)
+        )
+    fi
+
+    ecmake "${cmakeargs[@]}"
+}
