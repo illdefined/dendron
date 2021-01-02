@@ -1,0 +1,28 @@
+# Copyright MMXXI
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require github [ user=drowe67 pn=freedv-gui tag="v${PV}" ]
+require cmake
+
+SUMMARY="Digital voice for HF radio"
+HOMEPAGE="https://freedv.org/"
+
+LICENCES="LGPL-2.1"
+SLOT="0"
+PLATFORMS="~amd64"
+
+DEPENDENCIES="
+    build+run:
+        media-libs/libsamplerate
+        media-libs/libsndfile
+        media-libs/lpcnetfreedv
+        media-libs/portaudio
+        media-libs/speexdsp
+        media-radio/hamlib
+        x11-libs/wxGTK"
+
+CMAKE_SRC_CONFIGURE_PARAMS=(
+    -DUSE_INTERNAL_CODEC2:BOOL=FALSE
+    -DUSE_STATIC_DEPS:BOOL=FALSE
+)
