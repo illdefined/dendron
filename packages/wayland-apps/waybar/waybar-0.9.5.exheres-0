@@ -11,12 +11,17 @@ LICENCES="MIT"
 SLOT="0"
 PLATFORMS="~amd64"
 
+MYOPTIONS="
+    providers: systemd
+    providers: libc++"
+
 DEPENDENCIES="
     build+run:
         !app-misc/waybar [[ resolution = uninstall-blocked-after ]]
         dev-cpp/libsigc++:2
         dev-libs/date
         dev-libs/fmt
+        dev-libs/glib
         dev-libs/gtk-layer-shell
         dev-libs/jsoncpp
         dev-libs/libdbusmenu
@@ -26,7 +31,10 @@ DEPENDENCIES="
         net-libs/libnl:3.0
         sys-libs/wayland
         sys-libs/wayland-protocols
-        sys-libs/wlroots"
+        sys-libs/wlroots
+        providers:systemd? ( sys-apps/systemd )
+        providers:libc++? ( sys-libs/libc++ )"
+
 
 MESON_SOURCE="${WORKBASE}/${PNV^}"
 
@@ -34,13 +42,9 @@ MESON_SRC_CONFIGURE_PARAMS=(
     -Dlibnl=enabled
     -Dpulseaudio=enabled
     -Ddbusmenu-gtk=enabled
+    -Dgtk-layer-shell=enabled
+    -Drfkill=enabled
 )
 
-src_prepare() {
-    default
-
-    # fmt does not support pkg-config
-    edo sed -i \
-        "s/^fmt = dependency(.*/fmt = meson.get_compiler('cpp').find_library('fmt')/" \
-        "${MESON_SOURCE}/meson.build"
-}
+MESON_SRC_CONFIGURE_OPTION_SWITCHES=( "providers:libc++ libcxx" )
+MESON_SRC_CONFIGURE_OPTION_FEATURES=( "providers:systemd systemd" )
