@@ -3,7 +3,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 require github [ user=Yubico ]
-require autotools [ supported_autoconf=[ 2.5 ] supported_automake=[ 1.15 ] ]
+require cmake [ api=2 ]
 
 SUMMARY="Yubico PIV tool"
 
@@ -16,7 +16,7 @@ MYOPTIONS="( providers: libressl openssl ) [[ number-selected = exactly-one ]]"
 DEPENDENCIES="
     build:
         sys-apps/help2man
-        dev-util/gengetopt
+        sys-devel/gengetopt
 
     build+run:
         sys-apps/pcsc-lite
