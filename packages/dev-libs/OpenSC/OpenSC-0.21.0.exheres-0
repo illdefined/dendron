@@ -27,3 +27,7 @@ DEPENDENCIES="
         providers:openssl? ( dev-libs/openssl )"
 
 DEFAULT_SRC_CONFIGURE_PARAMS=( --with-completiondir="${BASHCOMPLETIONDIR}" )
+
+src_install() {
+    default
+}
