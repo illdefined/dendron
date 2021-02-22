@@ -1,0 +1,21 @@
+# Copyright MMXXI
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require github [ user=jtdx-project pn=jtdxhamlib tag="${PV#0_}" ]
+require autotools [ supported_autoconf=[ 2.5 ] supported_automake=[ 1.16 ] ]
+
+SUMMARY="Ham radio control library"
+
+LICENCES="GPL-2 LGPL-2.1"
+
+DEPENDENCIES="
+    build+run:
+        dev-libs/libusb:1
+        dev-libs/libxml2
+        sys-libs/readline
+
+        !media-radio/hamlib [[ resolution = uninstall-blocked-after ]]"
+
+
+DEFAULT_SRC_CONFIGURE_PARAMS=( --with-xml-support )
