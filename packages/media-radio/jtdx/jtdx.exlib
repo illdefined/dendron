@@ -1,0 +1,31 @@
+# Copyright MMXXI
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require github [ user=jtdx-project pn=jtdx tag="${PV#0_}" ]
+require cmake
+
+SUMMARY="Long-distance weak-signal amateur radio communication"
+HOMEPAGE="https://jtdx.tech/"
+
+LICENCES="GPL-3"
+
+DEPENDENCIES="
+    build:
+        app-text/asciidoctor
+
+    build+run:
+        dev-libs/libusb:1
+        media-radio/jtdxhamlib
+        sci-libs/fftw[fortran]
+        sys-libs/libgfortran
+        sys-libs/libgomp[fortran]
+        x11-libs/qtbase:5[gui][sqlite]
+        x11-libs/qtmultimedia:5
+        x11-libs/qtserialport:5
+        x11-libs/qtsvg:5"
+
+CMAKE_SRC_CONFIGURE_PARAMS=(
+    -DCMAKE_Fortran_COMPILER="$(exhost --tool-prefix)gfortran"
+    -Dhamlib_LIBRARY_DIRS="/usr/$(exhost --target)/lib"
+)
