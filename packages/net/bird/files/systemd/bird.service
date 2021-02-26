@@ -1,0 +1,34 @@
+[Unit]
+Description=BIRD routeing daemon
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=bird -f
+ExecReload=birdc configure
+ExecStop=birdc down
+
+ProtectProc=invisible
+ProcSubset=pid
+
+DynamicUser=true
+
+CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+AmbientCapabilities=~
+
+ProtectHome=true
+RuntimeDirectory=bird
+PrivateDevices=true
+ProtectHostname=true
+ProtectClock=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+RestrictAddressFamilies=~AF_PACKET
+RestrictNamespaces=true
+MemoryDenyWriteExecute=true
+
+
+[Install]
+WantedBy=multi-user.target
