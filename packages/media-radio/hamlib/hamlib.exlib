@@ -18,3 +18,7 @@ DEPENDENCIES="
         !media-radio/jtdxhamlib [[ resolution = uninstall-blocked-after ]]"
 
 DEFAULT_SRC_CONFIGURE_PARAMS=( --with-xml-support )
+
+if ! ever is_scm; then
+    WORK="${WORKBASE}/${PNV}"
+fi
