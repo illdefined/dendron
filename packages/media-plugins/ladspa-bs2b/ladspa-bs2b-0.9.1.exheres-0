@@ -1,0 +1,15 @@
+# Copyright MMXXI
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+SUMMARY="LADSPA plugin for Bauer stereo to binaural transformation"
+HOMEPAGE="http://bs2b.sourceforge.net"
+DOWNLOADS="mirror://sourceforge/bs2b/plugins/LADSPA%20plugin/${PV}/${PNV}.tar.lzma"
+
+LICENCES="GPL-2"
+SLOT="0"
+PLATFORMS="~amd64"
+
+DEPENDENCIES="
+    media-libs/ladspa-sdk
+    media-libs/libbs2b"
