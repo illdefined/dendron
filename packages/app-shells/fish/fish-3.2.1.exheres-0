@@ -2,7 +2,7 @@
 # Copyright MMXX Mikael Voss <mvs@nyantec.com>
 # Distributed under the terms of the GNU General Public License v2
 
-require github [ user=fish-shell project=fish-shell release=${PV} suffix=tar.gz ]
+require github [ user=fish-shell project=fish-shell release=${PV} suffix=tar.xz ]
 require cmake
 
 SUMMARY="A smart and user-friendly command line shell"
