@@ -12,11 +12,14 @@ LICENCES="GPL-2"
 SLOT="0"
 PLATFORMS="~amd64"
 
-DEFAULT_SRC_CONFIGURE_PARAMS=( --runstatedir=/run/bird )
+MYOPTIONS="libssh [[ description = [ Enable libssh support for RPKI ] ]]"
 
-src_prepare() {
-    edo sed -i 's/^\(const char \* rta_dest_names\[RTD_MAX\];\)$/extern \1/' nest/route.h
-}
+DEPENDENCIES="
+    build+run:
+        libssh? ( net-libs/libssh )"
+
+DEFAULT_SRC_CONFIGURE_OPTION_ENABLES=( libssh )
+DEFAULT_SRC_CONFIGURE_PARAMS=( --runstatedir=/run/bird )
 
 src_install() {
     default
