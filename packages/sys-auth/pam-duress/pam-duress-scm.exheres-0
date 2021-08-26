@@ -6,7 +6,7 @@ require github [ user=nuvious branch=main ]
 
 SUMMARY="Pluggable Authentication Module for duress passwords"
 
-LICENCES="LGPL-3.0"
+LICENCES="LGPL-3"
 SLOT="0"
 PLATFORMS="~amd64"
 
