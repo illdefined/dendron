@@ -1,0 +1,41 @@
+# Copyright MMXXI
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require github [ user=nuvious branch=main ]
+
+SUMMARY="Pluggable Authentication Module for duress passwords"
+
+LICENCES="LGPL-3.0"
+SLOT="0"
+PLATFORMS="~amd64"
+
+MYOPTIONS="( providers: libressl openssl ) [[ number-selected = exactly-one ]]"
+
+DEPENDENCIES="
+    sys-libs/pam
+    providers:libressl? ( dev-libs/libressl )
+    providers:openssl? ( dev-libs/openssl )"
+
+src_prepare() {
+    edo sed -i 's/^\([[:space:]]*\)ld /\1$(CC) /' \
+        Makefile
+}
+
+src_compile() {
+    emake \
+        CC="$(exhost --tool-prefix)cc" \
+        CFLAGS="${CFLAGS} -fPIC" \
+        LDFLAGS="-Wl,-x -shared"
+}
+
+src_install() {
+    local prefix="/usr/$(exhost --target)"
+
+    dodir "${prefix}/bin"
+
+    emake \
+        BIN_INSTALL="${IMAGE}${prefix}/bin" \
+        PAM_DIR="${IMAGE}${prefix}/lib/security" \
+        install
+}
