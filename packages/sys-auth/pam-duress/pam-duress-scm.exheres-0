@@ -38,4 +38,6 @@ src_install() {
         BIN_INSTALL="${IMAGE}${prefix}/bin" \
         PAM_DIR="${IMAGE}${prefix}/lib/security" \
         install
+
+    keepdir "/etc/duress.d"
 }
