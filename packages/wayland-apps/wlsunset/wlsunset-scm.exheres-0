@@ -1,0 +1,27 @@
+# Copyright MMXXI
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+SCM_REPOSITORY="https://git.sr.ht/~kennylevinsen/${PN}"
+
+require scm-git meson systemd-service [ systemd_files=[ ] systemd_user_files=[ "${FILES}/systemd" ] ]
+
+SUMMARY="Day/night gamma adjustment for Wayland compositors"
+HOMEPAGE="https://git.sr.ht/~kennylevinsen/${PN}"
+
+LICENCES="MIT"
+SLOT="0"
+PLATFORMS="~amd64"
+
+DEPENDENCIES="
+    build:
+        app-doc/scdoc
+
+    build+run:
+        sys-libs/wayland
+        sys-libs/wayland-protocols"
+
+src_install() {
+    meson_src_install
+    install_systemd_files
+}

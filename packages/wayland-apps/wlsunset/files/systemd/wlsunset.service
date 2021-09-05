@@ -1,0 +1,9 @@
+[Unit]
+Description=Day/night gamma adjustments for Wayland compositors
+
+[Service]
+Type=exec
+ExecStart=wlsunset -l ${LATITUDE} -L ${LONGITUDE}
+
+[Install]
+WantedBy=default.target
