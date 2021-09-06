@@ -1,0 +1,13 @@
+# Copyright MMXXI
+#     Mikael Voss <mvs@nyantec.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require github [ user=microsoft tag="v${PV}" ] cmake
+
+SUMMARY="General-purpose memory allocator"
+
+LICENCES="MIT"
+SLOT="0"
+PLATFORMS="~amd64"
+
+CMAKE_SRC_CONFIGURE_PARAMS=( -DMI_SECURE=ON )
